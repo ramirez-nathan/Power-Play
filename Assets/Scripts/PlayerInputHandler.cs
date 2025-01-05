@@ -69,9 +69,12 @@ public class PlayerInputHandler : MonoBehaviour
         playerControls.jump.started += playerMain.Jump;  // Track the jump press
         playerControls.jump.canceled += playerMain.Jump; // Track the jump release
 
+        playerControls.neutralLight.started += playerMain.NeutralLight;
         playerControls.forwardLight.started += playerMain.ForwardLight;
-        
         playerControls.downLight.started += playerMain.DownLight;
+        playerControls.neutralUpHeavy.started += playerMain.NeutralUpHeavy;
+        playerControls.forwardHeavy.started += playerMain.ForwardHeavy;
+        playerControls.downHeavy.started += playerMain.DownHeavy;
     }
     // Unsubscribe all methods to avoid memory leaks
     private void OnDisable()
@@ -82,9 +85,12 @@ public class PlayerInputHandler : MonoBehaviour
         playerControls.jump.started -= playerMain.Jump;
         playerControls.jump.canceled -= playerMain.Jump;
 
+        playerControls.neutralLight.started -= playerMain.NeutralLight;
         playerControls.forwardLight.started -= playerMain.ForwardLight;
-
         playerControls.downLight.started -= playerMain.DownLight;
+        playerControls.neutralUpHeavy.started -= playerMain.NeutralUpHeavy;
+        playerControls.forwardHeavy.started -= playerMain.ForwardHeavy;
+        playerControls.downHeavy.started -= playerMain.DownHeavy;
     }
-   
+
 }

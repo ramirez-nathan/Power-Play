@@ -19,11 +19,12 @@ public class PlayerMovingState : PlayerBaseState
             // play moving animation
             Debug.Log("Playing moving animation upon enter");
         }
-        else 
+        else // airborne
         {
+
             // some logic for whether to 
-            // play jumping animation
-            // or play falling animation
+            // play jumping animation 
+            // or play falling animation 
         }
 
     }

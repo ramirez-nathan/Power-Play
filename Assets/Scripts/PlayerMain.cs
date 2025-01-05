@@ -63,7 +63,7 @@ public class PlayerMain : MonoBehaviour
     
     public int jumpCount = 0;
     public int jumpFrameCounter = 0;
-    public bool didJump = false;
+    public bool finishedJump = false;
     //public bool jumpStarted = false;
     public bool shortHop = false;
 
@@ -119,12 +119,12 @@ public class PlayerMain : MonoBehaviour
         {
             if (context.started) // jump pressed 
             {
-                didJump = false;
+                finishedJump = false;
                 // When jump button is pressed
                 playerJumpState = PlayerJumpState.JumpHeld; // TODO - CHANGE BACK ON COLL ENTER ON STAGE
                 jumpFrameCounter = 0; // Reset frame counter
             }
-            else if (context.canceled && !didJump) // jump released and havent jumped yet
+            else if (context.canceled && !finishedJump) // jump released and havent jumped yet
             {           
                 shortHop = jumpFrameCounter < 5;
                 // Determine if it's a short hop or a regular hop based on frame count
@@ -136,7 +136,7 @@ public class PlayerMain : MonoBehaviour
     public void PerformJump(bool isShortHop)
     {
         jumpCount++;
-        didJump = true;
+        finishedJump = true;
         if (isShortHop)
         {
             // Perform a short hop
@@ -173,6 +173,15 @@ public class PlayerMain : MonoBehaviour
     }
 
     // ------------------------------------ ATTACK MOVES --------------------------------------- //
+    public void NeutralLight(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.NeutralLight;
+            knockbackValue = 0.5f;
+        }
+    }
     public void ForwardLight(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -188,18 +197,35 @@ public class PlayerMain : MonoBehaviour
         if (context.started)
         {
             isAttacking = true;
-            playerAttackType = PlayerAttackType.ForwardLight;
+            playerAttackType = PlayerAttackType.DownLight;
             knockbackValue = 1.25f;
         }
     }
-
-    public void NeutralLight(InputAction.CallbackContext context)
+    public void NeutralUpHeavy(InputAction.CallbackContext context)
     {
         if (context.started)
         {
             isAttacking = true;
-            playerAttackType = PlayerAttackType.ForwardLight;
-            knockbackValue = 0.5f;
+            playerAttackType = PlayerAttackType.NeutralUpHeavy;
+            knockbackValue = 3f;
+        }
+    }
+    public void ForwardHeavy(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.ForwardHeavy;
+            knockbackValue = 2.5f;
+        }
+    }
+    public void DownHeavy(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.DownHeavy;
+            knockbackValue = 2.5f;
         }
     }
 
@@ -218,7 +244,7 @@ public class PlayerMain : MonoBehaviour
             shortHop = false;
             PerformJump(shortHop);
         }
-        if (jumpCount == 1 && !didJump && jumpFrameCounter == 2)
+        if (jumpCount == 1 && !finishedJump && jumpFrameCounter == 2)
         {
             PerformJump(false); // if already in air then do a long hop
         }
