@@ -21,8 +21,6 @@ public class PlayerMain : MonoBehaviour
         Idle,
         Grounded,
         Airborne,
-        Attacking,
-        TakingDamage,
         Dead
     }
     public PlayerState playerState;
@@ -152,11 +150,10 @@ public class PlayerMain : MonoBehaviour
     }
     // FixedUpdate is called on a fixed time interval for physics updates
     public void SetJumpVelocity(float jumpForce)
-        {
+    {
         currentVelocity.y = jumpForce; // Apply the upward force
         playerRigidBody.velocity = currentVelocity;
     }
-
 
     public void Move(InputAction.CallbackContext context)
     {
@@ -175,7 +172,7 @@ public class PlayerMain : MonoBehaviour
         //}
     }
 
-
+    // ------------------------------------ ATTACK MOVES --------------------------------------- //
     public void ForwardLight(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -186,6 +183,9 @@ public class PlayerMain : MonoBehaviour
         }
         
     }
+
+    // ------------------------------------ ATTACK MOVES --------------------------------------- //
+
 
     private void FixedUpdate() // make this a virtual void 
     {

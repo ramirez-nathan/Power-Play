@@ -10,7 +10,7 @@ public class PlayerStateMachine : MonoBehaviour
     [HideInInspector]
     public PlayerMovingState playerMovingState;
     public PlayerAttackingState playerAttackingState;
-
+    public PlayerIdleState playerIdleState;
 
     // takes argument playermain to grab the right object's main
     public void Initialize(PlayerMain main) 
@@ -25,6 +25,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         playerMovingState = new PlayerMovingState(this);
         playerAttackingState = new PlayerAttackingState(this);
+        //playerIdleState = new PlayerIdleState(this);
     }
 
     void Update()

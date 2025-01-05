@@ -1846,14 +1846,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   currentVelocity: {x: 0, y: 0}
+  gameOverScween: {fileID: 0}
+  deathSound: {fileID: 0}
   playerIndex: 1
+  playerState: 0
+  playerJumpState: 0
   playerRigidBody: {fileID: 0}
   stage: {fileID: 0}
   playerInputHandler: {fileID: 0}
   playerStateMachine: {fileID: 0}
-  playerState: 0
+  animator: {fileID: 0}
+  isFacingRight: 1
+  isAttacking: 0
+  knockbackValue: 0
+  playerAttackType: 0
   holdingMove: 0
-  playerJumpState: 0
   jumpCount: 0
   jumpFrameCounter: 0
   didJump: 0
@@ -2001,14 +2008,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   currentVelocity: {x: 0, y: 0}
+  gameOverScween: {fileID: 0}
+  deathSound: {fileID: 0}
   playerIndex: 0
+  playerState: 0
+  playerJumpState: 0
   playerRigidBody: {fileID: 0}
   stage: {fileID: 0}
   playerInputHandler: {fileID: 0}
   playerStateMachine: {fileID: 0}
-  playerState: 0
+  animator: {fileID: 0}
+  isFacingRight: 1
+  isAttacking: 0
+  knockbackValue: 0
+  playerAttackType: 0
   holdingMove: 0
-  playerJumpState: 0
   jumpCount: 0
   jumpFrameCounter: 0
   didJump: 0

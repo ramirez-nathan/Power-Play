@@ -541,7 +541,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Joystick: Dash"",
+                    ""name"": ""Joystick Left: Dash"",
                     ""id"": ""1ddb2634-b4c3-476d-8681-4c60117b2068"",
                     ""path"": ""OneModifier"",
                     ""interactions"": """",
@@ -565,10 +565,43 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Modifier"",
                     ""id"": ""d6ebb0b7-6057-4f7f-8cee-96a00a4f5852"",
-                    ""path"": ""<Joystick>/stick/x"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad;Joystick"",
+                    ""action"": ""ForwardLight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Joystick Right: Dash"",
+                    ""id"": ""ff8bc02f-f635-4e2f-8be6-62063eea0b34"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ForwardLight"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""bff0678b-42f5-4a33-bb89-b7d43cf20ffd"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad;Joystick"",
+                    ""action"": ""ForwardLight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""bb4ffc8c-1878-41a5-9bc1-a27106c8b4b9"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""ForwardLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -653,7 +686,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""modifier"",
                     ""id"": ""9876544c-4b6f-4130-ab02-cbab360e05d5"",
-                    ""path"": ""<Joystick>/stick/down"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad;Joystick"",
@@ -750,7 +783,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Joystick: Heavy North"",
+                    ""name"": ""Joystick Left: Heavy North"",
                     ""id"": ""319bd830-8a30-4ca8-aef2-188e0a0a0193"",
                     ""path"": ""OneModifier"",
                     ""interactions"": """",
@@ -766,7 +799,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Gamepad;Joystick"",
                     ""action"": ""ForwardHeavy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -774,7 +807,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Modifier"",
                     ""id"": ""c4be10d1-d1ef-48f8-a286-9187d7878c09"",
-                    ""path"": ""<Joystick>/stick/x"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -783,7 +816,40 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Joystick: Heavy East"",
+                    ""name"": ""Joystick Right: Heavy North"",
+                    ""id"": ""ee3ba6af-96c8-4b21-a481-bed8a24b7abb"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ForwardHeavy"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""03015b9e-2527-418c-b3aa-3e0608d59ff8"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ForwardHeavy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""a86c5c10-3276-4ea4-96a0-26903e7effd8"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ForwardHeavy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Joystick Left: Heavy East"",
                     ""id"": ""a868059c-5c97-48a9-9d0a-8098cb66b993"",
                     ""path"": ""OneModifier"",
                     ""interactions"": """",
@@ -807,7 +873,40 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Modifier"",
                     ""id"": ""f4362a81-e5fe-40d7-b9fe-07e47faee7aa"",
-                    ""path"": ""<Joystick>/stick/x"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ForwardHeavy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Joystick Right: Heavy East"",
+                    ""id"": ""567bbbbc-0c12-4909-bc3b-4ea9e6741295"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ForwardHeavy"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""53553c90-fa51-4985-832b-489631251a7e"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad;Joystick"",
+                    ""action"": ""ForwardHeavy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""d1b02ab9-aaed-474f-8964-16d9f32fa93f"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -882,7 +981,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Joystick Heavy"",
+                    ""name"": ""Joystick: Heavy North"",
                     ""id"": ""c897ad27-19a9-4854-8fd1-2174abacd514"",
                     ""path"": ""OneModifier"",
                     ""interactions"": """",
@@ -895,7 +994,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""modifier"",
                     ""id"": ""527cf0fe-86a0-421a-909c-80d3c8f90a22"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -906,7 +1005,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""binding"",
                     ""id"": ""ee479b76-f053-4a2a-a61a-ed872c3d34d1"",
-                    ""path"": ""<Joystick>/stick/down"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -915,7 +1014,40 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""KB Down"",
+                    ""name"": ""Joystick: Heavy East"",
+                    ""id"": ""f34d17a0-a988-483a-a6b1-6a90a598cef4"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownHeavy"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""149f1715-a786-4319-a61b-1a7a05958fd0"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownHeavy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""352f6fcf-2563-455a-bd65-1fa21c990045"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownHeavy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""KB Down: I"",
                     ""id"": ""6717abb2-40ac-485f-a8d3-067b1d56e04b"",
                     ""path"": ""OneModifier"",
                     ""interactions"": """",
@@ -940,6 +1072,39 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""binding"",
                     ""id"": ""4b121df1-86a6-4082-8301-1566e0f88493"",
                     ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownHeavy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""KB Down: L"",
+                    ""id"": ""4b45bdfb-a55f-43bd-8f06-4770dd660423"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownHeavy"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""b0d5a061-9588-4d4e-9597-a567d1f502e0"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownHeavy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""1ce52f5f-4b02-48eb-a798-443ac6d2965d"",
+                    ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

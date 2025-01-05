@@ -7,6 +7,7 @@ public class PlayerBaseState
     public string name;
 
     public string stateName;
+    public float counter;
     protected PlayerStateMachine playerStateMachine;
     // Start is called before the first frame update
     public PlayerBaseState(string name, PlayerStateMachine stateMachine)
@@ -15,8 +16,12 @@ public class PlayerBaseState
         this.playerStateMachine = stateMachine;
     }
 
-    public virtual void Enter(string previousState) { }
-    public virtual void UpdateLogic() { }
+    public virtual void Enter(string previousState) {
+        counter = 0;
+    }
+    public virtual void UpdateLogic() {
+        counter += Time.deltaTime;
+    }
     public virtual void UpdatePhysics() { }
     public virtual void Exit() { }
 }
