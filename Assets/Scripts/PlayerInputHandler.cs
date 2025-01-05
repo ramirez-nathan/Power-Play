@@ -66,13 +66,12 @@ public class PlayerInputHandler : MonoBehaviour
         playerControls.move.started += playerMain.Move;
         playerControls.move.canceled += playerMain.Move;
 
-        playerControls.forwardLight.started += playerMain.ForwardLight;
-        playerControls.forwardLight.canceled += playerMain.ForwardLight;
-
         playerControls.jump.started += playerMain.Jump;  // Track the jump press
         playerControls.jump.canceled += playerMain.Jump; // Track the jump release
 
-
+        playerControls.forwardLight.started += playerMain.ForwardLight;
+        
+        playerControls.downLight.started += playerMain.DownLight;
     }
     // Unsubscribe all methods to avoid memory leaks
     private void OnDisable()
@@ -84,7 +83,8 @@ public class PlayerInputHandler : MonoBehaviour
         playerControls.jump.canceled -= playerMain.Jump;
 
         playerControls.forwardLight.started -= playerMain.ForwardLight;
-        playerControls.forwardLight.canceled -= playerMain.ForwardLight;
+
+        playerControls.downLight.started -= playerMain.DownLight;
     }
    
 }

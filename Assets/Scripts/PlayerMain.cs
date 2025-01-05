@@ -43,7 +43,7 @@ public class PlayerMain : MonoBehaviour
 
     // ------------------- Attack Constants ---------------------- //
     public bool isAttacking = false;
-    public int knockbackValue = 0;
+    public float knockbackValue = 0.0f;
     public enum PlayerAttackType
     {
         NeutralLight,
@@ -179,9 +179,28 @@ public class PlayerMain : MonoBehaviour
         {
             isAttacking = true;
             playerAttackType = PlayerAttackType.ForwardLight;
-            knockbackValue = 1;
+            knockbackValue = 1.5f;
         }
         
+    }
+    public void DownLight(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.ForwardLight;
+            knockbackValue = 1.25f;
+        }
+    }
+
+    public void NeutralLight(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.ForwardLight;
+            knockbackValue = 0.5f;
+        }
     }
 
     // ------------------------------------ ATTACK MOVES --------------------------------------- //

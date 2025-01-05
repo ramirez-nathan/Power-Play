@@ -47,12 +47,13 @@ public class PlayerMovingState : PlayerBaseState
 
         else
         {
-            if (counter > 0.5) // adjust value to match actual animation length
+            if (counter > 0.5 && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded) // adjust value to match actual animation length
             {
                 counter = 0;
-                //play moving animation again
+                // play moving animation again
                 Debug.Log("replaying moving animation");
             }
+
         }
         base.UpdateLogic();
     }
