@@ -9,6 +9,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     [HideInInspector]
     public PlayerMovingState playerMovingState;
+    public PlayerAttackingState playerAttackingState;
 
 
     // takes argument playermain to grab the right object's main
@@ -23,6 +24,7 @@ public class PlayerStateMachine : MonoBehaviour
     private void Awake()
     {
         playerMovingState = new PlayerMovingState(this);
+        playerAttackingState = new PlayerAttackingState(this);
     }
 
     void Update()

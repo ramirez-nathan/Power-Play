@@ -7,7 +7,7 @@ public class PlayerMovingState : PlayerBaseState
     private PlayerStateMachine _sm;
 
     public PlayerMovingState(PlayerStateMachine stateMachine) : base("Moving", stateMachine)
-    { 
+    {
         this.stateName = "Moving";
         _sm = stateMachine;
     }

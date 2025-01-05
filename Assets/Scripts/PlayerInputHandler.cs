@@ -22,7 +22,7 @@ public class PlayerInputHandler : MonoBehaviour
     public PlayerActions playerControls;
 
     private PlayerMain playerMain;
-    private PlayerInput playerInput;
+    private PlayerInput playerInput; 
     
 
     private void Awake()
@@ -34,7 +34,7 @@ public class PlayerInputHandler : MonoBehaviour
 
         // retrieves player index 
         var index = playerInput.playerIndex;
-        
+
         // Finds the PlayerMovement with the matching player index to associate it with this player
         playerMain = playerMains.FirstOrDefault(m => m.GetPlayerIndex() == index);
         playerMain.Initialize(this); 
@@ -65,7 +65,7 @@ public class PlayerInputHandler : MonoBehaviour
 
         playerControls.move.started += playerMain.Move;
         playerControls.move.canceled += playerMain.Move;
-
+        
         playerControls.jump.started += playerMain.Jump;  // Track the jump press
         playerControls.jump.canceled += playerMain.Jump; // Track the jump release
 

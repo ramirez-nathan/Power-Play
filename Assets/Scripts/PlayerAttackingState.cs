@@ -2,17 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackingState : MonoBehaviour
+public class PlayerAttackingState : PlayerBaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    private PlayerStateMachine _sm;
+
+    public PlayerAttackingState(PlayerStateMachine stateMachine) : base("Attacking", stateMachine)
     {
+        this.stateName = "Attacking";
+        _sm = stateMachine;
+    }
+
+    public override void Enter(string previousState)
+    {
+        base.Enter(previousState);
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void UpdateLogic()
     {
-        
+        base.UpdateLogic();
+
+    }
+
+    public override void UpdatePhysics()
+    {
+        var input = _sm.playerMain.moveInput;
+
+        var currentVelocity = _sm.playerMain.playerRigidBody.velocity;
+        currentVelocity.x = input.x * _sm.playerMain.moveSpeed;
+        _sm.playerMain.playerRigidBody.velocity = currentVelocity;
+
+        base.UpdatePhysics();
     }
 }

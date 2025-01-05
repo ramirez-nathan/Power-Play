@@ -11,6 +11,8 @@ public class PlayerMain : MonoBehaviour
     [SerializeField]
     public float moveSpeed = 10f;
     public Vector2 currentVelocity = Vector2.zero;
+    public gameOverScreen gameOverScween; // The game over screen
+    public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
 
     [SerializeField]
     private int playerIndex = 0; // index to differentiate the 2 players
@@ -33,6 +35,9 @@ public class PlayerMain : MonoBehaviour
 
     public PlayerInputHandler playerInputHandler;
     public PlayerStateMachine playerStateMachine;
+    public Animator animator;            // Controls all the animations of the player.
+    private bool isOnFloor = true;       // Tracks if the player is on the stage (grounded).
+    public bool isFacingRight = true;    // Tracks whether the player's sprite is facing right
 
     public PlayerState playerState;
     public Vector2 moveInput { get; private set; }
@@ -44,11 +49,16 @@ public class PlayerMain : MonoBehaviour
     public bool didJump = false;
     //public bool jumpStarted = false;
     public bool shortHop = false;
-    
+
+    // Out of bounds range, x = +- 11, y = -7
+    private float outOfBoundsXLeft = -11f;
+    private float outOfBoundsXRight = 11f;
+    private float outOfBoundsY = -7f;
+
     private void Awake()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
-        
+
     }
     // Start is called before the first frame update
     void Start()
@@ -60,6 +70,7 @@ public class PlayerMain : MonoBehaviour
 
         playerStateMachine = GetComponent<PlayerStateMachine>();
         playerStateMachine.Initialize(this); // Pass the PlayerMain instance
+        animator = GetComponent<Animator>();              // Initializing the animator
     }
 
     public void Initialize(PlayerInputHandler pInputHandler)
@@ -71,10 +82,14 @@ public class PlayerMain : MonoBehaviour
     {
         return playerIndex;
     }
+
     // Update is called once per frame
     void Update() // make this a virtual void
     {
         moveInput = playerInputHandler.playerControls.move.ReadValue<Vector2>(); // grab input vector here
+
+        animator.SetBool("isJumping", !isOnFloor); // animator checks if player is jumping still
+        UpdateSpriteDirection();
     }
     public void Jump(InputAction.CallbackContext context)
     {
@@ -93,10 +108,11 @@ public class PlayerMain : MonoBehaviour
                 jumpFrameCounter = 0; // Reset frame counter
             }
             else if (context.canceled && !didJump) // jump released and havent jumped yet
-            {
+            {           
                 shortHop = jumpFrameCounter < 5;
                 // Determine if it's a short hop or a regular hop based on frame count
                 PerformJump(shortHop);
+                animator.SetBool("isJumping", !isOnFloor); // Lets the animator know that the player is now jumping
             }
         }
     }
@@ -117,14 +133,14 @@ public class PlayerMain : MonoBehaviour
     }
     // FixedUpdate is called on a fixed time interval for physics updates
     public void SetJumpVelocity(float jumpForce)
-    {
+        {
         currentVelocity.y = jumpForce; // Apply the upward force
         playerRigidBody.velocity = currentVelocity;
     }
 
 
     public void Move(InputAction.CallbackContext context)
-    {
+        {
         //currentVelocity = playerRigidBody.velocity;
         //if (context.phase == InputActionPhase.Started)
         //{
@@ -139,11 +155,14 @@ public class PlayerMain : MonoBehaviour
         //    holdingMove = false;
         //}
     }
+
     private void FixedUpdate() // make this a virtual void 
     {
         //currentVelocity.x = holdingMove ? 1 * moveSpeed : -1 * moveSpeed;
         //playerRigidBody.velocity = currentVelocity;
-        if (playerJumpState == PlayerJumpState.JumpHeld) jumpFrameCounter++; // track frames that jump button is held for
+        animator.SetFloat("xVelocity", Mathf.Abs(playerRigidBody.velocity.x));
+        animator.SetFloat("yVelocity", playerRigidBody.velocity.y);
+        if (playerJumpState == PlayerJumpState.JumpHeld) jumpFrameCounter++; // track frames that jump button is held for 
         if (jumpFrameCounter == 5 && playerState == PlayerState.Grounded) // bro took too long, long hop it is 
         {
             shortHop = false;
@@ -153,12 +172,49 @@ public class PlayerMain : MonoBehaviour
         {
             PerformJump(false); // if already in air then do a long hop
         }
+        if (transform.position.x > outOfBoundsXRight || transform.position.x < outOfBoundsXLeft || transform.position.y < outOfBoundsY)
+        {
+            Debug.Log("You have been destroyed");
+            KillPlayer();
+            gameOverScween.ShowGameOver();
+        }
+    }
+
+
+    // ADJUST WHICH WAY SPRITE IS FACING
+    void UpdateSpriteDirection()
+    {
+        if (isFacingRight && playerRigidBody.velocity.x < 0f || !isFacingRight && playerRigidBody.velocity.x > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 ls = transform.localScale;
+            ls.x *= -1f;
+            transform.localScale = ls;
+        }
+    }
+
+    // DESTROYS PLAYER OBJECT & PLAYS DEATH SOUND
+    void KillPlayer()
+    {
+        if (deathSound != null && deathSound.clip != null)
+        {
+            // Play the sound at the character's position
+            AudioSource.PlayClipAtPoint(deathSound.clip, transform.position);
+
+            //// Set hp equal to 0
+            //health = 0;
+            //currentHealth = 0;
+
+            // Immediately destroy the GameObject
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage"))
         {
+            isOnFloor = true;
             playerState = PlayerState.Grounded;
             jumpFrameCounter = 0; // Reset frame counter
             jumpCount = 0;
@@ -169,8 +225,9 @@ public class PlayerMain : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage"))
         {
             playerState = PlayerState.Airborne;
+            isOnFloor = false;
         }
     }
+    
 
-
-}
+    }
