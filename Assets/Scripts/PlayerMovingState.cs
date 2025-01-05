@@ -19,11 +19,12 @@ public class PlayerMovingState : PlayerBaseState
             // play moving animation
             Debug.Log("Playing moving animation upon enter");
         }
-        else 
+        else // airborne
         {
+
             // some logic for whether to 
-            // play jumping animation
-            // or play falling animation
+            // play jumping animation 
+            // or play falling animation 
         }
 
     }
@@ -47,12 +48,13 @@ public class PlayerMovingState : PlayerBaseState
 
         else
         {
-            if (counter > 0.5) // adjust value to match actual animation length
+            if (counter > 0.5 && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded) // adjust value to match actual animation length
             {
                 counter = 0;
-                //play moving animation again
+                // play moving animation again
                 Debug.Log("replaying moving animation");
             }
+
         }
         base.UpdateLogic();
     }

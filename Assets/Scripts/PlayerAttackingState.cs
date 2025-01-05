@@ -60,7 +60,7 @@ public class PlayerAttackingState : PlayerBaseState
                 }
                 else // Grounded
                 {
-                    // play DownLight animation'
+                    // play DownLight animation
                     // set counterMax to animation length
                 }
                 break;
@@ -78,7 +78,6 @@ public class PlayerAttackingState : PlayerBaseState
                 }
                 break;
             case PlayerMain.PlayerAttackType.ForwardHeavy :
-                
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
                     // play ForwardHeavy air animation
@@ -112,13 +111,14 @@ public class PlayerAttackingState : PlayerBaseState
     {
         // TODO: combo window --> could be 0.5 sec, starts at
         // last .25 sec of animation, and ends .25 sec after 
-        // if attack has a combo
+        // if attack has a combo && attack made contact
         //   if counter >= counterMax - 0.25 then start combo window
         // it should carry on incrementing to the next state
         // assuming that state isnt hurt/dead state
 
         if (counter > counterMax)
         {
+            _sm.playerMain.isAttacking = false;
             if (previousState == "Moving") _sm.ChangeState(_sm.playerMovingState);
             //else _sm.ChangeState(_sm.playerIdleState); // not implemented yet
         }
