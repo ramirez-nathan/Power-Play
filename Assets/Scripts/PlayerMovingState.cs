@@ -6,6 +6,8 @@ public class PlayerMovingState : PlayerBaseState
 {
     private PlayerStateMachine _sm;
 
+
+
     public PlayerMovingState(PlayerStateMachine stateMachine) : base("Moving", stateMachine)
     {
         this.stateName = "Moving";
@@ -15,11 +17,14 @@ public class PlayerMovingState : PlayerBaseState
     public override void Enter(string previousState)
     {
         base.Enter(previousState);
+        // play movement animation here
+
     }
 
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+        
         
     }
 
@@ -30,6 +35,8 @@ public class PlayerMovingState : PlayerBaseState
         var currentVelocity = _sm.playerMain.playerRigidBody.velocity;
         currentVelocity.x = input.x * _sm.playerMain.moveSpeed;
         _sm.playerMain.playerRigidBody.velocity = currentVelocity;
+
+        
         
         base.UpdatePhysics();
     }

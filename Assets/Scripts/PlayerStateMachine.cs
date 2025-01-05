@@ -40,7 +40,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (currentState != null)
         {
-            Debug.Log("yay");
             currentState.UpdatePhysics();
         }
     }

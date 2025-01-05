@@ -25,11 +25,14 @@ public class PlayerMain : MonoBehaviour
         TakingDamage,
         Dead
     }
+    public PlayerState playerState;
     public enum PlayerJumpState
     {
         JumpHeld,
         JumpReleased
     }
+    public PlayerJumpState playerJumpState;
+
     public Rigidbody2D playerRigidBody;
     public GameObject stage;
 
@@ -39,11 +42,27 @@ public class PlayerMain : MonoBehaviour
     private bool isOnFloor = true;       // Tracks if the player is on the stage (grounded).
     public bool isFacingRight = true;    // Tracks whether the player's sprite is facing right
 
-    public PlayerState playerState;
+
+    // ------------------- Attack Constants ---------------------- //
+    public bool isAttacking = false;
+    public int knockbackValue = 0;
+    public enum PlayerAttackType
+    {
+        NeutralLight,
+        ForwardLight,
+        DownLight,
+        NeutralUpHeavy,
+        ForwardHeavy,
+        DownHeavy
+    }
+    public PlayerAttackType playerAttackType;
+    // ------------------- Attack Constants ---------------------- //
+
+
     public Vector2 moveInput { get; private set; }
     public bool holdingMove = false;
     // Jump Logic
-    public PlayerJumpState playerJumpState;
+    
     public int jumpCount = 0;
     public int jumpFrameCounter = 0;
     public bool didJump = false;
@@ -140,9 +159,9 @@ public class PlayerMain : MonoBehaviour
 
 
     public void Move(InputAction.CallbackContext context)
-        {
+    {
         //currentVelocity = playerRigidBody.velocity;
-        //if (context.phase == InputActionPhase.Started)
+        //if (context.started)
         //{
         //    currentVelocity.x = context.ReadValue<Vector2>().x > 0 ? 1 * moveSpeed : -1 * moveSpeed;
         //    playerRigidBody.velocity = currentVelocity;
@@ -154,6 +173,18 @@ public class PlayerMain : MonoBehaviour
         //    playerRigidBody.velocity = currentVelocity;
         //    holdingMove = false;
         //}
+    }
+
+
+    public void ForwardLight(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.ForwardLight;
+            knockbackValue = 1;
+        }
+        
     }
 
     private void FixedUpdate() // make this a virtual void 
@@ -201,10 +232,6 @@ public class PlayerMain : MonoBehaviour
             // Play the sound at the character's position
             AudioSource.PlayClipAtPoint(deathSound.clip, transform.position);
 
-            //// Set hp equal to 0
-            //health = 0;
-            //currentHealth = 0;
-
             // Immediately destroy the GameObject
             Destroy(gameObject);
         }
@@ -230,4 +257,4 @@ public class PlayerMain : MonoBehaviour
     }
     
 
-    }
+}

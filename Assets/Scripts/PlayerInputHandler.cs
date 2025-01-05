@@ -62,15 +62,16 @@ public class PlayerInputHandler : MonoBehaviour
         playerControls.neutralUpHeavy = playerInput.actions["NeutralUpHeavy"];
         playerControls.forwardHeavy = playerInput.actions["ForwardHeavy"];
         playerControls.downHeavy = playerInput.actions["DownHeavy"];
-
+        
         playerControls.move.started += playerMain.Move;
         playerControls.move.canceled += playerMain.Move;
-        
+
+        playerControls.forwardLight.started += playerMain.ForwardLight;
+        playerControls.forwardLight.canceled += playerMain.ForwardLight;
+
         playerControls.jump.started += playerMain.Jump;  // Track the jump press
         playerControls.jump.canceled += playerMain.Jump; // Track the jump release
 
-        //playerControls.neutralGAttack.started += NeutralGAttack;
-        //playerControls.dashGAttack.started += DashGAttack;
 
     }
     // Unsubscribe all methods to avoid memory leaks
@@ -82,8 +83,8 @@ public class PlayerInputHandler : MonoBehaviour
         playerControls.jump.started -= playerMain.Jump;
         playerControls.jump.canceled -= playerMain.Jump;
 
-        //playerControls.neutralGAttack.started -= NeutralGAttack;
-        //playerControls.dashGAttack.started -= DashGAttack;
+        playerControls.forwardLight.started -= playerMain.ForwardLight;
+        playerControls.forwardLight.canceled -= playerMain.ForwardLight;
     }
    
 }
