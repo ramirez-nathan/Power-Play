@@ -724,9 +724,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2546021250221689207, guid: ffd917e0575481948a80e40b9602e313, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040538683908700739, guid: ffd917e0575481948a80e40b9602e313, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040538683908700739, guid: ffd917e0575481948a80e40b9602e313, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4422864
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040538683908700739, guid: ffd917e0575481948a80e40b9602e313, type: 3}
+      propertyPath: m_Color.r
+      value: 0.15472588
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113266644820315678, guid: ffd917e0575481948a80e40b9602e313, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5296521123313513671, guid: ffd917e0575481948a80e40b9602e313, type: 3}
       propertyPath: m_Name
       value: SkyArenaPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296521123313513671, guid: ffd917e0575481948a80e40b9602e313, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6568776840324232136, guid: ffd917e0575481948a80e40b9602e313, type: 3}
       propertyPath: m_LocalPosition.x
@@ -767,6 +791,18 @@ PrefabInstance:
     - target: {fileID: 6568776840324232136, guid: ffd917e0575481948a80e40b9602e313, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174662113589477507, guid: ffd917e0575481948a80e40b9602e313, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174662113589477507, guid: ffd917e0575481948a80e40b9602e313, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174662113589477507, guid: ffd917e0575481948a80e40b9602e313, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.52
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
