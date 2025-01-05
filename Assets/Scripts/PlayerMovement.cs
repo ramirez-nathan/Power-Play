@@ -7,14 +7,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using static UnityEngine.InputSystem.InputAction;
 
+
+
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     public float moveSpeed = 10f;
     public Vector2 currentVelocity = Vector2.zero;
-
-    [SerializeField]
     private int playerIndex = 0; // index to differentiate the 2 players
+    private LayerMask resetJumpLayers; // Assign layers that should reset jumps in the Inspector
 
     public Rigidbody2D playerRigidBody;
     public GameObject stage;
@@ -114,16 +115,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage"))
+        if ((resetJumpLayers.value & (1 << collision.gameObject.layer)) > 0)
         {
             playerState = PlayerState.Grounded;
             jumpFrameCounter = 0; // Reset frame counter
             jumpCount = 0;
         }
     }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage"))
+        if ((resetJumpLayers.value & (1 << collision.gameObject.layer)) > 0)
         {
             playerState = PlayerState.Airborne;
         }
