@@ -28,12 +28,13 @@ public class PlayerAttackingState : PlayerBaseState
                 {
                     // play NeutralLight air animation
                     // set counterMax to animation length
-                    
+                    Debug.Log("playing neutral light air attack");
                 }
                 else // Grounded
                 {
                     // play NeutralLight animation
                     // set counterMax to animation length
+                    Debug.Log("playing neutral light attack");
                 }
                 break;
             case PlayerMain.PlayerAttackType.ForwardLight :
