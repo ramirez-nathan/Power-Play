@@ -1847,7 +1847,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   currentVelocity: {x: 0, y: 0}
-  playerIndex: 1
   playerRigidBody: {fileID: 0}
   stage: {fileID: 0}
   playerState: 0
@@ -1987,7 +1986,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   currentVelocity: {x: 0, y: 0}
-  playerIndex: 0
   playerRigidBody: {fileID: 0}
   stage: {fileID: 0}
   playerState: 0
@@ -2681,11 +2679,11 @@ PrefabInstance:
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
+      objectReference: {fileID: 6126703508861211109, guid: f1391d5ef59b9544dbf092597f3eb238, type: 3}
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 5296521123313513671, guid: ffd917e0575481948a80e40b9602e313, type: 3}
+      objectReference: {fileID: 5520153002420965490, guid: ae4e4a1f2d8aafb498b1c913dd0f37ac, type: 3}
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[3]
       value: 
