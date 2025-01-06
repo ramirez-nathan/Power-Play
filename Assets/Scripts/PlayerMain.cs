@@ -60,7 +60,7 @@ public class PlayerMain : MonoBehaviour
     public Vector2 moveInput { get; private set; }
     public bool holdingMove = false;
     // Jump Logic
-    
+
     public int jumpCount = 0;
     public int jumpFrameCounter = 0;
     public bool finishedJump = false;
@@ -125,7 +125,7 @@ public class PlayerMain : MonoBehaviour
                 jumpFrameCounter = 0; // Reset frame counter
             }
             else if (context.canceled && !finishedJump) // jump released and havent jumped yet
-            {           
+            {
                 shortHop = jumpFrameCounter < 5;
                 // Determine if it's a short hop or a regular hop based on frame count
                 PerformJump(shortHop);
@@ -190,7 +190,7 @@ public class PlayerMain : MonoBehaviour
             playerAttackType = PlayerAttackType.ForwardLight;
             knockbackValue = 1.5f;
         }
-        
+
     }
     public void DownLight(InputAction.CallbackContext context)
     {
@@ -300,6 +300,6 @@ public class PlayerMain : MonoBehaviour
             isOnFloor = false;
         }
     }
-    
+
 
 }

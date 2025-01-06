@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using PlayerStates;
+//using PlayerStates;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using static UnityEngine.InputSystem.InputAction;
@@ -11,6 +11,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerMovement : MonoBehaviour
 {
+    /*
     [SerializeField]
     public float moveSpeed = 10f;
     public Vector2 currentVelocity = Vector2.zero;
@@ -130,6 +131,6 @@ public class PlayerMovement : MonoBehaviour
             playerState = PlayerState.Airborne;
         }
     }
-
+    */
 
 }
