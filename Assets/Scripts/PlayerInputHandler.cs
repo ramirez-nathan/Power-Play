@@ -12,25 +12,32 @@ public class PlayerInputHandler : MonoBehaviour
     { 
         public InputAction move; // joystick/WASD
         public InputAction jump; // Space/South Button
-        public InputAction neutralGAttack; // neutral ground L/East
-        public InputAction dashGAttack; // moving ground L/East
+        public InputAction neutralLight; // neutral ground/air J/West button
+        public InputAction forwardLight; // moving ground/air J/West button
+        public InputAction downLight; // down ground/air J/West button
+        public InputAction neutralUpHeavy; // neutral/up ground/air I/L/North/East button
+        public InputAction forwardHeavy; // forward ground/air I/L/North/East button
+        public InputAction downHeavy; // down ground/air I/L/North/East button
     }
-    PlayerActions playerControls;
+    public PlayerActions playerControls;
 
-    private PlayerMovement playerMovement;
+    private PlayerMain playerMain;
     private PlayerInput playerInput; 
     
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        
         // Finds all objects with playermovement component attached
-        var playerMovements = FindObjectsOfType<PlayerMovement>();
+        var playerMains = FindObjectsOfType<PlayerMain>();
 
         // retrieves player index 
         var index = playerInput.playerIndex;
 
         // Finds the PlayerMovement with the matching player index to associate it with this player
-        playerMovement = playerMovements.FirstOrDefault(m => m.GetPlayerIndex() == index);
+        playerMain = playerMains.FirstOrDefault(m => m.GetPlayerIndex() == index);
+        playerMain.Initialize(this); 
     }
     // Start is called before the first frame update
     void Start()
@@ -41,9 +48,7 @@ public class PlayerInputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerMovement.currentVelocity = playerMovement.playerRigidBody.velocity;
-        playerMovement.currentVelocity.x = playerControls.move.ReadValue<Vector2>().x * playerMovement.moveSpeed;
-        playerMovement.playerRigidBody.velocity = playerMovement.currentVelocity;
+       
     }
 
     private void OnEnable()
@@ -51,24 +56,41 @@ public class PlayerInputHandler : MonoBehaviour
         // Subscribe to input actions
         playerControls.move = playerInput.actions["Move"];
         playerControls.jump = playerInput.actions["Jump"];
-        playerControls.neutralGAttack = playerInput.actions["NeutralGAttack"];
-        playerControls.dashGAttack = playerInput.actions["DashGAttack"];
+        playerControls.neutralLight = playerInput.actions["NeutralLight"];
+        playerControls.forwardLight = playerInput.actions["ForwardLight"];
+        playerControls.downLight = playerInput.actions["DownLight"];
+        playerControls.neutralUpHeavy = playerInput.actions["NeutralUpHeavy"];
+        playerControls.forwardHeavy = playerInput.actions["ForwardHeavy"];
+        playerControls.downHeavy = playerInput.actions["DownHeavy"];
         
-        playerControls.jump.started += playerMovement.Jump;  // Track the jump press
-        playerControls.jump.canceled += playerMovement.Jump; // Track the jump release
+        playerControls.move.started += playerMain.Move;
+        playerControls.move.canceled += playerMain.Move;
 
-        //playerControls.neutralGAttack.started += NeutralGAttack;
-        //playerControls.dashGAttack.started += DashGAttack;
+        playerControls.jump.started += playerMain.Jump;  // Track the jump press
+        playerControls.jump.canceled += playerMain.Jump; // Track the jump release
 
+        playerControls.neutralLight.started += playerMain.NeutralLight;
+        playerControls.forwardLight.started += playerMain.ForwardLight;
+        playerControls.downLight.started += playerMain.DownLight;
+        playerControls.neutralUpHeavy.started += playerMain.NeutralUpHeavy;
+        playerControls.forwardHeavy.started += playerMain.ForwardHeavy;
+        playerControls.downHeavy.started += playerMain.DownHeavy;
     }
     // Unsubscribe all methods to avoid memory leaks
     private void OnDisable()
     {
-        playerControls.jump.started -= playerMovement.Jump;
-        playerControls.jump.canceled -= playerMovement.Jump;
+        playerControls.move.started -= playerMain.Move;
+        playerControls.move.canceled -= playerMain.Move;
 
-        //playerControls.neutralGAttack.started -= NeutralGAttack;
-        //playerControls.dashGAttack.started -= DashGAttack;
+        playerControls.jump.started -= playerMain.Jump;
+        playerControls.jump.canceled -= playerMain.Jump;
+
+        playerControls.neutralLight.started -= playerMain.NeutralLight;
+        playerControls.forwardLight.started -= playerMain.ForwardLight;
+        playerControls.downLight.started -= playerMain.DownLight;
+        playerControls.neutralUpHeavy.started -= playerMain.NeutralUpHeavy;
+        playerControls.forwardHeavy.started -= playerMain.ForwardHeavy;
+        playerControls.downHeavy.started -= playerMain.DownHeavy;
     }
-   
+
 }

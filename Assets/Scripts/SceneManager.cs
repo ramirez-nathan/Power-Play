@@ -26,7 +26,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadSelectModeMenu()
     {
-            SceneManager.LoadScene("SelectMode");  
+        SceneManager.LoadScene("SelectMode");  
     }
 
     public void LoadGameplayScene()

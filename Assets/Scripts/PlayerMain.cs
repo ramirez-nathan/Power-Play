@@ -2,224 +2,271 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
+using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerMain : MonoBehaviour
 {
-    // Components and References
-    public Rigidbody2D playerRigidBody;   // Reference to the player's Rigidbody2D for physics and movement.
-    public GameObject stage;             // Reference to the stage GameObject (for ground checks).
-    private SpriteRenderer spriteRenderer; // SpriteRenderer for changing player sprites.
-    public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
-    public Collider2D attackCollider;    // The collider representing the player's attack hitbox
-    //public enemyScript enemyScwipt;      // Reference to enemy code
+    [SerializeField]
+    public float moveSpeed = 10f;
+    public Vector2 currentVelocity = Vector2.zero;
     public gameOverScreen gameOverScween; // The game over screen
+    public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
 
-    // Sprites
-    public Sprite attack;                // Sprite for the attack action.
-    private Sprite defaultSprite;        // Stores the default sprite to revert after an attack.
-    public bool isFacingRight = true;    // Tracks whether the player's sprite is facing right
+    [SerializeField]
+    private int playerIndex = 0; // index to differentiate the 2 players
+    public enum PlayerState
+    {
+        Idle,
+        Grounded,
+        Airborne,
+        Dead
+    }
+    public PlayerState playerState;
+    public enum PlayerJumpState
+    {
+        JumpHeld,
+        JumpReleased
+    }
+    public PlayerJumpState playerJumpState;
+
+    public Rigidbody2D playerRigidBody;
+    public GameObject stage;
+
+    public PlayerInputHandler playerInputHandler;
+    public PlayerStateMachine playerStateMachine;
     public Animator animator;            // Controls all the animations of the player.
-
-    // Jumping/Movement Mechanics
     private bool isOnFloor = true;       // Tracks if the player is on the stage (grounded).
-    protected bool jumpPressed = false;
-    protected bool jumpReleased = false;
-    private int jumpCount = 0;           // Tracks the number of jumps performed.
-    private const int maxJumps = 2;      // Maximum number of allowed jumps (double jump).
-    public float jumpForce = 12f;        // Jump force applied to the player when jumping.
-
-    public float moveSpeedX = 10f; // X Movement Speed of Player
-    public float moveSpeedY = 1f; // Y Movement Speed of Player
-    private Vector2 currentVelocity; // Current velocity of Player
-
-    // Input System 
-    public PlayerInputActions playerControls;
-    private InputAction move;
-    private InputAction jump;
-    private InputAction neutralGAttack;
-    private InputAction dashGAttack;
+    public bool isFacingRight = true;    // Tracks whether the player's sprite is facing right
 
 
-    // Combat and Health
-    public int health = 100;             // Player's health points.
-    public float currentHealth = 0;      // The current Players health points
-    public float attackDuration = 0.3f;  // Duration (in seconds) the attack sprite stays visible before reverting.
-    public int attackDamage = 10;       // Amount of damage done by an attack
-    public float knockBack = 1f;          // How far an attack will knock back someone
+    // ------------------- Attack Constants ---------------------- //
+    public bool isAttacking = false;
+    public float knockbackValue = 0.0f;
+    public enum PlayerAttackType
+    {
+        NeutralLight,
+        ForwardLight,
+        DownLight,
+        NeutralUpHeavy,
+        ForwardHeavy,
+        DownHeavy
+    }
+    public PlayerAttackType playerAttackType;
+    // ------------------- Attack Constants ---------------------- //
+
+
+    public Vector2 moveInput { get; private set; }
+    public bool holdingMove = false;
+    // Jump Logic
+    
+    public int jumpCount = 0;
+    public int jumpFrameCounter = 0;
+    public bool finishedJump = false;
+    //public bool jumpStarted = false;
+    public bool shortHop = false;
 
     // Out of bounds range, x = +- 11, y = -7
     private float outOfBoundsXLeft = -11f;
     private float outOfBoundsXRight = 11f;
     private float outOfBoundsY = -7f;
 
-    // Awake is called when the script loads
     private void Awake()
     {
-        playerControls = new PlayerInputActions();
+        playerRigidBody = GetComponent<Rigidbody2D>();
+
     }
-
-    private void OnEnable()
-    {
-        dashGAttack = playerControls.Player.DashGAttack;
-        dashGAttack.Enable();
-
-        neutralGAttack = playerControls.Player.NeutralGAttack;
-        neutralGAttack.Enable();
-
-        move = playerControls.Player.Move;
-        move.Enable();
-
-        jump = playerControls.Player.Jump;
-        jump.Enable();
-    }
-
-    private void OnDisable()
-    {
-        dashGAttack.Disable();
-
-        neutralGAttack.Disable();
-
-        move.Disable();
-
-        jump.Disable();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = health;
-        QualitySettings.vSyncCount = 0; // Set vSyncCount to 0 so that using .targetFrameRate is enabled.
-        Application.targetFrameRate = 60;
-        spriteRenderer = GetComponent<SpriteRenderer>();  // Get and store the SpriteRenderer component attached to this GameObject.
-        defaultSprite = spriteRenderer.sprite;            // Store the initial sprite from the SpriteRenderer as the default sprite.
+        Time.fixedDeltaTime = 1.0f / 60.0f;  // Set FixedUpdate to run at 60 FPS
+        playerJumpState = PlayerJumpState.JumpReleased;
+        playerState = PlayerState.Idle;
+        playerRigidBody.velocity = Vector2.zero;
+
+        playerStateMachine = GetComponent<PlayerStateMachine>();
+        playerStateMachine.Initialize(this); // Pass the PlayerMain instance
         animator = GetComponent<Animator>();              // Initializing the animator
-        attackCollider.enabled = false;
     }
 
-
-    // Update is called once per frame - Process inputs here
-    void Update()
+    public void Initialize(PlayerInputHandler pInputHandler)
     {
-        currentVelocity = playerRigidBody.velocity; // Store the current velocity to avoid choppy movement
+        playerInputHandler = pInputHandler;
+    }
 
-        currentVelocity.x = move.ReadValue<Vector2>().x * 10f; 
+    public int GetPlayerIndex()
+    {
+        return playerIndex;
+    }
 
-        UpdateSpriteDirection();
-
-        ProcessInputs();
-
-        CheckForAttack();
+    // Update is called once per frame
+    void Update() // make this a virtual void
+    {
+        moveInput = playerInputHandler.playerControls.move.ReadValue<Vector2>(); // grab input vector here
 
         animator.SetBool("isJumping", !isOnFloor); // animator checks if player is jumping still
+        UpdateSpriteDirection();
+    }
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.canceled)
+        {
+            // When jump button is released
+            if (playerJumpState != PlayerJumpState.JumpReleased) playerJumpState = PlayerJumpState.JumpReleased;
+        }
+        if (jumpCount <= 1)
+        {
+            if (context.started) // jump pressed 
+            {
+                finishedJump = false;
+                // When jump button is pressed
+                playerJumpState = PlayerJumpState.JumpHeld; // TODO - CHANGE BACK ON COLL ENTER ON STAGE
+                jumpFrameCounter = 0; // Reset frame counter
+            }
+            else if (context.canceled && !finishedJump) // jump released and havent jumped yet
+            {           
+                shortHop = jumpFrameCounter < 5;
+                // Determine if it's a short hop or a regular hop based on frame count
+                PerformJump(shortHop);
+                animator.SetBool("isJumping", !isOnFloor); // Lets the animator know that the player is now jumping
+            }
+        }
+    }
+    public void PerformJump(bool isShortHop)
+    {
+        jumpCount++;
+        finishedJump = true;
+        if (isShortHop)
+        {
+            // Perform a short hop
+            SetJumpVelocity(8f); // Lower jump force for short hop
+        }
+        else
+        {
+            // Perform a long hop
+            SetJumpVelocity(12f); // Higher jump force for regular hop
+        }
+    }
+    // FixedUpdate is called on a fixed time interval for physics updates
+    public void SetJumpVelocity(float jumpForce)
+    {
+        currentVelocity.y = jumpForce; // Apply the upward force
+        playerRigidBody.velocity = currentVelocity;
     }
 
-    // Fixed Update is called a set amount of times - Do physics here
-    private void FixedUpdate()
+    public void Move(InputAction.CallbackContext context)
     {
-        HandleJump();
-        // Apply the velocity back to the Rigidbody2D
+        //currentVelocity = playerRigidBody.velocity;
+        //if (context.started)
+        //{
+        //    currentVelocity.x = context.ReadValue<Vector2>().x > 0 ? 1 * moveSpeed : -1 * moveSpeed;
+        //    playerRigidBody.velocity = currentVelocity;
+        //    holdingMove = true;
+        //}
+        //else
+        //{
+        //    currentVelocity.x = 0;
+        //    playerRigidBody.velocity = currentVelocity;
+        //    holdingMove = false;
+        //}
+    }
+
+    // ------------------------------------ ATTACK MOVES --------------------------------------- //
+    public void NeutralLight(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.NeutralLight;
+            knockbackValue = 0.5f;
+        }
+    }
+    public void ForwardLight(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.ForwardLight;
+            knockbackValue = 1.5f;
+        }
+        
+    }
+    public void DownLight(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.DownLight;
+            knockbackValue = 1.25f;
+        }
+    }
+    public void NeutralUpHeavy(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.NeutralUpHeavy;
+            knockbackValue = 3f;
+        }
+    }
+    public void ForwardHeavy(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.ForwardHeavy;
+            knockbackValue = 2.5f;
+        }
+    }
+    public void DownHeavy(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.DownHeavy;
+            knockbackValue = 2.5f;
+        }
+    }
+
+    // ------------------------------------ ATTACK MOVES --------------------------------------- //
+
+
+    private void FixedUpdate() // make this a virtual void 
+    {
+        //currentVelocity.x = holdingMove ? 1 * moveSpeed : -1 * moveSpeed;
+        //playerRigidBody.velocity = currentVelocity;
         animator.SetFloat("xVelocity", Mathf.Abs(playerRigidBody.velocity.x));
         animator.SetFloat("yVelocity", playerRigidBody.velocity.y);
-
-        playerRigidBody.velocity = currentVelocity;
-        // Checks to see if player is out of bounds and destroys player if true
+        if (playerJumpState == PlayerJumpState.JumpHeld) jumpFrameCounter++; // track frames that jump button is held for 
+        if (jumpFrameCounter == 5 && playerState == PlayerState.Grounded) // bro took too long, long hop it is 
+        {
+            shortHop = false;
+            PerformJump(shortHop);
+        }
+        if (jumpCount == 1 && !finishedJump && jumpFrameCounter == 2)
+        {
+            PerformJump(false); // if already in air then do a long hop
+        }
         if (transform.position.x > outOfBoundsXRight || transform.position.x < outOfBoundsXLeft || transform.position.y < outOfBoundsY)
         {
             Debug.Log("You have been destroyed");
             KillPlayer();
             gameOverScween.ShowGameOver();
         }
-        
     }
 
-    void ProcessInputs()
-    {
-        // Jumping
-        if (jump.WasPressedThisFrame())
-        {
-            // checks the jump count to see if player has jumps left (double jump)
-            if (jumpCount == 0 || jumpCount == 1)
-            {
-                jumpPressed = true;
-                animator.SetBool("isJumping", !isOnFloor); // Lets the animator know that the player is now jumping
-            }
-        }
-        // When jump key is released, set vert speed to 20% (Jump Cutting)
-        if (jump.WasReleasedThisFrame() && currentVelocity.y > 0)
-        {
-            jumpReleased = true;
-        }
-        else
-        {
-            Debug.Log(jumpCount);
-        }
-    }
-    
-    void HandleJump()
-    {
-        if (jumpPressed)
-        {           
-            jumpCount++;
-            currentVelocity.y = jumpForce; // Apply upward velocity for first jump
-            jumpPressed = false; 
-        }
-        if (jumpReleased && currentVelocity.y > 0)
-        {
-            currentVelocity.y *= 0.20f;
-            jumpReleased = false;
-        }
-    }
-
-
-
-    // HANDLE ATTACKS 
-    void CheckForAttack()
-    {
-        if (dashGAttack.triggered)
-        {
-            Debug.Log("DashGAttack performed");
-            StartCoroutine(PerformAttack(1));
-        }
-        else if (neutralGAttack.triggered && !move.WasPressedThisFrame())
-        {
-            Debug.Log("NeutralGAttack performed");
-            StartCoroutine(PerformAttack(1));
-        }
-    }
 
     // ADJUST WHICH WAY SPRITE IS FACING
-    void UpdateSpriteDirection() 
+    void UpdateSpriteDirection()
     {
-        if(isFacingRight && playerRigidBody.velocity.x < 0f || !isFacingRight && playerRigidBody.velocity.x > 0f) 
+        if (isFacingRight && playerRigidBody.velocity.x < 0f || !isFacingRight && playerRigidBody.velocity.x > 0f)
         {
-            isFacingRight = !isFacingRight; 
-            Vector3 ls = transform.localScale; 
-            ls.x *= -1f; 
-            transform.localScale = ls; 
+            isFacingRight = !isFacingRight;
+            Vector3 ls = transform.localScale;
+            ls.x *= -1f;
+            transform.localScale = ls;
         }
-    }
-
-
-    // Coroutine to handle the attack animation and revert to idle
-    private IEnumerator PerformAttack(int attackNum)
-    { 
-        animator.SetInteger("attackType", attackNum);
-
-        // Change to the attack sprite
-        spriteRenderer.sprite = attack;
-
-        Debug.Log("attack enabled");
-        attackCollider.enabled = true;
-        // Wait for the duration of the attack
-        yield return new WaitForSeconds(attackDuration);
-        attackCollider.enabled = false;
-
-        Debug.Log("Swing");
-
-        animator.SetInteger("attackType", 0);
-
-        // Revert to the idle sprite
-        spriteRenderer.sprite = defaultSprite;
     }
 
     // DESTROYS PLAYER OBJECT & PLAYS DEATH SOUND
@@ -230,79 +277,29 @@ public class PlayerMain : MonoBehaviour
             // Play the sound at the character's position
             AudioSource.PlayClipAtPoint(deathSound.clip, transform.position);
 
-            // Set hp equal to 0
-            health = 0;
-            currentHealth = 0;
-
             // Immediately destroy the GameObject
             Destroy(gameObject);
         }
     }
 
-
-    void OnCollisionEnter2D(Collision2D collision)      // Checks if player is on the stage
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage")) // checking top stage layer 
+        if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage"))
         {
             isOnFloor = true;
+            playerState = PlayerState.Grounded;
+            jumpFrameCounter = 0; // Reset frame counter
             jumpCount = 0;
-            //Debug.Log("Collision Happened, jumpCount is " + jumpCount);
         }
     }
-
-    void OnCollisionExit2D(Collision2D collision)       // Sets on stage to false when player leaves the stage
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage")) // checking top stage layer 
+        if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage"))
         {
-           isOnFloor = false;
+            playerState = PlayerState.Airborne;
+            isOnFloor = false;
         }
     }
-
-    //Attacks
-    public void TakeDamage(int damage, Vector2 knockbackDirection, float knockbackForce)
-    {
-        // Reduce health
-        currentHealth -= damage;
-
-        // Apply knockback
-        Knockback(knockbackDirection, knockbackForce);
-
-        // Check if health is less than or equal to 0
-        if (currentHealth <= 0)
-        {
-            KillPlayer();  // Trigger death
-        }
-    }
-
-    private void Knockback(Vector2 direction, float force)
-    {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.AddForce(direction.normalized * force, ForceMode2D.Impulse);
-        }
-    }
-   
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Check if the object we collided with has an EnemyScript component
-        enemyScwipt = collision.GetComponent<enemyScript>();
-
-        if (enemyScwipt != null)
-        {
-            // Calculate the direction for knockback (from the player to the enemy)
-            Vector2 knockbackDirection = (enemyScwipt.transform.position - transform.position).normalized;
-
-            // Apply damage and knockback to the enemy
-            enemyScwipt.TakeDamage(attackDamage, knockbackDirection, knockBack);
-        }
-        else
-        {
-            // Optional: Debug to see what other object we might have collided with
-            Debug.Log("Collision with non-enemy object: " + collision.name);
-        }
-    }*/
-
-
+    
 
 }
