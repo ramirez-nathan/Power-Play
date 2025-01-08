@@ -17,15 +17,33 @@ public class PlayerMovingState : PlayerBaseState
         if (_sm.playerMain.playerState == PlayerMain.PlayerState.Grounded)
         {
             // play moving animation
+            _sm.playerMain.animator.Play("PlayerRun");
             Debug.Log("Playing moving animation upon enter");
         }
-        else // airborne
-        {
-
-            // some logic for whether to 
-            // play jumping animation 
-            // or play falling animation 
-        }
+        // else // We're airborne
+        // {
+        //     var verticalVelocity = _sm.playerMain.playerRigidBody.velocity.y;
+            
+        //     // Determine which jump animation to play based on vertical velocity
+        //     if (verticalVelocity > 0)
+        //     {
+        //         // Rising
+        //         _sm.playerMain.animator.Play("PlayerJumpRise");
+        //         Debug.Log("Playing jump rise animation");
+        //     }
+        //     else if (verticalVelocity < 0)
+        //     {
+        //         // Falling
+        //         _sm.playerMain.animator.Play("PlayerJumpFall");
+        //         Debug.Log("Playing jump fall animation");
+        //     }
+        //     else
+        //     {
+        //         // At peak of jump
+        //         _sm.playerMain.animator.Play("PlayerJumpPeak");
+        //         Debug.Log("Playing jump peak animation");
+        //     }
+        // }
 
     }
 
@@ -48,10 +66,11 @@ public class PlayerMovingState : PlayerBaseState
 
         else
         {
-            if (counter > 0.5 && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded) // adjust value to match actual animation length
+            if (counter > 0.5 && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded) // adjust value to match actual animation length 
             {
                 counter = 0;
                 // play moving animation again
+                _sm.playerMain.animator.Play("PlayerRun");
                 Debug.Log("replaying moving animation");
             }
 

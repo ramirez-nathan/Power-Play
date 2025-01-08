@@ -634,7 +634,7 @@
                     "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": ";Keyboard&Mouse",
                     "action": "ForwardLight",
                     "isComposite": false,
                     "isPartOfComposite": true
