@@ -58,11 +58,13 @@ public class PlayerAttackingState : PlayerBaseState
                 {
                     // play DownLight air animation
                     // set counterMax to animation length
+                    Debug.Log("playing down light air attack");
                 }
                 else // Grounded
                 {
                     // play DownLight animation
                     // set counterMax to animation length
+                    Debug.Log("playing down light attack");
                 }
                 break;
             case PlayerMain.PlayerAttackType.NeutralUpHeavy :
@@ -71,11 +73,13 @@ public class PlayerAttackingState : PlayerBaseState
                 {
                     // play NeutralUpHeavy air animation
                     // set counterMax to animation length
+                    Debug.Log("playing neutral up heavy air attack");
                 }
                 else // Grounded
                 {
                     // play NeutralUpHeavy animation
                     // set counterMax to animation length
+                    Debug.Log("playing neutral up heavy attack");
                 }
                 break;
             case PlayerMain.PlayerAttackType.ForwardHeavy :
@@ -83,11 +87,13 @@ public class PlayerAttackingState : PlayerBaseState
                 {
                     // play ForwardHeavy air animation
                     // set counterMax to animation length
+                    Debug.Log("playing forward heavy air attack");
                 }
                 else // Grounded
                 {
                     // play ForwardHeavy animation
                     // set counterMax to animation length
+                    Debug.Log("playing forward heavy attack");
                 }
                 break;
             case PlayerMain.PlayerAttackType.DownHeavy :
@@ -96,11 +102,13 @@ public class PlayerAttackingState : PlayerBaseState
                 {
                     // play DownHeavy air animation
                     // set counterMax to animation length
+                    Debug.Log("playing down heavy air attack");
                 }
                 else // Grounded
                 {
                     // play DownHeavy animation
                     // set counterMax to animation length
+                    Debug.Log("playing down heavy attack");
                 }
                 break;
         }
