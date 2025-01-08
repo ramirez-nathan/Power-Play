@@ -1644,6 +1644,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55244ac05d33e3f42951ba11d2d6a69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winnerText: {fileID: 0}
+  player: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!1 &1532755291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1863,7 +1866,7 @@ MonoBehaviour:
   holdingMove: 0
   jumpCount: 0
   jumpFrameCounter: 0
-  didJump: 0
+  finishedJump: 0
   shortHop: 0
 --- !u!4 &1667594073
 Transform:
@@ -2025,7 +2028,7 @@ MonoBehaviour:
   holdingMove: 0
   jumpCount: 0
   jumpFrameCounter: 0
-  didJump: 0
+  finishedJump: 0
   shortHop: 0
 --- !u!4 &1672198336
 Transform:
@@ -2258,6 +2261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83310a73477d20f4d9d507b68bc58967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthText: {fileID: 0}
 --- !u!1 &1710004190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,7 +2869,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.size
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[0]
@@ -2873,6 +2877,26 @@ PrefabInstance:
       objectReference: {fileID: 2018292726141879105, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 6126703508861211109, guid: f1391d5ef59b9544dbf092597f3eb238, type: 3}
+    - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
+      propertyPath: stagePrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5520153002420965490, guid: ae4e4a1f2d8aafb498b1c913dd0f37ac, type: 3}
+    - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
+      propertyPath: stagePrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
+    - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
+      propertyPath: stagePrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
+    - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
+      propertyPath: stagePrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
+    - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
+      propertyPath: stagePrefabs.Array.data[6]
       value: 
       objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
     - target: {fileID: 3375797071101602851, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
