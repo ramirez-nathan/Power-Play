@@ -182,6 +182,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 15917a4d95288c14db7601981168981e, type: 3}
+    - target: {fileID: 4728629333815923493, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728629333815923493, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0342fe87db8ca4b42901a423a9f9ba3e, type: 3}
     - target: {fileID: 7619011470816225477, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -267,6 +275,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 28c6ef7241d2fe049a30e6bf4cafa533, type: 3}
+    - target: {fileID: 4728629333815923493, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728629333815923493, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 50c366afc34a908449e395606ab6a226, type: 3}
     - target: {fileID: 7619011470816225477, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
       propertyPath: m_LocalScale.x
       value: 3
@@ -557,6 +573,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2aaf27f404220c346a618b17896e3d82, type: 3}
+    - target: {fileID: 4728629333815923493, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728629333815923493, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e48c5425046dfda4492871be87b6a821, type: 3}
     - target: {fileID: 7619011470816225477, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -642,6 +666,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: fc2650014b05fa4448f0b90d609bd842, type: 3}
+    - target: {fileID: 4728629333815923493, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728629333815923493, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c50ddd8105d101a45b521aa5c60c4336, type: 3}
     - target: {fileID: 5331775399840984066, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
       propertyPath: m_Color.b
       value: 0.8429308
@@ -785,9 +817,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1150425945148601614, guid: ae4e4a1f2d8aafb498b1c913dd0f37ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339137384888350011, guid: ae4e4a1f2d8aafb498b1c913dd0f37ac, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339137384888350011, guid: ae4e4a1f2d8aafb498b1c913dd0f37ac, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fc80421b718cec24e8331719dc949f4a, type: 3}
     - target: {fileID: 5520153002420965490, guid: ae4e4a1f2d8aafb498b1c913dd0f37ac, type: 3}
       propertyPath: m_Name
       value: SkyArenaPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520153002420965490, guid: ae4e4a1f2d8aafb498b1c913dd0f37ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6787623606176798589, guid: ae4e4a1f2d8aafb498b1c913dd0f37ac, type: 3}
       propertyPath: m_LocalPosition.x
