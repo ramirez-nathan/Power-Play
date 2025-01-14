@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 665890661}
   - component: {fileID: 665890660}
   - component: {fileID: 665890659}
+  - component: {fileID: 665890662}
   m_Layer: 3
   m_Name: platform2
   m_TagString: Untagged
@@ -244,7 +245,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8, y: -3, z: -0.05531808}
-  m_LocalScale: {x: 5, y: 0.5, z: 0.5250212}
+  m_LocalScale: {x: 6, y: 0.5, z: 0.5250212}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8550278185164545469}
@@ -373,6 +374,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &665890662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665890657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f303df541a3d468d444babe328f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {x: 8, y: -3}
+  endPoint: {x: 8, y: 2.5}
+  speed: 2
+  loop: 0
+  pingPong: 1
 --- !u!1001 &951669764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -683,6 +701,7 @@ GameObject:
   - component: {fileID: 1363602885}
   - component: {fileID: 1363602884}
   - component: {fileID: 1363602883}
+  - component: {fileID: 1363602886}
   m_Layer: 3
   m_Name: platform1
   m_TagString: Untagged
@@ -700,7 +719,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -8, y: -3, z: -0.05531808}
-  m_LocalScale: {x: 5, y: 0.5, z: 0.5250212}
+  m_LocalScale: {x: 6, y: 0.5, z: 0.5250212}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8550278185164545469}
@@ -829,6 +848,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1363602886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363602881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f303df541a3d468d444babe328f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {x: -8, y: -3}
+  endPoint: {x: -8, y: 2}
+  speed: 2
+  loop: 0
+  pingPong: 1
 --- !u!1001 &1855077909
 PrefabInstance:
   m_ObjectHideFlags: 0
