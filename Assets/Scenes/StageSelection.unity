@@ -1088,7 +1088,7 @@ PrefabInstance:
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[6]
       value: 
-      objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
+      objectReference: {fileID: 6199056519550752120, guid: ef2a88448608b5c4a99e84a95b4695b7, type: 3}
     - target: {fileID: 4445012398057071388, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: m_Name
       value: StageSelector
@@ -1504,7 +1504,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1214692780}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 708224619}
+        m_TargetAssemblyTypeName: StageSelectorScript, Assembly-CSharp
+        m_MethodName: SelectStage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1214692780
 MonoBehaviour:
   m_ObjectHideFlags: 0

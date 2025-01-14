@@ -2898,7 +2898,7 @@ PrefabInstance:
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[6]
       value: 
-      objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
+      objectReference: {fileID: 6199056519550752120, guid: ef2a88448608b5c4a99e84a95b4695b7, type: 3}
     - target: {fileID: 3375797071101602851, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: m_IsActive
       value: 1
