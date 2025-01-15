@@ -83,6 +83,7 @@ public class PlayerMain : MonoBehaviour
         Time.fixedDeltaTime = 1.0f / 60.0f;  // Set FixedUpdate to run at 60 FPS
         playerJumpState = PlayerJumpState.JumpReleased;
         playerState = PlayerState.Idle;
+
         playerRigidBody.velocity = Vector2.zero;
 
         playerStateMachine = GetComponent<PlayerStateMachine>();
@@ -117,7 +118,7 @@ public class PlayerMain : MonoBehaviour
         }
         if (jumpCount <= 1)
         {
-            if (context.started) // jump pressed 
+            if (context.started && !isAttacking) // jump pressed 
             {
                 finishedJump = false;
                 // When jump button is pressed
