@@ -7,7 +7,7 @@ public class PlayerAttackingState : PlayerBaseState
 {
     private PlayerStateMachine _sm;
     private string previousState;
-    private float counterMax; // in seconds
+    private float counterMax = 0.5f; // in seconds
 
     public PlayerAttackingState(PlayerStateMachine stateMachine) : base("Attacking", stateMachine)
     {
@@ -27,12 +27,17 @@ public class PlayerAttackingState : PlayerBaseState
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
                     // play NeutralLight air animation
+                    counterMax = 0.25f;
+                    Debug.Log("counter start = " + counter);
+                    _sm.playerMain.animator.Play("PlayerKatanaAirAttack");
                     // set counterMax to animation length
+
                     Debug.Log("playing neutral light air attack");
                 }
                 else // Grounded
                 {
                     // play NeutralLight animation
+                    _sm.playerMain.animator.Play("PlayerKatanaNeutralLight");
                     // set counterMax to animation length
                     Debug.Log("playing neutral light attack");
                 }
@@ -42,12 +47,14 @@ public class PlayerAttackingState : PlayerBaseState
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
                     // play ForwardLight air animation
+                    
                     // set counterMax to animation length
                     Debug.Log("playing forward light air attack");
                 }
                 else // Grounded
                 {
                     // play ForwardLight animation
+                    _sm.playerMain.animator.Play("PlayerKatanaForwardLight");
                     // set counterMax to animation length
                     Debug.Log("playing forward light attack");
                 }
@@ -57,6 +64,7 @@ public class PlayerAttackingState : PlayerBaseState
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
                     // play DownLight air animation
+                    _sm.playerMain.animator.Play("PlayerKatanaAirAttackDown");
                     // set counterMax to animation length
                     Debug.Log("playing down light air attack");
                 }
@@ -127,6 +135,7 @@ public class PlayerAttackingState : PlayerBaseState
 
         if (counter > counterMax)
         {
+            Debug.Log("counter end = " + counter);
             _sm.playerMain.isAttacking = false;
             if (previousState == "Moving") _sm.ChangeState(_sm.playerMovingState);
             //else _sm.ChangeState(_sm.playerIdleState); // not implemented yet
