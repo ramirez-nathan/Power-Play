@@ -84,7 +84,7 @@ public class PlayerMovingState : PlayerBaseState
                     _sm.playerMain.animator.Play("PlayerKatanaJumpRise");
                     Debug.Log("Playing jump rise animation");
                 }
-                else if (verticalVelocity < 4f && verticalVelocity > -4f)
+                else if (verticalVelocity < 4f && verticalVelocity > -4f && verticalVelocity != 0f)
                 {
                     // At peak of jump
                     _sm.playerMain.animator.Play("PlayerKatanaJumpPeak");
