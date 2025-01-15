@@ -139,18 +139,19 @@ public class PlayerMovingState : PlayerBaseState
 
         else
         {
-            if (counter > 0.5 && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded && _sm.playerMain.playerRigidBody.velocity.x != 0 ) // adjust value to match actual animation length 
+            if (counter > 0.5 && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded && _sm.playerMain.playerRigidBody.velocity.x != 0) // adjust value to match actual animation length 
             {
                 counter = 0;
                 // play moving animation again
                 _sm.playerMain.animator.Play("PlayerRun");
                 Debug.Log("replaying moving animation");
-            } else if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)// We're airborne
+            }
+            else if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)// We're airborne
             {
                 var verticalVelocity = _sm.playerMain.playerRigidBody.velocity.y;
-                
+
                 // Determine which jump animation to play based on vertical velocity
-                if (verticalVelocity > 1 )
+                if (verticalVelocity > 1)
                 {
                     // Rising
                     _sm.playerMain.animator.Play("PlayerKatanaJumpRise");
@@ -168,13 +169,12 @@ public class PlayerMovingState : PlayerBaseState
                     _sm.playerMain.animator.Play("PlayerKatanaJumpFall");
                     Debug.Log("Playing jump fall animation");
                 }
-                else
+                else // this is TEMPORARY -- remove when idle state is implemented
                 {
                     _sm.playerMain.animator.Play("PlayerKatanaIdle");
                     Debug.Log("Playing idle animation");
                 }
             }
-
         }
         base.UpdateLogic();
     }

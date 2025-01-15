@@ -31,7 +31,7 @@ public class PlayerIdleState : PlayerBaseState
 
                 // Initialize the timer
                 isWaiting = true;
-                timer = waitTime;
+                timer = waitTime; // timer set to 0.05sec
 
 
                 if (isWaiting)
