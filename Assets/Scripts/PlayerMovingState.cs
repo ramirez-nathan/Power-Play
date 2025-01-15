@@ -5,6 +5,12 @@ using UnityEngine;
 public class PlayerMovingState : PlayerBaseState
 {
     private PlayerStateMachine _sm;
+
+    // Timer variables for handling animation delay
+    private bool isWaiting = false;
+    private float waitTime = 0.05f; // 50 milliseconds
+    private float timer = 0f;
+
     public PlayerMovingState(PlayerStateMachine stateMachine) : base("Moving", stateMachine)
     {
         this.stateName = "Moving";
@@ -16,9 +22,42 @@ public class PlayerMovingState : PlayerBaseState
         base.Enter(previousState);
         if (_sm.playerMain.playerState == PlayerMain.PlayerState.Grounded)
         {
-            // play moving animation
-            _sm.playerMain.animator.Play("PlayerRun");
-            Debug.Log("Playing moving animation upon enter");
+            Debug.Log("Entered PlayerMovingState");
+
+            if (previousState == "Idle")
+            {
+                // Play the "Idle to Run" animation
+                _sm.playerMain.animator.Play("PlayerIdleToRun");
+
+                // Initialize the timer so the idle to run animation plays
+                isWaiting = true;
+                timer = waitTime;
+
+                if (isWaiting)
+                {
+                    // Decrement the timer by the time elapsed since the last frame
+                    timer -= Time.deltaTime;
+
+                    if (timer <= 0f)
+                    {
+                        // Timer has elapsed; switch to the "Running" animation
+                        _sm.playerMain.animator.Play("PlayerRun");
+                        Debug.Log("Playing moving animation upon enter, came from idle");
+                        isWaiting = false;
+                    }
+
+                    // While waiting, no further state transitions should occur
+                    return;
+                }
+            }
+            else
+            {
+                _sm.playerMain.animator.Play("PlayerRun");
+                Debug.Log("Playing moving animation upon enter, did not come from idle");
+            }
+
+
+            
         }
         // else // We're airborne
         // {
@@ -53,11 +92,44 @@ public class PlayerMovingState : PlayerBaseState
         {
             _sm.ChangeState(_sm.playerAttackingState);
         }
-        else if (_sm.playerMain.moveInput.x == 0 && 
+        else if (_sm.playerMain.playerRigidBody.velocity.x == 0 && 
                  _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded) // go to idle state
         {
-            //_sm.ChangeState(_sm.playerIdleState);
+
+
+
+
+            // _sm.playerMain.animator.Play("PlayerRunToIdle");
+            // Debug.Log("playing animation PlayerRunToIdle");
+
+
+            // _sm.playerMain.animator.Play("PlayerKatanaIdle"); //should be removed in the future
+            // Debug.Log("playing animation PlayerKatanaIdle");
+
+            // Initialize the timer
+                // isWaiting = true;
+                // timer = waitTime;
+
+                // if (isWaiting)
+                // {
+                //     // Decrement the timer by the time elapsed since the last frame
+                //     timer -= Time.deltaTime;
+
+                //     if (timer <= 0f)
+                //     {
+                //         // Timer has elapsed; go to the idle state
+                //         _sm.ChangeState(_sm.playerIdleState);
+                //         Debug.Log("Going to idle state from moving state");
+                //         _sm.playerMain.animator.Play("PlayerKatanaIdle"); //should be removed in the future
+                //         isWaiting = false;
+                //     }
+                // }
+
+
+            // _sm.ChangeState(_sm.playerIdleState);
             _sm.playerMain.animator.Play("PlayerKatanaIdle");
+            Debug.Log("playing idle animation from moving state");
+
         }
         // Logic
 
@@ -67,7 +139,7 @@ public class PlayerMovingState : PlayerBaseState
 
         else
         {
-            if (counter > 0.5 && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded) // adjust value to match actual animation length 
+            if (counter > 0.5 && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded && _sm.playerMain.playerRigidBody.velocity.x != 0 ) // adjust value to match actual animation length 
             {
                 counter = 0;
                 // play moving animation again
@@ -95,6 +167,11 @@ public class PlayerMovingState : PlayerBaseState
                     // Falling
                     _sm.playerMain.animator.Play("PlayerKatanaJumpFall");
                     Debug.Log("Playing jump fall animation");
+                }
+                else
+                {
+                    _sm.playerMain.animator.Play("PlayerKatanaIdle");
+                    Debug.Log("Playing idle animation");
                 }
             }
 

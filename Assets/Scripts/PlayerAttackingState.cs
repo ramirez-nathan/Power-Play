@@ -37,6 +37,7 @@ public class PlayerAttackingState : PlayerBaseState
                 else // Grounded
                 {
                     // play NeutralLight animation
+                    _sm.playerMain.animator.Play("PlayerKatanaNeutralLight");
                     // set counterMax to animation length
                     Debug.Log("playing neutral light attack");
                 }
