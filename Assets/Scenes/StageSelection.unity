@@ -472,7 +472,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 449810505}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 708224619}
+        m_TargetAssemblyTypeName: StageSelectorScript, Assembly-CSharp
+        m_MethodName: SelectStage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &449810505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1076,15 +1088,15 @@ PrefabInstance:
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
+      objectReference: {fileID: 8002125381104365927, guid: 4900d9107a612564b8b3122d5bbb9ab9, type: 3}
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
+      objectReference: {fileID: 5620928736204499462, guid: 2b1c716b683f29948939c02caf756014, type: 3}
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
+      objectReference: {fileID: 4135539660191401949, guid: 1154da6f4486529489514bdb2a5993cb, type: 3}
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[6]
       value: 
@@ -1705,7 +1717,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1494577236}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 708224619}
+        m_TargetAssemblyTypeName: StageSelectorScript, Assembly-CSharp
+        m_MethodName: SelectStage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1494577236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2476,7 +2500,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1845265579}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 708224619}
+        m_TargetAssemblyTypeName: StageSelectorScript, Assembly-CSharp
+        m_MethodName: SelectStage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1845265579
 MonoBehaviour:
   m_ObjectHideFlags: 0

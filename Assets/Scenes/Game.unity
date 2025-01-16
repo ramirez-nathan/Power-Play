@@ -2886,15 +2886,15 @@ PrefabInstance:
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
+      objectReference: {fileID: 8002125381104365927, guid: 4900d9107a612564b8b3122d5bbb9ab9, type: 3}
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
+      objectReference: {fileID: 5620928736204499462, guid: 2b1c716b683f29948939c02caf756014, type: 3}
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 985151404168836887, guid: e91ec998deef1d74da6f3b1625b17261, type: 3}
+      objectReference: {fileID: 4135539660191401949, guid: 1154da6f4486529489514bdb2a5993cb, type: 3}
     - target: {fileID: 1617535635265751814, guid: 8f2532a885ad14d42a1eee66ae206e29, type: 3}
       propertyPath: stagePrefabs.Array.data[6]
       value: 
