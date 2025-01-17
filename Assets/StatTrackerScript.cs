@@ -5,18 +5,28 @@ using UnityEngine;
 public class StatTrackerScript : MonoBehaviour
 {
     // Components and References
-    public PlayerMain player;               // Reference to the player for retrieving stats
-    // public GameObject stage;             // Reference to the stage GameObject (for ground checks).
-    // private SpriteRenderer spriteRenderer; // SpriteRenderer for changing player sprites.
-    // public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
-    // public Collider2D attackCollider;    // The collider representing the player's attack hitbox
-    // public enemyScript enemyScwipt;      // Reference to enemy code
-    // public gameOverScreen gameOverScween; // The game over screen
+    public PlayerMain player;                     // Reference to the player for retrieving stats
     public static StatTrackerScript Instance;
 
-    public int totalDamageDealt = 0;
-    public int totalMatchesPlayed = 0;
-    public int totalWins = 0;
+    // Win/Loss Record
+    private int totalMatchesPlayed = 0;
+    private int totalWins = 0;
+    private float winrate = 0f;
+
+
+    // Damage Metrics
+    private int totalDamageDealt = 0;
+    private int totalDamageTaken = 0;
+    private int totalKills = 0;
+    private int totalDeaths = 0;
+    private float killDeathRatio = 0f;
+
+
+    // Average Match Length
+    private float longestMatchDuration = 0f;
+    private float shortestMatchDuration = 0f;
+    private float averageMatchDuration = 0f;
+
 
 
     private void Awake()
@@ -32,6 +42,20 @@ public class StatTrackerScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    // Methods to update stats
+    public void AddDamage(int damage)
+    {
+        totalDamageDealt += damage;
+    }
+
+    public void AddMatch(bool won)
+    {
+        totalMatchesPlayed++;
+        if (won) totalWins++;
+    }
+
+
 
     // Update is called once per frame
     void Update()
