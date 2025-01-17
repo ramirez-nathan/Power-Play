@@ -55,6 +55,16 @@ public class StatTrackerScript : MonoBehaviour
         if (won) totalWins++;
     }
 
+    public void addKills(int kills)
+    {
+        totalKills++;
+    }
+
+    public void addDeaths(int deaths)
+    {
+        totalDeaths++;
+    }
+
 
 
     // Update is called once per frame
