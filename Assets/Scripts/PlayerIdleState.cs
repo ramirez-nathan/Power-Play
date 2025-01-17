@@ -8,9 +8,8 @@ public class PlayerIdleState : PlayerBaseState
 
     // Timer variables for handling animation delay
     private bool isWaiting = false;
-    //private float waitTime = 0.05f; // 50 milliseconds
-    //private float timer = 0f;
-    
+    private float waitTime = 0.5f; // 50 milliseconds
+    private float timer = 0f;
 
     public PlayerIdleState(PlayerStateMachine stateMachine) : base("Idle", stateMachine)
     {
@@ -28,7 +27,27 @@ public class PlayerIdleState : PlayerBaseState
             // Play the "Run to Idle" animation if coming from moving state
             if (previousState == "Moving")
             {
-                //_sm.StartCoroutine(_sm.PlayLockedAnimation("PlayerRunToIdle", 0.05f));
+                _sm.playerMain.animator.Play("PlayerKatanaRunToIdle");
+                //_sm.StartCoroutine(_sm.PlayLockedAnimation("PlayerKatanaRunToIdle"))
+                // Initialize the timer
+                isWaiting = true;
+                timer = waitTime;
+
+
+                while (isWaiting)
+                {
+                    // Decrement the timer by the time elapsed since the last frame
+                    timer -= Time.deltaTime;
+
+                    if (timer <= 0f)
+                    {
+                        // Timer has elapsed; switch to the idle animation
+                        _sm.playerMain.animator.Play("PlayerKatanaIdle");
+                        Debug.Log("Playing idle animation after transition");
+                        isWaiting = false;
+                    }
+                   
+                }
             }
             else
             {
@@ -76,7 +95,7 @@ public class PlayerIdleState : PlayerBaseState
             if (!isLockAnimating && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded)
             { 
                 _sm.playerMain.animator.Play("PlayerKatanaIdle");
-                Debug.Log("Replaying idle animation");
+                //Debug.Log("Replaying idle animation");
             }
         }
         
@@ -85,11 +104,6 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void UpdatePhysics()
     {
-        // Stop any horizontal movement
-        var currentVelocity = _sm.playerMain.playerRigidBody.velocity;
-        currentVelocity.x = 0;
-        _sm.playerMain.playerRigidBody.velocity = currentVelocity;
-        
         base.UpdatePhysics();
     }
 }

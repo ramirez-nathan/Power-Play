@@ -8,7 +8,7 @@ public class PlayerMovingState : PlayerBaseState
 
     // Timer variables for handling animation delay
     private bool isWaiting = false;
-    private float waitTime = 0.05f; // 50 milliseconds
+    private float waitTime = 0.5f; // 50 milliseconds
     private float timer = 0f;
 
     public PlayerMovingState(PlayerStateMachine stateMachine) : base("Moving", stateMachine)
@@ -27,13 +27,13 @@ public class PlayerMovingState : PlayerBaseState
             if (previousState == "Idle")
             {
                 // Play the "Idle to Run" animation
-                _sm.playerMain.animator.Play("PlayerIdleToRun");
+                _sm.playerMain.animator.Play("PlayerKatanaIdleToRun");
 
                 // Initialize the timer so the idle to run animation plays
                 isWaiting = true;
                 timer = waitTime;
 
-                if (isWaiting)
+                while (isWaiting)
                 {
                     // Decrement the timer by the time elapsed since the last frame
                     timer -= Time.deltaTime;
@@ -41,18 +41,18 @@ public class PlayerMovingState : PlayerBaseState
                     if (timer <= 0f)
                     {
                         // Timer has elapsed; switch to the "Running" animation
-                        _sm.playerMain.animator.Play("PlayerRun");
+                        _sm.playerMain.animator.Play("PlayerKatanaRunWithDust");
                         Debug.Log("Playing moving animation upon enter, came from idle");
                         isWaiting = false;
                     }
 
                     // While waiting, no further state transitions should occur
-                    return;
+                    
                 }
             }
             else
             {
-                _sm.playerMain.animator.Play("PlayerRun");
+                _sm.playerMain.animator.Play("PlayerKatanaRunWithDust");
                 Debug.Log("Playing moving animation upon enter, did not come from idle");
             }
 
@@ -141,7 +141,7 @@ public class PlayerMovingState : PlayerBaseState
             {
                 counter = 0;
                 // play moving animation again
-                _sm.playerMain.animator.Play("PlayerRun");
+                _sm.playerMain.animator.Play("PlayerKatanaRunWithDust");
                 Debug.Log("replaying moving animation");
             }
             else if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)// We're airborne

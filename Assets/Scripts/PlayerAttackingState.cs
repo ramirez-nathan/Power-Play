@@ -20,6 +20,7 @@ public class PlayerAttackingState : PlayerBaseState
         base.Enter(previousState);
         this.previousState = previousState;
         Debug.Log("Entering Attack state");
+        counterMax = 0.5f;
         switch (_sm.playerMain.playerAttackType)
         {
             case PlayerMain.PlayerAttackType.NeutralLight :
@@ -80,6 +81,7 @@ public class PlayerAttackingState : PlayerBaseState
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
                     // play NeutralUpHeavy air animation
+                    _sm.playerMain.animator.Play("PlayerKatanaAirHeavyUp");
                     // set counterMax to animation length
                     Debug.Log("playing neutral up heavy air attack");
                 }
@@ -99,6 +101,8 @@ public class PlayerAttackingState : PlayerBaseState
                 }
                 else // Grounded
                 {
+                    counterMax = 1.44f;
+                    _sm.playerMain.animator.Play("PlayerKatanaCombo");
                     // play ForwardHeavy animation
                     // set counterMax to animation length
                     Debug.Log("playing forward heavy attack");
@@ -138,7 +142,7 @@ public class PlayerAttackingState : PlayerBaseState
             Debug.Log("counter end = " + counter);
             _sm.playerMain.isAttacking = false;
             if (previousState == "Moving") _sm.ChangeState(_sm.playerMovingState);
-            //else _sm.ChangeState(_sm.playerIdleState); // not implemented yet
+            else if (previousState == "Idle") _sm.ChangeState(_sm.playerIdleState); 
         }
 
         base.UpdateLogic();
