@@ -9,6 +9,8 @@ using static UnityEngine.InputSystem.InputAction;
 public class PlayerMain : MonoBehaviour
 {
     [SerializeField]
+    public int maxHealth = 100;
+    public int currentHealth = 100;
     public float moveSpeed = 10f;
     public Vector2 currentVelocity = Vector2.zero;
     public gameOverScreen gameOverScween; // The game over screen

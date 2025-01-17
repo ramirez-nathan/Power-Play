@@ -12,12 +12,25 @@ public class StatTrackerScript : MonoBehaviour
     // public Collider2D attackCollider;    // The collider representing the player's attack hitbox
     // public enemyScript enemyScwipt;      // Reference to enemy code
     // public gameOverScreen gameOverScween; // The game over screen
+    public static StatTrackerScript Instance;
+
+    public int totalDamageDealt = 0;
+    public int totalMatchesPlayed = 0;
+    public int totalWins = 0;
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        // Ensure only one instance exists
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Persist across scenes
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
