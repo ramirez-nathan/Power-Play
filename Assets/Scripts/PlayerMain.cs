@@ -242,8 +242,15 @@ public class PlayerMain : MonoBehaviour
         if (playerJumpState == PlayerJumpState.JumpHeld) jumpFrameCounter++; // track frames that jump button is held for 
         if (jumpFrameCounter == 5 && playerState == PlayerState.Grounded) // bro took too long, long hop it is 
         {
-            shortHop = false;
-            PerformJump(shortHop);
+            if (isAttacking) // to prevent jump buffering while attacking
+            {
+                finishedJump = true; 
+            }
+            if (!isAttacking)
+            {
+                shortHop = false;
+                PerformJump(shortHop);
+            }
         }
         if (jumpCount == 1 && !finishedJump && jumpFrameCounter == 2)
         {
