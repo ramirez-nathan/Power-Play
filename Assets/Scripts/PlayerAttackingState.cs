@@ -80,6 +80,7 @@ public class PlayerAttackingState : PlayerBaseState
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
                     // play NeutralUpHeavy air animation
+                    _sm.playerMain.animator.Play("PlayerKatanaAirAttackUp");
                     // set counterMax to animation length
                     Debug.Log("playing neutral up heavy air attack");
                 }

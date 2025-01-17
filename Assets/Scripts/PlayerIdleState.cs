@@ -27,7 +27,7 @@ public class PlayerIdleState : PlayerBaseState
             // Play the "Run to Idle" animation if coming from moving state
             if (previousState == "Moving")
             {
-                _sm.playerMain.animator.Play("PlayerRunToIdle");
+                _sm.playerMain.animator.Play("PlayerKatanaRunToIdle");
 
                 // Initialize the timer
                 isWaiting = true;
