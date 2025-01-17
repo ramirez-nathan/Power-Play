@@ -9,6 +9,7 @@ public class PlayerBaseState
     public string stateName;
     public float counter;
     protected PlayerStateMachine playerStateMachine;
+    public bool isLockAnimating = false;
     // Start is called before the first frame update
     public PlayerBaseState(string name, PlayerStateMachine stateMachine)
     {
