@@ -25,7 +25,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         playerMovingState = new PlayerMovingState(this);
         playerAttackingState = new PlayerAttackingState(this);
-        //playerIdleState = new PlayerIdleState(this);
+        playerIdleState = new PlayerIdleState(this);
     }
 
     void Update()
@@ -56,5 +56,14 @@ public class PlayerStateMachine : MonoBehaviour
     protected virtual PlayerBaseState GetInitialState()
     {
         return playerMovingState; 
+    }
+
+    public IEnumerator PlayLockedAnimation(string animation, float playTime)
+    {
+        // This is for animations that should complete before doing some other action
+        currentState.isLockAnimating = true;
+        playerMain.animator.Play(animation);
+        yield return new WaitForSeconds(playTime);
+        currentState.isLockAnimating = false;
     }
 }

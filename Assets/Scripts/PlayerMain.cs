@@ -106,7 +106,7 @@ public class PlayerMain : MonoBehaviour
     {
         moveInput = playerInputHandler.playerControls.move.ReadValue<Vector2>(); // grab input vector here
 
-        animator.SetBool("isJumping", !isOnFloor); // animator checks if player is jumping still
+        //animator.SetBool("isJumping", !isOnFloor); // animator checks if player is jumping still
         UpdateSpriteDirection();
     }
     public void Jump(InputAction.CallbackContext context)
@@ -130,7 +130,7 @@ public class PlayerMain : MonoBehaviour
                 shortHop = jumpFrameCounter < 5;
                 // Determine if it's a short hop or a regular hop based on frame count
                 PerformJump(shortHop);
-                animator.SetBool("isJumping", !isOnFloor); // Lets the animator know that the player is now jumping
+                //animator.SetBool("isJumping", !isOnFloor); // Lets the animator know that the player is now jumping
             }
         }
     }
@@ -237,8 +237,8 @@ public class PlayerMain : MonoBehaviour
     {
         //currentVelocity.x = holdingMove ? 1 * moveSpeed : -1 * moveSpeed;
         //playerRigidBody.velocity = currentVelocity;
-        animator.SetFloat("xVelocity", Mathf.Abs(playerRigidBody.velocity.x));
-        animator.SetFloat("yVelocity", playerRigidBody.velocity.y);
+        //animator.SetFloat("xVelocity", Mathf.Abs(playerRigidBody.velocity.x));
+        //animator.SetFloat("yVelocity", playerRigidBody.velocity.y);
         if (playerJumpState == PlayerJumpState.JumpHeld) jumpFrameCounter++; // track frames that jump button is held for 
         if (jumpFrameCounter == 5 && playerState == PlayerState.Grounded) // bro took too long, long hop it is 
         {

@@ -19,7 +19,7 @@ public class PlayerAttackingState : PlayerBaseState
     {
         base.Enter(previousState);
         this.previousState = previousState;
-
+        Debug.Log("Entering Attack state");
         switch (_sm.playerMain.playerAttackType)
         {
             case PlayerMain.PlayerAttackType.NeutralLight :

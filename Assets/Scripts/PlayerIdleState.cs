@@ -8,8 +8,9 @@ public class PlayerIdleState : PlayerBaseState
 
     // Timer variables for handling animation delay
     private bool isWaiting = false;
-    private float waitTime = 0.05f; // 50 milliseconds
-    private float timer = 0f;
+    //private float waitTime = 0.05f; // 50 milliseconds
+    //private float timer = 0f;
+    
 
     public PlayerIdleState(PlayerStateMachine stateMachine) : base("Idle", stateMachine)
     {
@@ -27,32 +28,14 @@ public class PlayerIdleState : PlayerBaseState
             // Play the "Run to Idle" animation if coming from moving state
             if (previousState == "Moving")
             {
-                _sm.playerMain.animator.Play("PlayerRunToIdle");
-
-                // Initialize the timer
-                isWaiting = true;
-                timer = waitTime; // timer set to 0.05sec
-
-
-                if (isWaiting)
-                {
-                    // Decrement the timer by the time elapsed since the last frame
-                    timer -= Time.deltaTime;
-
-                    if (timer <= 0f)
-                    {
-                        // Timer has elapsed; switch to the idle animation
-                        _sm.playerMain.animator.Play("PlayerKatanaIdle");
-                        Debug.Log("Playing idle animation after transition");
-                        isWaiting = false;
-                    }
-                }
+                //_sm.StartCoroutine(_sm.PlayLockedAnimation("PlayerRunToIdle", 0.05f));
             }
             else
             {
                 _sm.playerMain.animator.Play("PlayerKatanaIdle");
             }
         }
+
         // else if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
         // {
         //     var verticalVelocity = _sm.playerMain.playerRigidBody.velocity.y;
@@ -82,47 +65,16 @@ public class PlayerIdleState : PlayerBaseState
         {
             _sm.ChangeState(_sm.playerAttackingState);
         }
-        else if (_sm.playerMain.moveInput.x != 0) // go to moving state
+        else if (_sm.playerMain.moveInput.x != 0f || 
+                 _sm.playerMain.playerState == PlayerMain.PlayerState.Airborne) // go to moving state
         {
+            Debug.Log("Changing from Idle to Moving");
             _sm.ChangeState(_sm.playerMovingState);
         }
-        // else if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
-        // {
-        //     var verticalVelocity = _sm.playerMain.playerRigidBody.velocity.y;
-            
-        //     // Update airborne animations based on vertical velocity
-        //     if (verticalVelocity > 1)
-        //     {
-        //         _sm.playerMain.animator.Play("PlayerKatanaJumpRise");
-        //     }
-        //     else if (verticalVelocity < 4f && verticalVelocity > -4f && verticalVelocity != 0f)
-        //     {
-        //         _sm.playerMain.animator.Play("PlayerKatanaJumpPeak");
-        //     }
-        //     else if (verticalVelocity < -1)
-        //     {
-        //         _sm.playerMain.animator.Play("PlayerKatanaJumpFall");
-        //     }
-        // }
-        // else if (isWaiting)
-        // {
-        //     // Decrement the timer
-        //     timer -= Time.deltaTime;
-
-        //     if (timer <= 0f)
-        //     {
-        //         // Timer has elapsed; switch to the idle animation
-        //         _sm.playerMain.animator.Play("PlayerKatanaIdle");
-        //         Debug.Log("Playing idle animation after transition");
-        //         isWaiting = false;
-        //     }
-        // }
         else
         {
-            if (counter > 0.5f && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded)
-            {
-                counter = 0;
-                // Replay idle animation
+            if (!isLockAnimating && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded)
+            { 
                 _sm.playerMain.animator.Play("PlayerKatanaIdle");
                 Debug.Log("Replaying idle animation");
             }

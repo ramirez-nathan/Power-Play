@@ -97,7 +97,7 @@ public class PlayerMovingState : PlayerBaseState
         {
 
 
-
+            //Debug.Log(_sm.playerMain.playerRigidBody.velocity.x);
 
             // _sm.playerMain.animator.Play("PlayerRunToIdle");
             // Debug.Log("playing animation PlayerRunToIdle");
@@ -126,9 +126,7 @@ public class PlayerMovingState : PlayerBaseState
                 // }
 
 
-            // _sm.ChangeState(_sm.playerIdleState);
-            _sm.playerMain.animator.Play("PlayerKatanaIdle");
-            Debug.Log("playing idle animation from moving state");
+            _sm.ChangeState(_sm.playerIdleState);
 
         }
         // Logic
