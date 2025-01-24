@@ -257,7 +257,7 @@ public class PlayerMain : MonoBehaviour
         {
             Debug.Log("You have been destroyed");
             KillPlayer();
-            gameOverScween.ShowGameOver();
+            // gameOverScween.ShowGameOver();
         }
     }
 
@@ -289,6 +289,11 @@ public class PlayerMain : MonoBehaviour
             if (numStocks == 0)
             {
                 Destroy(gameObject);
+                gameOverScween.ShowGameOver();
+            }
+            else
+            {
+                RespawnPlayer();
             }
         }
     }
