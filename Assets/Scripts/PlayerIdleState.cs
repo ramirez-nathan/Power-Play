@@ -8,7 +8,7 @@ public class PlayerIdleState : PlayerBaseState
 
     // Timer variables for handling animation delay
     private bool isWaiting = false;
-    private float waitTime = 0.5f; // 50 milliseconds
+    private float waitTime = 0.20f;
     private float timer = 0f;
 
     public PlayerIdleState(PlayerStateMachine stateMachine) : base("Idle", stateMachine)
@@ -27,27 +27,13 @@ public class PlayerIdleState : PlayerBaseState
             // Play the "Run to Idle" animation if coming from moving state
             if (previousState == "Moving")
             {
+                Debug.Log("Playing transition animation: Run to Idle");
                 _sm.playerMain.animator.Play("PlayerKatanaRunToIdle");
-                //_sm.StartCoroutine(_sm.PlayLockedAnimation("PlayerKatanaRunToIdle"))
+                
                 // Initialize the timer
                 isWaiting = true;
                 timer = waitTime;
-
-
-                while (isWaiting)
-                {
-                    // Decrement the timer by the time elapsed since the last frame
-                    timer -= Time.deltaTime;
-
-                    if (timer <= 0f)
-                    {
-                        // Timer has elapsed; switch to the idle animation
-                        _sm.playerMain.animator.Play("PlayerKatanaIdle");
-                        Debug.Log("Playing idle animation after transition");
-                        isWaiting = false;
-                    }
-                   
-                }
+                isLockAnimating = true; // Prevent animation interruption
             }
             else
             {
@@ -90,12 +76,25 @@ public class PlayerIdleState : PlayerBaseState
             Debug.Log("Changing from Idle to Moving");
             _sm.ChangeState(_sm.playerMovingState);
         }
+        else if (isWaiting)
+        {
+            // Update timer
+            timer -= Time.deltaTime;
+
+            if (timer <= 0f)
+            {
+                // Timer has elapsed; switch to the idle animation
+                _sm.playerMain.animator.Play("PlayerKatanaIdle");
+                Debug.Log("Playing idle animation after transition");
+                isWaiting = false;
+                isLockAnimating = false; // Allow new animations
+            }
+        }
         else
         {
             if (!isLockAnimating && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded)
             { 
                 _sm.playerMain.animator.Play("PlayerKatanaIdle");
-                //Debug.Log("Replaying idle animation");
             }
         }
         
