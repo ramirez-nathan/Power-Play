@@ -36,7 +36,7 @@ public class PlayerMain : MonoBehaviour
     public PlayerJumpState playerJumpState;
 
     public Rigidbody2D playerRigidBody;
-    public GameObject stage;
+    // public GameObject stage; // no longer needed
 
     public PlayerInputHandler playerInputHandler;
     public PlayerStateMachine playerStateMachine;
@@ -297,7 +297,7 @@ public class PlayerMain : MonoBehaviour
     {
         if (numStocks > 0)
         {
-
+            transform.position = spawnPoint.position;
         }
     }
 
