@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 449810505}
   - component: {fileID: 449810504}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: RedCircuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 600955068}
   - component: {fileID: 600955067}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SkyArenaButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1180,7 +1180,7 @@ GameObject:
   - component: {fileID: 1127696317}
   - component: {fileID: 1127696316}
   m_Layer: 5
-  m_Name: Button
+  m_Name: FinalDestinationButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1447,7 +1447,7 @@ GameObject:
   - component: {fileID: 1214692780}
   - component: {fileID: 1214692779}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: MountThunderButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1648,7 +1648,7 @@ GameObject:
   - component: {fileID: 1494577236}
   - component: {fileID: 1494577235}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: VerdantAbyssButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2431,7 +2431,7 @@ GameObject:
   - component: {fileID: 1845265579}
   - component: {fileID: 1845265578}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ShadowKeepButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2698,7 +2698,7 @@ GameObject:
   - component: {fileID: 1861594264}
   - component: {fileID: 1861594263}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2965,7 +2965,7 @@ GameObject:
   - component: {fileID: 2056255953}
   - component: {fileID: 2056255952}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BattlefieldButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

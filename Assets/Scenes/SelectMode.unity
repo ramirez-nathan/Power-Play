@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 416428027}
   - component: {fileID: 416428026}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: StageSelectionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 493812483}
   - component: {fileID: 493812482}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PVEButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 606184934}
   - component: {fileID: 606184933}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PVPButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1134,7 +1134,7 @@ GameObject:
   - component: {fileID: 745763149}
   - component: {fileID: 745763148}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PracticeModeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1987,7 +1987,7 @@ GameObject:
   - component: {fileID: 1839054838}
   - component: {fileID: 1839054837}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BackToMainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2120,7 +2120,7 @@ GameObject:
   - component: {fileID: 1986985803}
   - component: {fileID: 1986985802}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: CharacterCustomizationButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

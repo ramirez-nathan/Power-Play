@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 75499080}
   - component: {fileID: 75499079}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: PerksAButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 795201511}
   - component: {fileID: 795201510}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: PerksBButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1148,7 +1148,7 @@ GameObject:
   - component: {fileID: 1213115353}
   - component: {fileID: 1213115352}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: WeaponBButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1269,7 +1269,7 @@ GameObject:
   - component: {fileID: 1225699433}
   - component: {fileID: 1225699432}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: ColorAButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1465,7 +1465,7 @@ GameObject:
   - component: {fileID: 1520784813}
   - component: {fileID: 1520784812}
   m_Layer: 5
-  m_Name: Button
+  m_Name: WeaponAButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2234,7 +2234,7 @@ GameObject:
   - component: {fileID: 1992982091}
   - component: {fileID: 1992982090}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: ColorBButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
