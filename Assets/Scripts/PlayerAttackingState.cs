@@ -48,7 +48,7 @@ public class PlayerAttackingState : PlayerBaseState
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
                     // play ForwardLight air animation
-                    
+                    _sm.playerMain.animator.Play("PlayerKatanaAirForward");
                     // set counterMax to animation length
                     Debug.Log("playing forward light air attack");
                 }
