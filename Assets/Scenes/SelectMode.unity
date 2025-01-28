@@ -276,7 +276,6 @@ GameObject:
   - component: {fileID: 215928538}
   - component: {fileID: 215928537}
   - component: {fileID: 215928536}
-  - component: {fileID: 215928539}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -371,7 +370,7 @@ GameObject:
   - component: {fileID: 416428027}
   - component: {fileID: 416428026}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: StageSelectionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -504,7 +503,7 @@ GameObject:
   - component: {fileID: 493812483}
   - component: {fileID: 493812482}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PVEButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -746,7 +745,7 @@ GameObject:
   - component: {fileID: 606184934}
   - component: {fileID: 606184933}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PVPButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1135,7 +1134,7 @@ GameObject:
   - component: {fileID: 745763149}
   - component: {fileID: 745763148}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PracticeModeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1633,7 +1632,7 @@ Transform:
   m_GameObject: {fileID: 1149183555}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1338.3256, y: 669.55255, z: -1.2938129}
+  m_LocalPosition: {x: 1000, y: 550, z: -1.2938129}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1988,7 +1987,7 @@ GameObject:
   - component: {fileID: 1839054838}
   - component: {fileID: 1839054837}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BackToMainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2121,7 +2120,7 @@ GameObject:
   - component: {fileID: 1986985803}
   - component: {fileID: 1986985802}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: CharacterCustomizationButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,7 +9,11 @@ using static UnityEngine.InputSystem.InputAction;
 public class PlayerMain : MonoBehaviour
 {
     [SerializeField]
+    private Transform spawnPoint;
+    public int maxHealth = 100;
+    public int currentHealth = 100;
     public float moveSpeed = 10f;
+    public int numStocks = 3;
     public Vector2 currentVelocity = Vector2.zero;
     public gameOverScreen gameOverScween; // The game over screen
     public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
@@ -32,7 +36,7 @@ public class PlayerMain : MonoBehaviour
     public PlayerJumpState playerJumpState;
 
     public Rigidbody2D playerRigidBody;
-    public GameObject stage;
+    // public GameObject stage; // no longer needed
 
     public PlayerInputHandler playerInputHandler;
     public PlayerStateMachine playerStateMachine;
@@ -260,7 +264,7 @@ public class PlayerMain : MonoBehaviour
         {
             Debug.Log("You have been destroyed");
             KillPlayer();
-            gameOverScween.ShowGameOver();
+            // gameOverScween.ShowGameOver();
         }
     }
 
@@ -285,8 +289,27 @@ public class PlayerMain : MonoBehaviour
             // Play the sound at the character's position
             AudioSource.PlayClipAtPoint(deathSound.clip, transform.position);
 
-            // Immediately destroy the GameObject
-            Destroy(gameObject);
+            // Decrement the number of lives
+            numStocks--;
+
+            // Destroy the player if we have 0 lives left
+            if (numStocks == 0)
+            {
+                Destroy(gameObject);
+                gameOverScween.ShowGameOver();
+            }
+            else
+            {
+                RespawnPlayer();
+            }
+        }
+    }
+
+    void RespawnPlayer()
+    {
+        if (numStocks > 0)
+        {
+            transform.position = spawnPoint.position;
         }
     }
 
