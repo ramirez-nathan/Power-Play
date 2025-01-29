@@ -256,8 +256,6 @@ public class PlayerMain : MonoBehaviour
         {
             Debug.Log("You have fallen off the map");
             fellOffMap = true;
-            //KillPlayer();
-            // gameOverScween.ShowGameOver();
         }
     }
 
@@ -271,43 +269,6 @@ public class PlayerMain : MonoBehaviour
             Vector3 ls = transform.localScale;
             ls.x *= -1f;
             transform.localScale = ls;
-        }
-    }
-
-    // DESTROYS PLAYER OBJECT & PLAYS DEATH SOUND
-    void KillPlayer()
-    {
-        if (deathSound != null && deathSound.clip != null)
-        {
-            // Play the sound at the character's position
-            AudioSource.PlayClipAtPoint(deathSound.clip, transform.position);
-
-            // Decrement the number of lives
-            numStocks--;
-
-            // Destroy the player if we have 0 lives left
-            if (numStocks == 0)
-            {
-                Destroy(gameObject);
-                gameOverScreen.ShowGameOver();
-            }
-            else
-            {
-                RespawnPlayer();
-            }
-        }
-        else
-        {
-            Debug.Log("no death sound");
-        }
-    }
-
-    void RespawnPlayer()
-    {
-        if (numStocks > 0)
-        {
-            transform.position = spawnPoint.position;
-            Debug.Log(transform.position);
         }
     }
 
