@@ -11,6 +11,7 @@ public class PlayerStateMachine : MonoBehaviour
     public PlayerMovingState playerMovingState;
     public PlayerAttackingState playerAttackingState;
     public PlayerIdleState playerIdleState;
+    public PlayerDeadState playerDeadState;
 
     // takes argument playermain to grab the right object's main
     public void Initialize(PlayerMain main) 
@@ -26,6 +27,7 @@ public class PlayerStateMachine : MonoBehaviour
         playerMovingState = new PlayerMovingState(this);
         playerAttackingState = new PlayerAttackingState(this);
         playerIdleState = new PlayerIdleState(this);
+        playerDeadState = new PlayerDeadState(this);
     }
 
     void Update()
@@ -42,6 +44,12 @@ public class PlayerStateMachine : MonoBehaviour
         if (currentState != null)
         {
             currentState.UpdatePhysics();
+            if ((playerMain.currentHealth <= 0 || playerMain.fellOffMap) && playerMain.isAlive)
+            {
+                playerMain.isAlive = false;
+                Debug.Log("player died");
+                ChangeState(playerDeadState);
+            }
         }
     }
 

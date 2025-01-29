@@ -9,7 +9,7 @@ using static UnityEngine.InputSystem.InputAction;
 public class PlayerInputHandler : MonoBehaviour
 {
     public struct PlayerActions
-    { 
+    {
         public InputAction move; // joystick/WASD
         public InputAction jump; // Space/South Button
         public InputAction neutralLight; // neutral ground/air J/West button
@@ -18,8 +18,7 @@ public class PlayerInputHandler : MonoBehaviour
         public InputAction neutralUpHeavy; // neutral/up ground/air I/L/North/East button
         public InputAction forwardHeavy; // forward ground/air I/L/North/East button
         public InputAction downHeavy; // down ground/air I/L/North/East button
-    }
-    public PlayerActions playerControls;
+    } public PlayerActions playerControls;
 
     private PlayerMain playerMain;
     private PlayerInput playerInput; 

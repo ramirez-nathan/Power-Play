@@ -40,28 +40,6 @@ public class PlayerIdleState : PlayerBaseState
                 _sm.playerMain.animator.Play("PlayerKatanaIdle");
             }
         }
-
-        // else if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
-        // {
-        //     var verticalVelocity = _sm.playerMain.playerRigidBody.velocity.y;
-            
-        //     // Determine which jump animation to play based on vertical velocity
-        //     if (verticalVelocity > 1)
-        //     {
-        //         _sm.playerMain.animator.Play("PlayerKatanaJumpRise");
-        //         Debug.Log("Playing jump rise animation");
-        //     }
-        //     else if (verticalVelocity < 4f && verticalVelocity > -4f && verticalVelocity != 0f)
-        //     {
-        //         _sm.playerMain.animator.Play("PlayerKatanaJumpPeak");
-        //         Debug.Log("Playing jump peak animation");
-        //     }
-        //     else if (verticalVelocity < -1)
-        //     {
-        //         _sm.playerMain.animator.Play("PlayerKatanaJumpFall");
-        //         Debug.Log("Playing jump fall animation");
-        //     }
-        // }
     }
 
     public override void UpdateLogic()
@@ -70,13 +48,12 @@ public class PlayerIdleState : PlayerBaseState
         {
             _sm.ChangeState(_sm.playerAttackingState);
         }
-        else if (_sm.playerMain.moveInput.x != 0f || 
-                 _sm.playerMain.playerState == PlayerMain.PlayerState.Airborne) // go to moving state
+        else if (_sm.playerMain.moveInput.x != 0f || _sm.playerMain.playerState == PlayerMain.PlayerState.Airborne) // go to moving state
         {
             Debug.Log("Changing from Idle to Moving");
             _sm.ChangeState(_sm.playerMovingState);
         }
-        else if (isWaiting)
+        else if (isWaiting) // this takes care of transition animation INTO the idle state
         {
             // Update timer
             timer -= Time.deltaTime;
@@ -90,7 +67,7 @@ public class PlayerIdleState : PlayerBaseState
                 isLockAnimating = false; // Allow new animations
             }
         }
-        else
+        else // this takes care of standing still, and replaying the animation
         {
             if (!isLockAnimating && _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded)
             { 

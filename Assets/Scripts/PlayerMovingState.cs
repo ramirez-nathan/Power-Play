@@ -10,14 +10,13 @@ public class PlayerMovingState : PlayerBaseState
     private bool isWaiting = false;
     private float waitTime = 0.00f; // Match the transition time from idle state
     private float timer = 0f;
-    private bool isLockAnimating = false; // Added to prevent animation interruption
 
     public PlayerMovingState(PlayerStateMachine stateMachine) : base("Moving", stateMachine)
     {
         this.stateName = "Moving";
         _sm = stateMachine;
     }
-
+    
     public override void Enter(string previousState)
     {
         base.Enter(previousState);
@@ -29,7 +28,7 @@ public class PlayerMovingState : PlayerBaseState
             {
                 // Play the "Idle to Run" animation
                 _sm.playerMain.animator.Play("PlayerKatanaIdleToRun");
-
+            
                 // Initialize the timer
                 isWaiting = true;
                 timer = waitTime;
@@ -41,30 +40,6 @@ public class PlayerMovingState : PlayerBaseState
                 Debug.Log("Playing moving animation upon enter, did not come from idle");
             }
         }
-        // else // We're airborne
-        // {
-        //     var verticalVelocity = _sm.playerMain.playerRigidBody.velocity.y;
-            
-        //     // Determine which jump animation to play based on vertical velocity
-        //     if (verticalVelocity > 0)
-        //     {
-        //         // Rising
-        //         _sm.playerMain.animator.Play("PlayerJumpRise");
-        //         Debug.Log("Playing jump rise animation");
-        //     }
-        //     else if (verticalVelocity < 0)
-        //     {
-        //         // Falling
-        //         _sm.playerMain.animator.Play("PlayerJumpFall");
-        //         Debug.Log("Playing jump fall animation");
-        //     }
-        //     else
-        //     {
-        //         // At peak of jump
-        //         _sm.playerMain.animator.Play("PlayerJumpPeak");
-        //         Debug.Log("Playing jump peak animation");
-        //     }
-        // }
 
     }
 

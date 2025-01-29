@@ -132,10 +132,10 @@ public class PlayerAttackingState : PlayerBaseState
     {
         // TODO: combo window --> could be 0.5 sec, starts at
         // last .25 sec of animation, and ends .25 sec after 
-        // if attack has a combo && attack made contact
-        //   if counter >= counterMax - 0.25 then start combo window
-        // it should carry on incrementing to the next state
-        // assuming that state isnt hurt/dead state
+        // if attack has a combo && attack made contact 
+        //   if counter >= counterMax - 0.25 then start combo window 
+        // it should carry on incrementing to the next state 
+        // assuming that state isnt hurt/dead state 
 
         if (counter > counterMax)
         {
