@@ -60,9 +60,11 @@ public class PlayerMain : MonoBehaviour
         DownLight,
         NeutralUpHeavy,
         ForwardHeavy,
-        DownHeavy
-    }
-    public PlayerAttackType playerAttackType;
+        DownHeavy,
+        NeutralUpRanged,
+        ForwardRanged,
+        DownRanged
+    } public PlayerAttackType playerAttackType;
     // ------------------- Attack Constants ---------------------- //
     public Vector2 moveInput { get; private set; }
     public bool holdingMove = false;
@@ -226,6 +228,34 @@ public class PlayerMain : MonoBehaviour
             knockbackValue = 2.5f;
         }
     }
+    public void NeutralUpRanged(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.NeutralUpRanged;
+            knockbackValue = 3f;
+        }
+    }
+    public void ForwardRanged(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.ForwardRanged;
+            knockbackValue = 2.5f;
+        }
+    }
+    public void DownRanged(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.DownRanged;
+            knockbackValue = 2.5f;
+        }
+    }
+
 
     // ------------------------------------ ATTACK MOVES --------------------------------------- //
 

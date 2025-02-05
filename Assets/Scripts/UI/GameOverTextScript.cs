@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class gameOverTextScript : MonoBehaviour
+public class GameOverTextScript : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI winnerText;
     [SerializeField]

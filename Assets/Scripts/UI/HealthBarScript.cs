@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class healthBarScript : MonoBehaviour
+public class HealthBarScript : MonoBehaviour
 {
     public PlayerMain player;       // reference to our player
 

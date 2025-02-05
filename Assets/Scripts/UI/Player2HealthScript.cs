@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class player2HealthScript : MonoBehaviour
+public class Player2HealthScript : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField]
