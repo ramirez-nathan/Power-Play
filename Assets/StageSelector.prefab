@@ -55,6 +55,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6564307624417282949}
     m_Modifications:
+    - target: {fileID: 21968741745877981, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 21968741745877981, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: parallaxEffect
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 684812768541963957, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 684812768541963957, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: parallaxEffect
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1583988676549378235, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1583988676549378235, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: parallaxEffect
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2662001820550641413, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
       propertyPath: m_LocalScale.x
       value: 34.404884
@@ -103,10 +127,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2944061854153061729, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944061854153061729, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542482636845587441, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542482636845587441, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.35
+      objectReference: {fileID: 0}
     - target: {fileID: 3656622798444905575, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 45a9fdb20d9341b4f87ac652614ae4a8, type: 3}
+      objectReference: {fileID: 21300000, guid: 03fddb57130d24007ac16031632d9e0a, type: 3}
     - target: {fileID: 3797276334976131573, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
       propertyPath: m_Name
       value: BattlefieldPrefab
@@ -115,9 +155,41 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4397943031506650182, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397943031506650182, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931431592829458364, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931431592829458364, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: parallaxEffect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7619011470816225477, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7854288834172969401, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7854288834172969401, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: parallaxEffect
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589373919527407605, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589373919527407605, guid: b7ed52c35ee15d14c9e14986d4a223b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.34
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

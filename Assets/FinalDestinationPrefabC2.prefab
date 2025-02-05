@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7619011470816225477}
   - component: {fileID: 3656622798444905575}
+  - component: {fileID: 4931431592829458364}
   m_Layer: 0
   m_Name: backgroundImage
   m_TagString: Untagged
@@ -84,6 +85,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4931431592829458364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3025102611210357931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f06dba568fe4ec6bca6ca39f5e97d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  parallaxEffect: 0
 --- !u!1 &3965760805073713047
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4397943031506650182}
   - component: {fileID: 4152266542740644224}
+  - component: {fileID: 7854288834172969401}
   m_Layer: 0
   m_Name: Backgrounds_BuildingsMid
   m_TagString: Untagged
@@ -168,6 +184,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7854288834172969401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3965760805073713047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f06dba568fe4ec6bca6ca39f5e97d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  parallaxEffect: 0
 --- !u!1 &4435325835327986651
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8589373919527407605}
   - component: {fileID: 2873141456719924681}
+  - component: {fileID: 1583988676549378235}
   m_Layer: 0
   m_Name: Backgrounds_BuildingsFar
   m_TagString: Untagged
@@ -416,6 +447,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1583988676549378235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6261875607474547599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f06dba568fe4ec6bca6ca39f5e97d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  parallaxEffect: 0
 --- !u!1 &7936094314903854931
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3542482636845587441}
   - component: {fileID: 229569493089088205}
+  - component: {fileID: 21968741745877981}
   m_Layer: 0
   m_Name: Backgrounds_BuildingsClose
   m_TagString: Untagged
@@ -500,6 +546,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &21968741745877981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7936094314903854931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f06dba568fe4ec6bca6ca39f5e97d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  parallaxEffect: 0
 --- !u!1 &8987603500302465690
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2944061854153061729}
   - component: {fileID: 6524016468546717320}
+  - component: {fileID: 684812768541963957}
   m_Layer: 0
   m_Name: Backgrounds_BuildingsBack
   m_TagString: Untagged
@@ -584,6 +645,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &684812768541963957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8987603500302465690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f06dba568fe4ec6bca6ca39f5e97d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  parallaxEffect: 0
 --- !u!1001 &2216265927781868233
 PrefabInstance:
   m_ObjectHideFlags: 0
