@@ -82,6 +82,9 @@ public class PlayerInputHandler : MonoBehaviour
         playerControls.neutralUpHeavy.started += playerMain.NeutralUpHeavy;
         playerControls.forwardHeavy.started += playerMain.ForwardHeavy;
         playerControls.downHeavy.started += playerMain.DownHeavy;
+        playerControls.neutralUpRanged.started += playerMain.NeutralUpRanged;
+        playerControls.forwardRanged.started += playerMain.ForwardRanged;
+        playerControls.downRanged.started += playerMain.DownRanged;
     }
     // Unsubscribe all methods to avoid memory leaks
     private void OnDisable()
@@ -98,6 +101,9 @@ public class PlayerInputHandler : MonoBehaviour
         playerControls.neutralUpHeavy.started -= playerMain.NeutralUpHeavy;
         playerControls.forwardHeavy.started -= playerMain.ForwardHeavy;
         playerControls.downHeavy.started -= playerMain.DownHeavy;
+        playerControls.neutralUpRanged.started -= playerMain.NeutralUpRanged;
+        playerControls.forwardRanged.started -= playerMain.ForwardRanged;
+        playerControls.downRanged.started -= playerMain.DownRanged;
     }
 
 }

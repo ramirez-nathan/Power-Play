@@ -104,7 +104,6 @@ public class PlayerAttackingState : PlayerBaseState
                 {
                     // play ForwardHeavy animation
                     _sm.playerMain.animator.Play("PlayerKatanaForwardHeavy");
-                    counterMax = 1.44f;
                     
                     // set counterMax to animation length
                     Debug.Log("playing forward heavy attack");
@@ -190,7 +189,7 @@ public class PlayerAttackingState : PlayerBaseState
 
         if (counter > counterMax)
         {
-            Debug.Log("counter end = " + counter);
+            //Debug.Log("counter end = " + counter);
             _sm.playerMain.isAttacking = false;
             if (previousState == "Moving") _sm.ChangeState(_sm.playerMovingState);
             else if (previousState == "Idle") _sm.ChangeState(_sm.playerIdleState); 

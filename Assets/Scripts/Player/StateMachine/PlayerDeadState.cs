@@ -40,9 +40,10 @@ public class PlayerDeadState : PlayerBaseState
             // Destroy the player if we have 0 lives left
             if (_sm.playerMain.numStocks == 0)
             {
+                Debug.Log($"Destroying object, player numstocks is {_sm.playerMain.numStocks}");
+                _sm.playerMain.gameOverScreen.ShowGameOver();
                 GameObject.Destroy(_sm.playerMain.gameObject);
                 
-                _sm.playerMain.gameOverScreen.ShowGameOver();
             }
             else
             {
@@ -78,14 +79,15 @@ public class PlayerDeadState : PlayerBaseState
         }
         var moveInput = _sm.playerMain.moveInput;
         // If ANY movement input at all -- square it to get abs value
-        if (respawnTimer <= 0 || moveInput.x * moveInput.x > 0 || moveInput.y * moveInput.y > 0) 
+        if (!preRespawning && (respawnTimer <= 0 || moveInput.x * moveInput.x > 0 || moveInput.y * moveInput.y > 0)) 
         {
             respawnTimer = 4f;
             isRespawning = false;
             _sm.playerMain.isVulnerable = true;
+            _sm.playerMain.isAlive = true;
             Debug.Log("Stopped Respawning");
             _sm.playerMain.currentHealth = 100;
-            _sm.playerMain.playerRigidBody.gravityScale = 1f;
+            _sm.playerMain.playerRigidBody.gravityScale = 3f;
             _sm.ChangeState(_sm.playerMovingState);
         }
 
