@@ -88,6 +88,7 @@ public class PlayerAttackingState : PlayerBaseState
                 else // Grounded
                 {
                     
+                    _sm.playerMain.animator.Play("PlayerKatanaNeutralHeavy");
                     // set counterMax to animation length
                     Debug.Log("playing neutral up heavy attack");
                 }
@@ -101,8 +102,9 @@ public class PlayerAttackingState : PlayerBaseState
                 }
                 else // Grounded
                 {
+                    // play ForwardHeavy animation
+                    _sm.playerMain.animator.Play("PlayerKatanaForwardHeavy");
                     counterMax = 1.44f;
-                    _sm.playerMain.animator.Play("PlayerKatanaCombo");
                     
                     // set counterMax to animation length
                     Debug.Log("playing forward heavy attack");
@@ -118,7 +120,8 @@ public class PlayerAttackingState : PlayerBaseState
                 }
                 else // Grounded
                 {
-                    
+                    // play DownHeavy animation
+                    _sm.playerMain.animator.Play("PlayerKatanaNeutralHeavyDown");
                     // set counterMax to animation length
                     Debug.Log("playing down heavy attack");
                 }

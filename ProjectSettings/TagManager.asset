@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: 1Sky
+    uniqueID: 387116209
+    locked: 0
+  - name: 2BackB
+    uniqueID: 3934639665
+    locked: 0
+  - name: 3FarB
+    uniqueID: 2092668549
+    locked: 0
+  - name: 4MidB
+    uniqueID: 3886107335
+    locked: 0
+  - name: 5CloseB
+    uniqueID: 1950251533
+    locked: 0
+  - name: 6Stage
+    uniqueID: 1266797551
+    locked: 0
