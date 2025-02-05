@@ -9,10 +9,16 @@ using static UnityEngine.InputSystem.InputAction;
 public class PlayerMain : MonoBehaviour
 {
     [SerializeField]
+    public Transform spawnPoint;
+    public int maxHealth = 100;
+    public int currentHealth = 100;
     public float moveSpeed = 10f;
+    public int numStocks = 3;
     public Vector2 currentVelocity = Vector2.zero;
-    public gameOverScreen gameOverScween; // The game over screen
+    public GameOverScreen gameOverScreen; // The game over screen
     public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
+    private bool controllerConnected = false;
+    
 
     [SerializeField]
     private int playerIndex = 0; // index to differentiate the 2 players
@@ -32,13 +38,16 @@ public class PlayerMain : MonoBehaviour
     public PlayerJumpState playerJumpState;
 
     public Rigidbody2D playerRigidBody;
-    public GameObject stage;
+    // public GameObject stage; // no longer needed
 
     public PlayerInputHandler playerInputHandler;
     public PlayerStateMachine playerStateMachine;
     public Animator animator;            // Controls all the animations of the player.
     private bool isOnFloor = true;       // Tracks if the player is on the stage (grounded).
     public bool isFacingRight = true;    // Tracks whether the player's sprite is facing right
+    public bool fellOffMap = false;
+    public bool isVulnerable = true;
+    public bool isAlive = true;
 
 
     // ------------------- Attack Constants ---------------------- //
@@ -55,16 +64,13 @@ public class PlayerMain : MonoBehaviour
     }
     public PlayerAttackType playerAttackType;
     // ------------------- Attack Constants ---------------------- //
-
-
     public Vector2 moveInput { get; private set; }
     public bool holdingMove = false;
-    // Jump Logic
 
+    // Jump Logic
     public int jumpCount = 0;
     public int jumpFrameCounter = 0;
     public bool finishedJump = false;
-    //public bool jumpStarted = false;
     public bool shortHop = false;
 
     // Out of bounds range, x = +- 11, y = -7
@@ -93,6 +99,7 @@ public class PlayerMain : MonoBehaviour
 
     public void Initialize(PlayerInputHandler pInputHandler)
     {
+        controllerConnected = true;
         playerInputHandler = pInputHandler;
     }
 
@@ -104,8 +111,10 @@ public class PlayerMain : MonoBehaviour
     // Update is called once per frame
     void Update() // make this a virtual void
     {
-        moveInput = playerInputHandler.playerControls.move.ReadValue<Vector2>(); // grab input vector here
-
+        if (controllerConnected)
+        {
+            moveInput = playerInputHandler.playerControls.move.ReadValue<Vector2>(); // grab input vector here
+        }
         //animator.SetBool("isJumping", !isOnFloor); // animator checks if player is jumping still
         UpdateSpriteDirection();
     }
@@ -158,19 +167,7 @@ public class PlayerMain : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        //currentVelocity = playerRigidBody.velocity;
-        //if (context.started)
-        //{
-        //    currentVelocity.x = context.ReadValue<Vector2>().x > 0 ? 1 * moveSpeed : -1 * moveSpeed;
-        //    playerRigidBody.velocity = currentVelocity;
-        //    holdingMove = true;
-        //}
-        //else
-        //{
-        //    currentVelocity.x = 0;
-        //    playerRigidBody.velocity = currentVelocity;
-        //    holdingMove = false;
-        //}
+        
     }
 
     // ------------------------------------ ATTACK MOVES --------------------------------------- //
@@ -258,9 +255,8 @@ public class PlayerMain : MonoBehaviour
         }
         if (transform.position.x > outOfBoundsXRight || transform.position.x < outOfBoundsXLeft || transform.position.y < outOfBoundsY)
         {
-            Debug.Log("You have been destroyed");
-            KillPlayer();
-            gameOverScween.ShowGameOver();
+            Debug.Log("You have fallen off the map");
+            fellOffMap = true;
         }
     }
 
@@ -274,19 +270,6 @@ public class PlayerMain : MonoBehaviour
             Vector3 ls = transform.localScale;
             ls.x *= -1f;
             transform.localScale = ls;
-        }
-    }
-
-    // DESTROYS PLAYER OBJECT & PLAYS DEATH SOUND
-    void KillPlayer()
-    {
-        if (deathSound != null && deathSound.clip != null)
-        {
-            // Play the sound at the character's position
-            AudioSource.PlayClipAtPoint(deathSound.clip, transform.position);
-
-            // Immediately destroy the GameObject
-            Destroy(gameObject);
         }
     }
 

@@ -6,8 +6,9 @@ using UnityEngine;
 public class gameOverTextScript : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI winnerText;
-    public PlayerMain player;
-    public enemyScript enemy;
+    [SerializeField]
+    public PlayerMain player1;
+    public PlayerMain player2;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,12 +18,12 @@ public class gameOverTextScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
+        if (player1 == null)
         {
             winnerText.text = "Game!\nPlayer 2 Wins!";
         }
 
-        else if (enemy == null)
+        else if (player2 == null)
         {
             winnerText.text = "Game!\nPlayer 1 Wins!";
         }
