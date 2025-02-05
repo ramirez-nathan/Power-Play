@@ -18,6 +18,7 @@ public class PlayerMain : MonoBehaviour
     public GameOverScreen gameOverScreen; // The game over screen
     public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
     private bool controllerConnected = false;
+    
 
     [SerializeField]
     private int playerIndex = 0; // index to differentiate the 2 players

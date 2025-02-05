@@ -15,9 +15,12 @@ public class PlayerInputHandler : MonoBehaviour
         public InputAction neutralLight; // neutral ground/air J/West button
         public InputAction forwardLight; // moving ground/air J/West button
         public InputAction downLight; // down ground/air J/West button
-        public InputAction neutralUpHeavy; // neutral/up ground/air I/L/North/East button
+        public InputAction neutralUpHeavy; // neutral/up ground/air L/East button
         public InputAction forwardHeavy; // forward ground/air I/L/North/East button
-        public InputAction downHeavy; // down ground/air I/L/North/East button
+        public InputAction downHeavy; // down ground/air I/L/North/East button 
+        public InputAction neutralUpRanged; // neutral/up ground/air L/East button 
+        public InputAction forwardRanged; // forward ground/air L/East button 
+        public InputAction downRanged; // down ground/air L/East button 
     } public PlayerActions playerControls;
 
     private PlayerMain playerMain;
@@ -61,7 +64,12 @@ public class PlayerInputHandler : MonoBehaviour
         playerControls.neutralUpHeavy = playerInput.actions["NeutralUpHeavy"];
         playerControls.forwardHeavy = playerInput.actions["ForwardHeavy"];
         playerControls.downHeavy = playerInput.actions["DownHeavy"];
-        
+        playerControls.neutralUpRanged = playerInput.actions["NeutralUpRanged"];
+        playerControls.forwardRanged = playerInput.actions["ForwardRanged"];
+        playerControls.downRanged = playerInput.actions["DownRanged"];
+
+
+
         playerControls.move.started += playerMain.Move;
         playerControls.move.canceled += playerMain.Move;
 
