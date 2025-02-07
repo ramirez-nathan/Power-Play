@@ -12,7 +12,7 @@ public class PlayerMain : MonoBehaviour
     public Transform spawnPoint;
     public int maxHealth = 100;
     public int currentHealth = 100;
-    public float moveSpeed = 10f;
+    public float moveSpeed = 8f;
     public int numStocks = 3;
     public Vector2 currentVelocity = Vector2.zero;
     public GameOverScreen gameOverScreen; // The game over screen
