@@ -305,6 +305,10 @@ public class PlayerMain : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerRigidBody.velocity *= 0.1f; // Reduce velocity after collision
+        }
         if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage"))
         {
             isOnFloor = true;

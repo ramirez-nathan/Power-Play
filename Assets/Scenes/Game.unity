@@ -327,6 +327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 216164063}
   - component: {fileID: 216164062}
+  - component: {fileID: 216164064}
   m_Layer: 0
   m_Name: CMCam
   m_TagString: Untagged
@@ -389,6 +390,21 @@ Transform:
   - {fileID: 291486858}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &216164064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216164061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d70cc20219cd84593f67d248eafe36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Offset: {x: 0, y: 4.7, z: 0}
+  m_ApplyAfter: 1
+  m_PreserveComposition: 0
 --- !u!1 &291486857
 GameObject:
   m_ObjectHideFlags: 3
@@ -1816,7 +1832,7 @@ GameObject:
   - component: {fileID: 1667594074}
   m_Layer: 0
   m_Name: Player 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2040,7 +2056,7 @@ GameObject:
   - component: {fileID: 1672198342}
   m_Layer: 0
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2149,7 +2165,7 @@ MonoBehaviour:
   playerJumpState: 0
   playerRigidBody: {fileID: 1672198333}
   playerInputHandler: {fileID: 0}
-  playerStateMachine: {fileID: 1672198342}
+  playerStateMachine: {fileID: 0}
   animator: {fileID: 0}
   isFacingRight: 1
   fellOffMap: 0
@@ -2484,7 +2500,7 @@ Transform:
   m_GameObject: {fileID: 1710004190}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.58, y: 0.79, z: -10.02741}
+  m_LocalPosition: {x: -3.58, y: 5.49, z: -10.02741}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

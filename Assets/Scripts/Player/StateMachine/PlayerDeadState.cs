@@ -60,8 +60,11 @@ public class PlayerDeadState : PlayerBaseState
         base.UpdateLogic();
         _sm.playerMain.fellOffMap = false;
         _sm.playerMain.isAlive = true;
+        _sm.playerMain.playerRigidBody.gravityScale = 0f;
+        _sm.playerMain.playerRigidBody.velocity = Vector3.zero;
         if (preRespawning)
         {
+            _sm.playerMain.playerRigidBody.velocity = Vector3.zero;
             preRespawnTimer -= Time.deltaTime;
             if (preRespawnTimer <= 0) 
             { 
@@ -71,7 +74,6 @@ public class PlayerDeadState : PlayerBaseState
         }
         else if (isRespawning && !preRespawning)
         {
-            _sm.playerMain.playerRigidBody.gravityScale = 0f;
             _sm.playerMain.transform.position = _sm.playerMain.spawnPoint.position;
             // replay respawn animation here
             respawnTimer -= Time.deltaTime;
@@ -88,6 +90,7 @@ public class PlayerDeadState : PlayerBaseState
             Debug.Log("Stopped Respawning");
             _sm.playerMain.currentHealth = 100;
             _sm.playerMain.playerRigidBody.gravityScale = 3f;
+
             _sm.ChangeState(_sm.playerMovingState);
         }
 

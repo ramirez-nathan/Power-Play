@@ -174,8 +174,6 @@ public class PlayerAttackingState : PlayerBaseState
                 }
                 break;
         }
-
-        
     }
 
     public override void UpdateLogic()
