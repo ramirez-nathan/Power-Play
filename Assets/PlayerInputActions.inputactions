@@ -60,6 +60,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ForwardRanged",
+                    "type": "Button",
+                    "id": "324a22e9-d248-462a-b934-35a8804f24e4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "NeutralUpRanged",
                     "type": "Button",
                     "id": "f8b1009b-ea1b-4fab-9b1f-90e61064254d",
@@ -72,15 +81,6 @@
                     "name": "ForwardHeavy",
                     "type": "Button",
                     "id": "6a840336-0e3d-43da-af78-a2765c997724",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ForwardRanged",
-                    "type": "Button",
-                    "id": "324a22e9-d248-462a-b934-35a8804f24e4",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -535,23 +535,23 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Binding",
-                    "id": "41ef4c74-0c14-4f24-bad2-ca858a4de09e",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ForwardRanged",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "Modifier",
                     "id": "104587b6-66ea-4638-91e5-c8bee79e2146",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Gamepad;Joystick",
+                    "action": "ForwardRanged",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Binding",
+                    "id": "41ef4c74-0c14-4f24-bad2-ca858a4de09e",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
                     "action": "ForwardRanged",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -573,7 +573,7 @@
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad;Joystick",
+                    "groups": ";Joystick;Gamepad",
                     "action": "ForwardRanged",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -584,7 +584,7 @@
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Gamepad;Joystick",
                     "action": "ForwardRanged",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -606,7 +606,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "ForwardRanged",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -617,7 +617,7 @@
                     "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "ForwardRanged",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -639,7 +639,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "ForwardRanged",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -650,7 +650,7 @@
                     "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "ForwardRanged",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -672,7 +672,7 @@
                     "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "NeutralUpRanged",
                     "isComposite": false,
                     "isPartOfComposite": false

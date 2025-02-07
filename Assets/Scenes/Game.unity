@@ -383,7 +383,7 @@ Transform:
   m_GameObject: {fileID: 216164061}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.58, y: 0.79, z: -10.02741}
+  m_LocalPosition: {x: -13.41, y: 1.08, z: -10.02741}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1890,8 +1890,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.003370881, y: -0.03371048}
-  m_Size: {x: 0.39995074, y: 0.66289425}
+  m_Offset: {x: -0.019921433, y: 0.014068388}
+  m_Size: {x: 0.54170674, y: 1.4024003}
   m_Direction: 0
 --- !u!50 &1667594070
 Rigidbody2D:
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   moveSpeed: 10
-  numStocks: 3
+  numStocks: 18
   currentVelocity: {x: 0, y: 0}
   gameOverScreen: {fileID: 0}
   deathSound: {fileID: 1475954239}
@@ -2188,7 +2188,7 @@ Transform:
   m_GameObject: {fileID: 1672198331}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.58, y: 0.79, z: -0.027409224}
+  m_LocalPosition: {x: -13.41, y: 1.08, z: -0.027409224}
   m_LocalScale: {x: 1.9204, y: 1.972, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2226,8 +2226,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.003370881, y: -0.03371048}
-  m_Size: {x: 0.39995074, y: 0.66289425}
+  m_Offset: {x: -0.019921433, y: 0.014068388}
+  m_Size: {x: 0.54170674, y: 1.4024003}
   m_Direction: 0
 --- !u!95 &1672198341
 Animator:
@@ -2500,7 +2500,7 @@ Transform:
   m_GameObject: {fileID: 1710004190}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.58, y: 5.49, z: -10.02741}
+  m_LocalPosition: {x: -13.41, y: 5.7799997, z: -10.02741}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

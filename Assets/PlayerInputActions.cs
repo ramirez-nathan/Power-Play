@@ -82,6 +82,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""ForwardRanged"",
+                    ""type"": ""Button"",
+                    ""id"": ""324a22e9-d248-462a-b934-35a8804f24e4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""NeutralUpRanged"",
                     ""type"": ""Button"",
                     ""id"": ""f8b1009b-ea1b-4fab-9b1f-90e61064254d"",
@@ -94,15 +103,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""ForwardHeavy"",
                     ""type"": ""Button"",
                     ""id"": ""6a840336-0e3d-43da-af78-a2765c997724"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ForwardRanged"",
-                    ""type"": ""Button"",
-                    ""id"": ""324a22e9-d248-462a-b934-35a8804f24e4"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -557,23 +557,23 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Binding"",
-                    ""id"": ""41ef4c74-0c14-4f24-bad2-ca858a4de09e"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ForwardRanged"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""Modifier"",
                     ""id"": ""104587b6-66ea-4638-91e5-c8bee79e2146"",
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Gamepad;Joystick"",
+                    ""action"": ""ForwardRanged"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Binding"",
+                    ""id"": ""41ef4c74-0c14-4f24-bad2-ca858a4de09e"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Joystick"",
                     ""action"": ""ForwardRanged"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -595,7 +595,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad;Joystick"",
+                    ""groups"": "";Joystick;Gamepad"",
                     ""action"": ""ForwardRanged"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -606,7 +606,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Gamepad;Joystick"",
                     ""action"": ""ForwardRanged"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -628,7 +628,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""ForwardRanged"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -639,7 +639,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""ForwardRanged"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -661,7 +661,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""ForwardRanged"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -672,7 +672,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""ForwardRanged"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -694,7 +694,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""NeutralUpRanged"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1823,9 +1823,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_ForwardLight = m_Player.FindAction("ForwardLight", throwIfNotFound: true);
         m_Player_DownLight = m_Player.FindAction("DownLight", throwIfNotFound: true);
         m_Player_NeutralUpHeavy = m_Player.FindAction("NeutralUpHeavy", throwIfNotFound: true);
+        m_Player_ForwardRanged = m_Player.FindAction("ForwardRanged", throwIfNotFound: true);
         m_Player_NeutralUpRanged = m_Player.FindAction("NeutralUpRanged", throwIfNotFound: true);
         m_Player_ForwardHeavy = m_Player.FindAction("ForwardHeavy", throwIfNotFound: true);
-        m_Player_ForwardRanged = m_Player.FindAction("ForwardRanged", throwIfNotFound: true);
         m_Player_DownHeavy = m_Player.FindAction("DownHeavy", throwIfNotFound: true);
         m_Player_DownRanged = m_Player.FindAction("DownRanged", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
@@ -1923,9 +1923,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ForwardLight;
     private readonly InputAction m_Player_DownLight;
     private readonly InputAction m_Player_NeutralUpHeavy;
+    private readonly InputAction m_Player_ForwardRanged;
     private readonly InputAction m_Player_NeutralUpRanged;
     private readonly InputAction m_Player_ForwardHeavy;
-    private readonly InputAction m_Player_ForwardRanged;
     private readonly InputAction m_Player_DownHeavy;
     private readonly InputAction m_Player_DownRanged;
     private readonly InputAction m_Player_Crouch;
@@ -1944,9 +1944,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @ForwardLight => m_Wrapper.m_Player_ForwardLight;
         public InputAction @DownLight => m_Wrapper.m_Player_DownLight;
         public InputAction @NeutralUpHeavy => m_Wrapper.m_Player_NeutralUpHeavy;
+        public InputAction @ForwardRanged => m_Wrapper.m_Player_ForwardRanged;
         public InputAction @NeutralUpRanged => m_Wrapper.m_Player_NeutralUpRanged;
         public InputAction @ForwardHeavy => m_Wrapper.m_Player_ForwardHeavy;
-        public InputAction @ForwardRanged => m_Wrapper.m_Player_ForwardRanged;
         public InputAction @DownHeavy => m_Wrapper.m_Player_DownHeavy;
         public InputAction @DownRanged => m_Wrapper.m_Player_DownRanged;
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
@@ -1982,15 +1982,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @NeutralUpHeavy.started += instance.OnNeutralUpHeavy;
             @NeutralUpHeavy.performed += instance.OnNeutralUpHeavy;
             @NeutralUpHeavy.canceled += instance.OnNeutralUpHeavy;
+            @ForwardRanged.started += instance.OnForwardRanged;
+            @ForwardRanged.performed += instance.OnForwardRanged;
+            @ForwardRanged.canceled += instance.OnForwardRanged;
             @NeutralUpRanged.started += instance.OnNeutralUpRanged;
             @NeutralUpRanged.performed += instance.OnNeutralUpRanged;
             @NeutralUpRanged.canceled += instance.OnNeutralUpRanged;
             @ForwardHeavy.started += instance.OnForwardHeavy;
             @ForwardHeavy.performed += instance.OnForwardHeavy;
             @ForwardHeavy.canceled += instance.OnForwardHeavy;
-            @ForwardRanged.started += instance.OnForwardRanged;
-            @ForwardRanged.performed += instance.OnForwardRanged;
-            @ForwardRanged.canceled += instance.OnForwardRanged;
             @DownHeavy.started += instance.OnDownHeavy;
             @DownHeavy.performed += instance.OnDownHeavy;
             @DownHeavy.canceled += instance.OnDownHeavy;
@@ -2037,15 +2037,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @NeutralUpHeavy.started -= instance.OnNeutralUpHeavy;
             @NeutralUpHeavy.performed -= instance.OnNeutralUpHeavy;
             @NeutralUpHeavy.canceled -= instance.OnNeutralUpHeavy;
+            @ForwardRanged.started -= instance.OnForwardRanged;
+            @ForwardRanged.performed -= instance.OnForwardRanged;
+            @ForwardRanged.canceled -= instance.OnForwardRanged;
             @NeutralUpRanged.started -= instance.OnNeutralUpRanged;
             @NeutralUpRanged.performed -= instance.OnNeutralUpRanged;
             @NeutralUpRanged.canceled -= instance.OnNeutralUpRanged;
             @ForwardHeavy.started -= instance.OnForwardHeavy;
             @ForwardHeavy.performed -= instance.OnForwardHeavy;
             @ForwardHeavy.canceled -= instance.OnForwardHeavy;
-            @ForwardRanged.started -= instance.OnForwardRanged;
-            @ForwardRanged.performed -= instance.OnForwardRanged;
-            @ForwardRanged.canceled -= instance.OnForwardRanged;
             @DownHeavy.started -= instance.OnDownHeavy;
             @DownHeavy.performed -= instance.OnDownHeavy;
             @DownHeavy.canceled -= instance.OnDownHeavy;
@@ -2304,9 +2304,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnForwardLight(InputAction.CallbackContext context);
         void OnDownLight(InputAction.CallbackContext context);
         void OnNeutralUpHeavy(InputAction.CallbackContext context);
+        void OnForwardRanged(InputAction.CallbackContext context);
         void OnNeutralUpRanged(InputAction.CallbackContext context);
         void OnForwardHeavy(InputAction.CallbackContext context);
-        void OnForwardRanged(InputAction.CallbackContext context);
         void OnDownHeavy(InputAction.CallbackContext context);
         void OnDownRanged(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);

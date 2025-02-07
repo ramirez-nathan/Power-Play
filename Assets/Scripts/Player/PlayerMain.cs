@@ -12,7 +12,7 @@ public class PlayerMain : MonoBehaviour
     public Transform spawnPoint;
     public int maxHealth = 100;
     public int currentHealth = 100;
-    public float moveSpeed = 8f;
+    public float moveSpeed = 9f;
     public int numStocks = 3;
     public Vector2 currentVelocity = Vector2.zero;
     public GameOverScreen gameOverScreen; // The game over screen
@@ -157,7 +157,7 @@ public class PlayerMain : MonoBehaviour
         else
         {
             // Perform a long hop
-            SetJumpVelocity(12f); // Higher jump force for regular hop
+            SetJumpVelocity(14f); // Higher jump force for regular hop
         }
     }
     // FixedUpdate is called on a fixed time interval for physics updates
@@ -201,15 +201,6 @@ public class PlayerMain : MonoBehaviour
             knockbackValue = 1.25f;
         }
     }
-    public void NeutralUpHeavy(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            isAttacking = true;
-            playerAttackType = PlayerAttackType.NeutralUpHeavy;
-            knockbackValue = 3f;
-        }
-    }
     public void ForwardHeavy(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -217,6 +208,15 @@ public class PlayerMain : MonoBehaviour
             isAttacking = true;
             playerAttackType = PlayerAttackType.ForwardHeavy;
             knockbackValue = 2.5f;
+        }
+    }
+    public void NeutralUpHeavy(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            isAttacking = true;
+            playerAttackType = PlayerAttackType.NeutralUpHeavy;
+            knockbackValue = 3f;
         }
     }
     public void DownHeavy(InputAction.CallbackContext context)
@@ -230,7 +230,8 @@ public class PlayerMain : MonoBehaviour
     }
     public void NeutralUpRanged(InputAction.CallbackContext context)
     {
-        if (context.started)
+        
+        if (context.started && moveInput.x == 0)
         {
             isAttacking = true;
             playerAttackType = PlayerAttackType.NeutralUpRanged;
@@ -241,6 +242,7 @@ public class PlayerMain : MonoBehaviour
     {
         if (context.started)
         {
+            Debug.Log("Got to subscribed forward ranged function");
             isAttacking = true;
             playerAttackType = PlayerAttackType.ForwardRanged;
             knockbackValue = 2.5f;
@@ -262,10 +264,6 @@ public class PlayerMain : MonoBehaviour
 
     private void FixedUpdate() // make this a virtual void 
     {
-        //currentVelocity.x = holdingMove ? 1 * moveSpeed : -1 * moveSpeed;
-        //playerRigidBody.velocity = currentVelocity;
-        //animator.SetFloat("xVelocity", Mathf.Abs(playerRigidBody.velocity.x));
-        //animator.SetFloat("yVelocity", playerRigidBody.velocity.y);
         if (playerJumpState == PlayerJumpState.JumpHeld) jumpFrameCounter++; // track frames that jump button is held for 
         if (jumpFrameCounter == 5 && playerState == PlayerState.Grounded) // bro took too long, long hop it is 
         {

@@ -125,6 +125,20 @@ public class PlayerAttackingState : PlayerBaseState
                     Debug.Log("playing down heavy attack");
                 }
                 break;
+            case PlayerMain.PlayerAttackType.ForwardRanged:
+                if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
+                {
+                    _sm.playerMain.animator.Play("PlayerBlasterAir");
+                    // set counterMax to animation length
+                    Debug.Log("playing forward ranged air attack");
+                }
+                else // Grounded
+                {
+                    // set counterMax to animation length
+                    _sm.playerMain.animator.Play("PlayerBlasterNeutral");
+                    Debug.Log("playing forward ranged attack");
+                }
+                break;
             case PlayerMain.PlayerAttackType.NeutralUpRanged:
 
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
@@ -142,23 +156,7 @@ public class PlayerAttackingState : PlayerBaseState
                     Debug.Log("playing neutral up ranged attack");
                 }
                 break;
-            case PlayerMain.PlayerAttackType.ForwardRanged:
-
-                if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
-                { 
-
-                    _sm.playerMain.animator.Play("PlayerBlasterAir");
-                    // set counterMax to animation length
-                    Debug.Log("playing forward ranged air attack");
-                }
-                else // Grounded
-                {
-                    
-                    // set counterMax to animation length
-                    _sm.playerMain.animator.Play("PlayerBlasterNeutral");
-                    Debug.Log("playing forward ranged attack");
-                }
-                break;
+            
             case PlayerMain.PlayerAttackType.DownRanged:
 
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
