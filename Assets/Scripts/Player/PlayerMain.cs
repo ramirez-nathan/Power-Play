@@ -76,8 +76,8 @@ public class PlayerMain : MonoBehaviour
     public bool shortHop = false;
 
     // Out of bounds range, x = +- 11, y = -7
-    private float outOfBoundsXLeft = -11f;
-    private float outOfBoundsXRight = 11f;
+    private float outOfBoundsXLeft = -61f;
+    private float outOfBoundsXRight = 61f;
     private float outOfBoundsY = -7f;
 
     private void Awake()
