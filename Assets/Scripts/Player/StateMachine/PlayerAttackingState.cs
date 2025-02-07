@@ -130,7 +130,7 @@ public class PlayerAttackingState : PlayerBaseState
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
                     
-                    //_sm.playerMain.animator.Play("");
+                    _sm.playerMain.animator.Play("PlayerBlasterAirUp");
                     // set counterMax to animation length
                     Debug.Log("playing neutral up ranged attack");
                 }
@@ -138,6 +138,7 @@ public class PlayerAttackingState : PlayerBaseState
                 {
                     
                     // set counterMax to animation length
+                    _sm.playerMain.animator.Play("PlayerBlasterUp");
                     Debug.Log("playing neutral up ranged attack");
                 }
                 break;
@@ -146,7 +147,7 @@ public class PlayerAttackingState : PlayerBaseState
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 { 
 
-                    //_sm.playerMain.animator.Play("");
+                    _sm.playerMain.animator.Play("PlayerBlasterAir");
                     // set counterMax to animation length
                     Debug.Log("playing forward ranged air attack");
                 }
@@ -154,6 +155,7 @@ public class PlayerAttackingState : PlayerBaseState
                 {
                     
                     // set counterMax to animation length
+                    _sm.playerMain.animator.Play("PlayerBlasterNeutral");
                     Debug.Log("playing forward ranged attack");
                 }
                 break;
@@ -162,7 +164,7 @@ public class PlayerAttackingState : PlayerBaseState
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
                     
-                    //_sm.playerMain.animator.Play("PlayerKatanaAirHeavyUp");
+                    _sm.playerMain.animator.Play("PlayerBlasterAirDown");
                     // set counterMax to animation length
                     Debug.Log("playing down ranged air attack");
                 }
