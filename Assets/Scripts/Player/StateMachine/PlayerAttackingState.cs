@@ -98,6 +98,7 @@ public class PlayerAttackingState : PlayerBaseState
                 {
                     
                     // set counterMax to animation length
+                    _sm.playerMain.animator.Play("PlayerKatanaAirForwardHeavy");
                     Debug.Log("playing forward heavy air attack");
                 }
                 else // Grounded
@@ -115,6 +116,7 @@ public class PlayerAttackingState : PlayerBaseState
                 {
                     
                     // set counterMax to animation length
+                    _sm.playerMain.animator.Play("PlayerKatanaAirDownHeavy");
                     Debug.Log("playing down heavy air attack");
                 }
                 else // Grounded
