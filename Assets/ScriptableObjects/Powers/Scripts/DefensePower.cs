@@ -10,5 +10,13 @@ public class DefensePower : PowerObject
         type = PowerType.Defense;
     }
 
-    
+    public override void EquipPower(GameObject player)
+    {
+
+    }
+
+    public override void UnequipPower(GameObject player)
+    {
+
+    }
 }

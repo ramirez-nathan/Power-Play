@@ -10,5 +10,13 @@ public class UniquePower : PowerObject
         type = PowerType.Unique;
     }
 
-    
+    public override void EquipPower(GameObject player)
+    {
+
+    }
+
+    public override void UnequipPower(GameObject player)
+    {
+
+    }
 }

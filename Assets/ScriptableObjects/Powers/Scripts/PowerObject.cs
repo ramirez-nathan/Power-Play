@@ -10,9 +10,11 @@ public enum PowerType
 }
 public abstract class PowerObject : ScriptableObject
 {
-    public GameObject prefab;
+    public Sprite uiDisplay;
     public PowerType type;
-    public string name;
-    [TextArea(15, 20)]
-    public string description;
+    public string powerName;
+    [TextArea(15, 20)] public string description;
+
+    public abstract void EquipPower(GameObject player);
+    public abstract void UnequipPower(GameObject player);
 }

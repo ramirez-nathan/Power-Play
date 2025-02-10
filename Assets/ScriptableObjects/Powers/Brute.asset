@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0526d0a91b12dc4e9fd5b340ab64b91, type: 3}
-  m_Name: Keep_the_Pressure
+  m_Script: {fileID: 11500000, guid: fce875850489b8942938e21ca18f9667, type: 3}
+  m_Name: Brute
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
-  type: 0
-  powerName: Keep the Pressure
-  description: '+ 4 damage
-
-    Every consecutive strike landed without being hit
-    adds +1 damage to your strikes.'
+  type: 1
+  powerName: Brute
+  description: "+ 20% Dmg Reduction\n-10% Move Speed\nYou are tankier, but move slower.
+    \n"
