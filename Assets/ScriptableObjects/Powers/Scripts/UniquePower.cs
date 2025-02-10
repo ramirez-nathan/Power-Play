@@ -1,0 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+[CreateAssetMenu(fileName = "New Power", menuName = "Power System/Powers/Unique")]
+public class UniquePower : PowerObject
+{
+    
+    void Awake()
+    {
+        type = PowerType.Unique;
+    }
+
+    
+}
