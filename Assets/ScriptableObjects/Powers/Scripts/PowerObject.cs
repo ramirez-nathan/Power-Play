@@ -17,4 +17,6 @@ public abstract class PowerObject : ScriptableObject
 
     public abstract void EquipPower(GameObject player);
     public abstract void UnequipPower(GameObject player);
+
+    public abstract void UpdateLogic(GameObject player);
 }

@@ -10,6 +10,10 @@ public class PlayerBaseState
     public float counter;
     protected PlayerStateMachine playerStateMachine;
     public bool isLockAnimating = false;
+
+    // increment this every time player hits the other player
+    // reset to 0 when hit
+    public int hitStreak = 0; 
     // Start is called before the first frame update
     public PlayerBaseState(string name, PlayerStateMachine stateMachine)
     {

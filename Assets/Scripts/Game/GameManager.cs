@@ -8,6 +8,13 @@ public class GameManager : MonoBehaviour
     public LoadoutObject player1Loadout;
     public LoadoutObject player2Loadout;
 
+
+    void Start()
+    {
+        //player1Loadout.ClearLoadout();
+        //player2Loadout.ClearLoadout();
+    }
+
     private void Awake()
     {
         if (Instance == null)

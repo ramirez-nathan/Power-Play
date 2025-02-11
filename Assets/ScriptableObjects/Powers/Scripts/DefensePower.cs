@@ -19,4 +19,8 @@ public class DefensePower : PowerObject
     {
 
     }
+    public override void UpdateLogic(GameObject player)
+    {
+
+    }
 }

@@ -26,6 +26,14 @@ public class LoadoutObject : ScriptableObject
             Container.Remove(power);
         }
     }
+    void OnApplicationQuit()
+    {
+        Container.Clear(); // Clear the loadout when quitting the game
+    }
+    private void OnDisable()
+    {
+        Container.Clear();
+    }
 
 }
 
@@ -38,14 +46,5 @@ public class LoadoutSlot
     {
         this.power = power;
     }
-    // Dunno if these 2 functions below belong here, they would probably
-    // belong somewhere in the panel containing all the selectable powers
-    public void EquipPower()
-    {
-        isEquippable = false;
-    }
-    public void UnequipPower()
-    {
-        isEquippable = true;
-    }
+    
 }

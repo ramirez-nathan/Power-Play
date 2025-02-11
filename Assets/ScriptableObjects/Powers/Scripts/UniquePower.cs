@@ -19,4 +19,8 @@ public class UniquePower : PowerObject
     {
 
     }
+    public override void UpdateLogic(GameObject player)
+    {
+
+    }
 }

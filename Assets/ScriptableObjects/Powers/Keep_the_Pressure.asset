@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
   type: 0
-  powerName: Keep the Pressure
-  description: '+ 4 damage
+  powerName: KTP
+  description: 'Keep the Pressure
 
-    Every consecutive strike landed without being hit
-    adds +1 damage to your strikes.'
+    + 4 damage
+
+    Every consecutive strike landed
+    without being hit adds +1 damage to your strikes. Resets after being hit.'

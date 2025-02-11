@@ -19,5 +19,8 @@ public class AttackPower : PowerObject
     {
         
     }
+    public override void UpdateLogic(GameObject player)
+    {
 
+    }
 }

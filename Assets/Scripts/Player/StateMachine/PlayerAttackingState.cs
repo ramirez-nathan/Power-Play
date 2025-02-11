@@ -114,7 +114,7 @@ public class PlayerAttackingState : PlayerBaseState
 
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
-                    
+                    counterMax = 1.08f;
                     // set counterMax to animation length
                     _sm.playerMain.animator.Play("PlayerKatanaAirDownHeavy");
                     Debug.Log("playing down heavy air attack");
