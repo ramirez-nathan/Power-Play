@@ -1989,6 +1989,7 @@ MonoBehaviour:
   currentHealth: 100
   moveSpeed: 10
   numStocks: 18
+  damage: 5
   currentVelocity: {x: 0, y: 0}
   gameOverScreen: {fileID: 0}
   deathSound: {fileID: 1475954239}
@@ -2050,8 +2051,9 @@ GameObject:
   - component: {fileID: 1672198336}
   - component: {fileID: 1672198335}
   - component: {fileID: 1672198334}
-  - component: {fileID: 1672198333}
+  - component: {fileID: 1672198343}
   - component: {fileID: 1672198340}
+  - component: {fileID: 1672198333}
   - component: {fileID: 1672198341}
   - component: {fileID: 1672198342}
   m_Layer: 0
@@ -2157,6 +2159,7 @@ MonoBehaviour:
   currentHealth: 100
   moveSpeed: 10
   numStocks: 16
+  damage: 5
   currentVelocity: {x: 0, y: 0}
   gameOverScreen: {fileID: 0}
   deathSound: {fileID: 1475954239}
@@ -2263,6 +2266,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMain: {fileID: 1672198335}
+--- !u!70 &1672198343
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672198331}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.009328418, y: -0.04898438}
+  m_Size: {x: 0.28445902, y: 0.88908696}
+  m_Direction: 1
 --- !u!1 &1683673780
 GameObject:
   m_ObjectHideFlags: 0
