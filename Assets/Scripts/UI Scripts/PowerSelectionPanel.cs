@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PowerSelectionPanel : MonoBehaviour
@@ -10,45 +11,15 @@ public class PowerSelectionPanel : MonoBehaviour
     [SerializeField] public int playerIndex = 0;
 
     public List<PowerObject> availablePowers; // List of all selectable powers
-    private List<GameObject> spawnedButtons = new List<GameObject>();
-
-    void Start()
-    {
-        PopulatePowerButtons();
-    }
-
-    void PopulatePowerButtons()
-    {
-        // Clear any existing buttons before repopulating
-        foreach (var btn in spawnedButtons)
-        {
-            Destroy(btn);
-        }
-        spawnedButtons.Clear();
-
-        foreach (var power in availablePowers)
-        {
-            GameObject buttonObj = Instantiate(powerButtonPrefab, powerButtonContainer);
-            Button btn = buttonObj.GetComponent<Button>();
-            btn.onClick.AddListener(() => SelectPower(power));
-
-            Text buttonText = buttonObj.GetComponentInChildren<Text>();
-
-            if (buttonText != null)
-            {
-                buttonText.text = power.name;
-            }
-
-            spawnedButtons.Add(buttonObj);
-        }
-    }
+    public PlayerInput playerInput; // Reference to player input
 
     public void SelectPower(PowerObject power)
     {
+        InputDevice device = playerInput.devices
         if (playerLoadout.AddPower(power))
         {
             Debug.Log($"{power.powerName} added to Player {playerIndex}'s loadout!");
-            UpdateUI();
+            
         }
         else
         {
@@ -60,7 +31,7 @@ public class PowerSelectionPanel : MonoBehaviour
     {
         playerLoadout.RemovePower(power);
         Debug.Log($"{power.powerName} removed from loadout.");
-        UpdateUI();
+        
     }
 
     public void ConfirmLoadoutSelection()
