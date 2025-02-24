@@ -325,5 +325,8 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
+    // Attack and damage system
+
+
 
 }
