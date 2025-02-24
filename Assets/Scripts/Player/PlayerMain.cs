@@ -153,12 +153,12 @@ public class PlayerMain : MonoBehaviour
         if (isShortHop)
         {
             // Perform a short hop
-            SetJumpVelocity(8f); // Lower jump force for short hop
+            SetJumpVelocity(10f); // Lower jump force for short hop (originally 8f)
         }
         else
         {
             // Perform a long hop
-            SetJumpVelocity(14f); // Higher jump force for regular hop
+            SetJumpVelocity(17f); // Higher jump force for regular hop (originally 14f)
         }
     }
     // FixedUpdate is called on a fixed time interval for physics updates
