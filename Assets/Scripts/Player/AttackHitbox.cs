@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class AttackHitbox : MonoBehaviour
 {
-    // Detects collisions & applies damage
-    [Header("Attack Settings")]
-    public int damage = 10;
-    public float knockbackForce = 5f;
-    public Vector2 knockbackDirection = Vector2.right;
-    public LayerMask enemyLayer; // Only detect enemies
-    private HashSet<GameObject> hitEnemies = new HashSet<GameObject>(); // Prevents multiple hits per frame
+    private float damage;
+    private float knockbackForce;
+    private Vector2 knockbackDirection;
+    private HashSet<GameObject> hitEnemies = new HashSet<GameObject>(); // Prevents multiple hits
 
-    public void Initialize(int attackDamage, float attackKnockback, Vector2 direction)
+    public void Initialize(float attackDamage, float attackKnockback, Vector2 direction)
     {
         damage = attackDamage;
         knockbackForce = attackKnockback;
@@ -21,16 +18,17 @@ public class AttackHitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (((1 << collision.gameObject.layer) & enemyLayer) != 0) // LayerMask filtering
+        if (collision.CompareTag("Enemy"))
         {
-            if (!hitEnemies.Contains(collision.gameObject)) // Prevent multiple hits
+            if (!hitEnemies.Contains(collision.gameObject))
             {
                 hitEnemies.Add(collision.gameObject);
 
                 //EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
                 //if (enemy != null)
                 //{
-                //    enemy.TakeDamage(damage, knockbackDirection * knockbackForce);
+                //    Vector2 finalKnockback = knockbackDirection * knockbackForce;
+                //    enemy.TakeDamage(damage, finalKnockback);
                 //}
             }
         }
@@ -38,6 +36,6 @@ public class AttackHitbox : MonoBehaviour
 
     private void OnEnable()
     {
-        hitEnemies.Clear(); // Reset hit list when hitbox is reactivated
+        hitEnemies.Clear(); // Reset for the next attack
     }
 }
