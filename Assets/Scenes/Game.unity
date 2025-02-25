@@ -2056,6 +2056,8 @@ GameObject:
   - component: {fileID: 1672198333}
   - component: {fileID: 1672198341}
   - component: {fileID: 1672198342}
+  - component: {fileID: 1672198345}
+  - component: {fileID: 1672198344}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -2301,6 +2303,39 @@ CapsuleCollider2D:
   m_Offset: {x: 0.55743843, y: 0.3948429}
   m_Size: {x: 1.9382215, y: 1.7942686}
   m_Direction: 1
+--- !u!114 &1672198344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672198331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f8c356366f44e40898c779abe7d9dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  knockbackForce: 5
+  knockbackDirection: {x: 1, y: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &1672198345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672198331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46cc77c83cf7674787c24a6f5093141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAttack: {fileID: 0}
+  hitboxPrefab: {fileID: 0}
+  hitboxSpawnPoint: {fileID: 0}
 --- !u!1 &1683673780
 GameObject:
   m_ObjectHideFlags: 0

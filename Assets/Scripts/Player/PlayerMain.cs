@@ -14,7 +14,7 @@ public class PlayerMain : MonoBehaviour
     public int currentHealth = 100;
     public float moveSpeed = 9f;
     public int numStocks = 3;
-    public float damage = 5f;
+    //public float damage = 5f;
     public Vector2 currentVelocity = Vector2.zero;
     public GameOverScreen gameOverScreen; // The game over screen
     public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
@@ -325,7 +325,6 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
-    // Attack and damage system
 
 
 
