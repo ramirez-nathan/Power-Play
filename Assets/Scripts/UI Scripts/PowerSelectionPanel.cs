@@ -15,7 +15,7 @@ public class PowerSelectionPanel : MonoBehaviour
 
     public void SelectPower(PowerObject power)
     {
-        InputDevice device = playerInput.devices
+        
         if (playerLoadout.AddPower(power))
         {
             Debug.Log($"{power.powerName} added to Player {playerIndex}'s loadout!");
