@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHitboxHandler : MonoBehaviour
+public class AttackHitbox : MonoBehaviour
 {
     // Detects collisions & applies damage
     [Header("Attack Settings")]

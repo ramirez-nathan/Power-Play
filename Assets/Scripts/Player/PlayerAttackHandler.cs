@@ -35,9 +35,22 @@ public class PlayerAttackHandler : MonoBehaviour
         //    hitboxScript.Initialize(attack.damage, attack.knockbackForce, attack.knockbackDirection);
         //}
 
-        yield return new WaitForSeconds(attack.hitboxDuration);
+        //yield return new WaitForSeconds(attack.hitboxDuration);
 
         Destroy(hitbox);
         isAttacking = false;
+    }
+
+    // ?? This function is called via Animation Event at the correct frame
+    public void ApplyAttackProperties()
+    {
+        if (currentAttack == null)
+        {
+            Debug.LogWarning("No attack data assigned!");
+            return;
+        }
+
+        // Pass attack properties to the hitbox
+       // PlayerHitboxHandler.Initialize(currentAttack.damage, currentAttack.knockbackForce, currentAttack.knockbackDirection);
     }
 }
