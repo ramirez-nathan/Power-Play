@@ -24,12 +24,12 @@ public class AttackHitbox : MonoBehaviour
             {
                 hitEnemies.Add(collision.gameObject);
 
-                //EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
-                //if (enemy != null)
-                //{
-                //    Vector2 finalKnockback = knockbackDirection * knockbackForce;
-                //    enemy.TakeDamage(damage, finalKnockback);
-                //}
+                PlayerMain enemy = collision.GetComponent<PlayerMain>();
+                if (enemy != null)
+                {
+                    Vector2 finalKnockback = knockbackDirection * knockbackForce;
+                    enemy.TakeDamage(damage, finalKnockback);
+                }
             }
         }
     }

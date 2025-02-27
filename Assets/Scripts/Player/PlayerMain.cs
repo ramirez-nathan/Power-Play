@@ -325,6 +325,24 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
+    // damage hotfix, will probably need refactoring
+    public void TakeDamage(float damage, Vector2 knockback)
+    {
+        currentHealth -= (int)damage;
+        Debug.Log($"{gameObject.name} took {damage} damage! Remaining HP: {currentHealth}");
+
+        if (playerRigidBody != null)
+        {
+            playerRigidBody.velocity = Vector2.zero;
+            playerRigidBody.AddForce(knockback, ForceMode2D.Impulse);
+        }
+
+        //if (currentHealth <= 0)
+        //{
+        //    KillPlayer();
+        //}
+    }
+
 
 
 
