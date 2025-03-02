@@ -11,46 +11,46 @@ public class PlayerAttackHandler : MonoBehaviour
 
     private bool isAttacking = false;
 
-    public void PerformAttack(AttackData attack)
-    {
-        if (!isAttacking)
-        {
-            StartCoroutine(ExecuteAttack(attack));
-        }
-    }
+    //public void PerformAttack(AttackData attack)
+    //{
+    //    if (!isAttacking)
+    //    {
+    //        StartCoroutine(ExecuteAttack(attack));
+    //    }
+    //}
 
-    private IEnumerator ExecuteAttack(AttackData attack)
-    {
-        isAttacking = true;
-        currentAttack = attack;
+    //private IEnumerator ExecuteAttack(AttackData attack)
+    //{
+    //    isAttacking = true;
+    //    currentAttack = attack;
 
-        yield return new WaitForSeconds(0.1f); // Small delay for animation timing
+    //    yield return new WaitForSeconds(0.1f); // Small delay for animation timing
 
-        // Spawn hitbox
-        GameObject hitbox = Instantiate(hitboxPrefab, hitboxSpawnPoint.position, Quaternion.identity);
-        // AttackHitbox hitboxScript = hitbox.GetComponent<AttackHitbox>();
+    //    // Spawn hitbox
+    //    GameObject hitbox = Instantiate(hitboxPrefab, hitboxSpawnPoint.position, Quaternion.identity);
+    //    // AttackHitbox hitboxScript = hitbox.GetComponent<AttackHitbox>();
 
-        //if (hitboxScript != null)
-        //{
-        //    hitboxScript.Initialize(attack.damage, attack.knockbackForce, attack.knockbackDirection);
-        //}
+    //    //if (hitboxScript != null)
+    //    //{
+    //    //    hitboxScript.Initialize(attack.damage, attack.knockbackForce, attack.knockbackDirection);
+    //    //}
 
-        //yield return new WaitForSeconds(attack.hitboxDuration);
+    //    //yield return new WaitForSeconds(attack.hitboxDuration);
 
-        Destroy(hitbox);
-        isAttacking = false;
-    }
+    //    Destroy(hitbox);
+    //    isAttacking = false;
+    //}
 
-    // ?? This function is called via Animation Event at the correct frame
-    public void ApplyAttackProperties()
-    {
-        if (currentAttack == null)
-        {
-            Debug.LogWarning("No attack data assigned!");
-            return;
-        }
+    //// ?? This function is called via Animation Event at the correct frame
+    //public void ApplyAttackProperties()
+    //{
+    //    if (currentAttack == null)
+    //    {
+    //        Debug.LogWarning("No attack data assigned!");
+    //        return;
+    //    }
 
         // Pass attack properties to the hitbox
        // PlayerHitboxHandler.Initialize(currentAttack.damage, currentAttack.knockbackForce, currentAttack.knockbackDirection);
-    }
+    //}
 }
