@@ -9,7 +9,7 @@ public class AttackData : ScriptableObject
     public string attackName;
     public float damage;
     public float knockbackForce;
-    public Vector2 knockbackDirection;
+    // public Vector2 knockbackDirection;  // This is redundant since all we need is knockbackForce
     // public float hitboxDuration;       // Probably wont need this since we took care of it in unity animations
     public string animationName;
 }
