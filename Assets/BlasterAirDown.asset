@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98a11d85c3de46849aaaa6c5e20cb661, type: 3}
-  m_Name: New Attack
+  m_Name: BlasterAirDown
   m_EditorClassIdentifier: 
   attackName: 
   damage: 0
