@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a11d85c3de46849aaaa6c5e20cb661, type: 3}
   m_Name: BlasterAir
   m_EditorClassIdentifier: 
-  attackName: 
-  damage: 0
-  knockbackForce: 0
-  knockbackDirection: {x: 0, y: 0}
-  animationName: 
+  attackName: BlasterAir
+  damage: 5
+  knockbackForce: 2

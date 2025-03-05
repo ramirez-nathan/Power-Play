@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a11d85c3de46849aaaa6c5e20cb661, type: 3}
   m_Name: KatanaAirAttackDown
   m_EditorClassIdentifier: 
-  attackName: 
-  damage: 0
-  knockbackForce: 0
-  animationName: 
+  attackName: KatanaAirAttackDown
+  damage: 10
+  knockbackForce: 3
