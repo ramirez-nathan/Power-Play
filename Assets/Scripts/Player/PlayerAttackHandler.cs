@@ -8,6 +8,7 @@ public class PlayerAttackHandler : MonoBehaviour
     public AttackData currentAttack;
     public GameObject hitboxPrefab;
     public Transform hitboxSpawnPoint;
+    public PlayerMain player;
 
     private bool isAttacking = false;
 
@@ -50,7 +51,36 @@ public class PlayerAttackHandler : MonoBehaviour
     //        return;
     //    }
 
-        // Pass attack properties to the hitbox
-       // PlayerHitboxHandler.Initialize(currentAttack.damage, currentAttack.knockbackForce, currentAttack.knockbackDirection);
+    // Pass attack properties to the hitbox
+    // PlayerHitboxHandler.Initialize(currentAttack.damage, currentAttack.knockbackForce, currentAttack.knockbackDirection);
     //}
+
+    public void TakeDamage(int damage, Vector2 knockbackDirection, float knockbackForce)
+    {
+        if (!player.isAlive) return; // Prevent multiple deaths
+
+        // Reduce health
+        player.currentHealth -= damage;
+
+        // Apply knockback
+        Knockback(knockbackDirection, knockbackForce);
+
+        // If health reaches 0, handle death
+        if (player.currentHealth <= 0)
+        {
+            // HandleDeath();   // This should be a call to kill player,we should already have this somewhere
+        }
+    }
+
+    private void Knockback(Vector2 direction, float force)
+    {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero; // Reset previous movement
+            rb.AddForce(direction * force, ForceMode2D.Impulse);
+        }
+    }
+
+
 }
