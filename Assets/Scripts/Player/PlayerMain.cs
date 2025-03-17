@@ -14,7 +14,7 @@ public class PlayerMain : MonoBehaviour
     public int currentHealth = 100;
     public float moveSpeed = 9f;
     public int numStocks = 3;
-    public float damage = 5f;
+    //public float damage = 5f;
     public Vector2 currentVelocity = Vector2.zero;
     public GameOverScreen gameOverScreen; // The game over screen
     public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
@@ -325,7 +325,24 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
-    // Attack and damage system
+    // damage hotfix, will probably need refactoring
+    public void TakeDamage(float damage, Vector2 knockback)
+    {
+        currentHealth -= (int)damage;
+        Debug.Log($"{gameObject.name} took {damage} damage! Remaining HP: {currentHealth}");
+
+        if (playerRigidBody != null)
+        {
+            playerRigidBody.velocity = Vector2.zero;
+            playerRigidBody.AddForce(knockback, ForceMode2D.Impulse);
+        }
+
+        //if (currentHealth <= 0)
+        //{
+        //    KillPlayer();
+        //}
+    }
+
 
 
 
