@@ -12,48 +12,10 @@ public class PlayerAttackHandler : MonoBehaviour
 
     private bool isAttacking = false;
 
-    //public void PerformAttack(AttackData attack)
-    //{
-    //    if (!isAttacking)
-    //    {
-    //        StartCoroutine(ExecuteAttack(attack));
-    //    }
-    //}
-
-    //private IEnumerator ExecuteAttack(AttackData attack)
-    //{
-    //    isAttacking = true;
-    //    currentAttack = attack;
-
-    //    yield return new WaitForSeconds(0.1f); // Small delay for animation timing
-
-    //    // Spawn hitbox
-    //    GameObject hitbox = Instantiate(hitboxPrefab, hitboxSpawnPoint.position, Quaternion.identity);
-    //    // AttackHitbox hitboxScript = hitbox.GetComponent<AttackHitbox>();
-
-    //    //if (hitboxScript != null)
-    //    //{
-    //    //    hitboxScript.Initialize(attack.damage, attack.knockbackForce, attack.knockbackDirection);
-    //    //}
-
-    //    //yield return new WaitForSeconds(attack.hitboxDuration);
-
-    //    Destroy(hitbox);
-    //    isAttacking = false;
-    //}
-
-    //// ?? This function is called via Animation Event at the correct frame
-    //public void ApplyAttackProperties()
-    //{
-    //    if (currentAttack == null)
-    //    {
-    //        Debug.LogWarning("No attack data assigned!");
-    //        return;
-    //    }
-
-    // Pass attack properties to the hitbox
-    // PlayerHitboxHandler.Initialize(currentAttack.damage, currentAttack.knockbackForce, currentAttack.knockbackDirection);
-    //}
+    // What should a player have? when an input gets called, an animation plays, a hitbox gets activated, and attack logic gets applied (damage and knockback)
+    // This file should deal with the attack logic
+    // So what do we need for attack logic?
+    // We should pass in the current attack (which is a scriptable object) giving us their damage and knockback values
 
     public void TakeDamage(int damage, Vector2 knockbackDirection, float knockbackForce)
     {
