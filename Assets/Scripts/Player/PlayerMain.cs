@@ -14,7 +14,7 @@ public class PlayerMain : MonoBehaviour
     public int currentHealth = 100;
     public float moveSpeed = 9f;
     public int numStocks = 3;
-    //public float damage = 5f;
+    public float damage = 5f;
     public Vector2 currentVelocity = Vector2.zero;
     public GameOverScreen gameOverScreen; // The game over screen
     public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
@@ -181,6 +181,7 @@ public class PlayerMain : MonoBehaviour
             isAttacking = true;
             playerAttackType = PlayerAttackType.NeutralLight;
             knockbackValue = 0.5f;
+            damage = 10f;
         }
     }
     public void ForwardLight(InputAction.CallbackContext context)
@@ -190,6 +191,7 @@ public class PlayerMain : MonoBehaviour
             isAttacking = true;
             playerAttackType = PlayerAttackType.ForwardLight;
             knockbackValue = 1.5f;
+            damage = 10f;
         }
 
     }
@@ -200,6 +202,7 @@ public class PlayerMain : MonoBehaviour
             isAttacking = true;
             playerAttackType = PlayerAttackType.DownLight;
             knockbackValue = 1.25f;
+            damage = 10f;
         }
     }
     public void ForwardHeavy(InputAction.CallbackContext context)
@@ -209,6 +212,7 @@ public class PlayerMain : MonoBehaviour
             isAttacking = true;
             playerAttackType = PlayerAttackType.ForwardHeavy;
             knockbackValue = 2.5f;
+            damage = 20f;
         }
     }
     public void NeutralUpHeavy(InputAction.CallbackContext context)
@@ -218,6 +222,7 @@ public class PlayerMain : MonoBehaviour
             isAttacking = true;
             playerAttackType = PlayerAttackType.NeutralUpHeavy;
             knockbackValue = 3f;
+            damage = 20f;
         }
     }
     public void DownHeavy(InputAction.CallbackContext context)
@@ -227,6 +232,7 @@ public class PlayerMain : MonoBehaviour
             isAttacking = true;
             playerAttackType = PlayerAttackType.DownHeavy;
             knockbackValue = 2.5f;
+            damage = 20f;
         }
     }
     public void NeutralUpRanged(InputAction.CallbackContext context)
@@ -237,6 +243,7 @@ public class PlayerMain : MonoBehaviour
             isAttacking = true;
             playerAttackType = PlayerAttackType.NeutralUpRanged;
             knockbackValue = 3f;
+            damage = 20f;
         }
     }
     public void ForwardRanged(InputAction.CallbackContext context)
@@ -247,6 +254,7 @@ public class PlayerMain : MonoBehaviour
             isAttacking = true;
             playerAttackType = PlayerAttackType.ForwardRanged;
             knockbackValue = 2.5f;
+            damage = 10f;
         }
     }
     public void DownRanged(InputAction.CallbackContext context)
@@ -256,6 +264,7 @@ public class PlayerMain : MonoBehaviour
             isAttacking = true;
             playerAttackType = PlayerAttackType.DownRanged;
             knockbackValue = 2.5f;
+            damage = 10f;
         }
     }
 

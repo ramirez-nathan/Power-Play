@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerAttackHandler : MonoBehaviour
 {
     [Header("Attack Settings")]
-    public AttackData currentAttack;
-    public GameObject hitboxPrefab;
+    public AttackData currentAttack;               // Stores the current active attack
+    public CapsuleCollider2D hitboxCollider;       // Reference to our current attack hitbox
     public Transform hitboxSpawnPoint;
-    public PlayerMain player;
+    public PlayerMain player;                      // Reference to our player
 
     private bool isAttacking = false;
 

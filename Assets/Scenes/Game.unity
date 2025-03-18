@@ -2054,8 +2054,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAttack: {fileID: 0}
-  hitboxPrefab: {fileID: 0}
+  hitboxCollider: {fileID: 0}
   hitboxSpawnPoint: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &1667594076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2355,8 +2356,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAttack: {fileID: 0}
-  hitboxPrefab: {fileID: 0}
+  hitboxCollider: {fileID: 1672198343}
   hitboxSpawnPoint: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &1683673780
 GameObject:
   m_ObjectHideFlags: 0
