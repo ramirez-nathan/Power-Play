@@ -19,8 +19,8 @@ public class PlayerMain : MonoBehaviour
     public GameOverScreen gameOverScreen; // The game over screen
     public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
     private bool controllerConnected = false;
+    public LoadoutObject powerLoadout;
     
-
     [SerializeField]
     private int playerIndex = 0; // index to differentiate the 2 players
     public enum PlayerState
@@ -98,6 +98,7 @@ public class PlayerMain : MonoBehaviour
         playerStateMachine = GetComponent<PlayerStateMachine>();
         playerStateMachine.Initialize(this); // Pass the PlayerMain instance
         animator = GetComponent<Animator>();              // Initializing the animator
+        powerLoadout = playerIndex == 0 ? GameManager.Instance.player1Loadout : GameManager.Instance.player2Loadout;  
     }
 
     public void Initialize(PlayerInputHandler pInputHandler)
@@ -153,12 +154,12 @@ public class PlayerMain : MonoBehaviour
         if (isShortHop)
         {
             // Perform a short hop
-            SetJumpVelocity(8f); // Lower jump force for short hop
+            SetJumpVelocity(10f); // Lower jump force for short hop (originally 8f)
         }
         else
         {
             // Perform a long hop
-            SetJumpVelocity(14f); // Higher jump force for regular hop
+            SetJumpVelocity(17f); // Higher jump force for regular hop (originally 14f)
         }
     }
     // FixedUpdate is called on a fixed time interval for physics updates

@@ -1,76 +1,69 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PowerSelectionPanel : MonoBehaviour
 {
-    public LoadoutObject playerLoadout;
+    public LoadoutObject player1Loadout;
+    public LoadoutObject player2Loadout;
     public Transform powerButtonContainer; // Panel that holds power buttons
     public GameObject powerButtonPrefab; // Prefab for UI buttons
     [SerializeField] public int playerIndex = 0;
 
     public List<PowerObject> availablePowers; // List of all selectable powers
-    private List<GameObject> spawnedButtons = new List<GameObject>();
 
-    void Start()
+    public void ChangePlayerIndex(int index)
     {
-        PopulatePowerButtons();
+        // If it's already the same, no need to do anything
+        if (playerIndex == index)
+        {
+            return;
+        }
+        // Otherwise, update the index and log
+        playerIndex = index;
+        Debug.Log($"Power selection panel updated for Player {index}");
     }
 
-    void PopulatePowerButtons()
+    public void SelectPower(PowerObject power, int playerIndex)
     {
-        // Clear any existing buttons before repopulating
-        foreach (var btn in spawnedButtons)
+        if (playerIndex == 0)
         {
-            Destroy(btn);
-        }
-        spawnedButtons.Clear();
-
-        foreach (var power in availablePowers)
-        {
-            GameObject buttonObj = Instantiate(powerButtonPrefab, powerButtonContainer);
-            Button btn = buttonObj.GetComponent<Button>();
-            btn.onClick.AddListener(() => SelectPower(power));
-
-            Text buttonText = buttonObj.GetComponentInChildren<Text>();
-
-            if (buttonText != null)
+            if (player1Loadout.AddPower(power))
             {
-                buttonText.text = power.name;
+                Debug.Log($"Equipped {power.powerName} to Player 1");
             }
-
-            spawnedButtons.Add(buttonObj);
+            else
+            {
+                player1Loadout.RemovePower(power);
+            }
         }
-    }
-
-    public void SelectPower(PowerObject power)
-    {
-        if (playerLoadout.AddPower(power))
+        else if (playerIndex == 1)
         {
-            Debug.Log($"{power.powerName} added to Player {playerIndex}'s loadout!");
-            UpdateUI();
+            if (player2Loadout.AddPower(power))
+            {
+                Debug.Log($"Equipped {power.powerName} to Player 2");
+            }
+            else
+            {
+                player2Loadout.RemovePower(power);
+            }
         }
-        else
+    }
+
+
+    public void ConfirmLoadoutSelection(int playerIndex) // final loadout confirmation
+    { 
+        if (playerIndex == 0)
         {
-            Debug.Log("Loadout is full or power is already equipped!");
+            GameManager.Instance.player1Loadout = player1Loadout;
         }
-    }
-
-    public void DeselectPower(PowerObject power)
-    {
-        playerLoadout.RemovePower(power);
-        Debug.Log($"{power.powerName} removed from loadout.");
-        UpdateUI();
-    }
-
-    public void ConfirmLoadoutSelection()
-    {
-        if (playerIndex == 1)
-            GameManager.Instance.player1Loadout = playerLoadout;
-        else if (playerIndex == 2)
-            GameManager.Instance.player2Loadout = playerLoadout;
-
-        //Debug.Log($"Player {playerIndex} confirmed loadout: {playerLoadout.name}");
+        
+        else if (playerIndex == 1)
+        {
+            GameManager.Instance.player2Loadout = player2Loadout;
+        }
+        
     }
 
     void UpdateUI()
