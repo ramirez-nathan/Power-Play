@@ -10,11 +10,15 @@ public class PlayerMovingState : PlayerBaseState
     private bool isWaiting = false;
     private float waitTime = 0.00f; // Match the transition time from idle state
     private float timer = 0f;
+    private AudioManager audioManager;
+
 
     public PlayerMovingState(PlayerStateMachine stateMachine) : base("Moving", stateMachine)
     {
         this.stateName = "Moving";
         _sm = stateMachine;
+        audioManager = _sm.playerMain.audioManager;
+
     }
     
     public override void Enter(string previousState)
@@ -37,6 +41,7 @@ public class PlayerMovingState : PlayerBaseState
             else
             {
                 _sm.playerMain.animator.Play("PlayerKatanaRunWithDust");
+                audioManager.StartRunningSound();
                 Debug.Log("Playing moving animation upon enter, did not come from idle");
             }
         }
@@ -53,6 +58,7 @@ public class PlayerMovingState : PlayerBaseState
                  _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded) // go to idle state
         {
             Debug.Log("Entering Idle State from Moving");
+            // audioManager.StopRunningSound();
             _sm.ChangeState(_sm.playerIdleState);
         }
         else if (isWaiting)
@@ -64,6 +70,8 @@ public class PlayerMovingState : PlayerBaseState
             {
                 // Timer has elapsed; switch to the run animation
                 _sm.playerMain.animator.Play("PlayerKatanaRunWithDust");
+                audioManager.StartRunningSound();
+
                 Debug.Log("Playing run animation after transition");
                 isWaiting = false;
                 isLockAnimating = false; // Allow new animations
@@ -76,11 +84,16 @@ public class PlayerMovingState : PlayerBaseState
             {
                 counter = 0;
                 _sm.playerMain.animator.Play("PlayerKatanaRunWithDust");
+                audioManager.StartRunningSound();
+
                 Debug.Log("replaying moving animation");
             }
             else if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
             {
+
                 var verticalVelocity = _sm.playerMain.playerRigidBody.velocity.y;
+                
+                
 
                 if (verticalVelocity > 1)
                 {
