@@ -5,43 +5,65 @@ using UnityEngine.UI;
 
 public class PowerSelectionPanel : MonoBehaviour
 {
-    public LoadoutObject playerLoadout;
+    public LoadoutObject player1Loadout;
+    public LoadoutObject player2Loadout;
     public Transform powerButtonContainer; // Panel that holds power buttons
     public GameObject powerButtonPrefab; // Prefab for UI buttons
     [SerializeField] public int playerIndex = 0;
 
     public List<PowerObject> availablePowers; // List of all selectable powers
-    public PlayerInput playerInput; // Reference to player input
 
-    public void SelectPower(PowerObject power)
+    public void ChangePlayerIndex(int index)
     {
-        
-        if (playerLoadout.AddPower(power))
+        // If it's already the same, no need to do anything
+        if (playerIndex == index)
         {
-            Debug.Log($"{power.powerName} added to Player {playerIndex}'s loadout!");
-            
+            return;
         }
-        else
+        // Otherwise, update the index and log
+        playerIndex = index;
+        Debug.Log($"Power selection panel updated for Player {index}");
+    }
+
+    public void SelectPower(PowerObject power, int playerIndex)
+    {
+        if (playerIndex == 0)
         {
-            Debug.Log("Loadout is full or power is already equipped!");
+            if (player1Loadout.AddPower(power))
+            {
+                Debug.Log($"Equipped {power.powerName} to Player 1");
+            }
+            else
+            {
+                player1Loadout.RemovePower(power);
+            }
+        }
+        else if (playerIndex == 1)
+        {
+            if (player2Loadout.AddPower(power))
+            {
+                Debug.Log($"Equipped {power.powerName} to Player 2");
+            }
+            else
+            {
+                player2Loadout.RemovePower(power);
+            }
         }
     }
 
-    public void DeselectPower(PowerObject power)
-    {
-        playerLoadout.RemovePower(power);
-        Debug.Log($"{power.powerName} removed from loadout.");
+
+    public void ConfirmLoadoutSelection(int playerIndex) // final loadout confirmation
+    { 
+        if (playerIndex == 0)
+        {
+            GameManager.Instance.player1Loadout = player1Loadout;
+        }
         
-    }
-
-    public void ConfirmLoadoutSelection()
-    {
-        if (playerIndex == 1)
-            GameManager.Instance.player1Loadout = playerLoadout;
-        else if (playerIndex == 2)
-            GameManager.Instance.player2Loadout = playerLoadout;
-
-        //Debug.Log($"Player {playerIndex} confirmed loadout: {playerLoadout.name}");
+        else if (playerIndex == 1)
+        {
+            GameManager.Instance.player2Loadout = player2Loadout;
+        }
+        
     }
 
     void UpdateUI()

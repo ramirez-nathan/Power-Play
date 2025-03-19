@@ -16,15 +16,15 @@ public class AttackHitbox : MonoBehaviour
         knockbackDirection = direction.normalized;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.gameObject.tag == "Enemy")
         {
             if (!hitEnemies.Contains(collision.gameObject))
             {
                 hitEnemies.Add(collision.gameObject);
 
-                PlayerMain enemy = collision.GetComponent<PlayerMain>();
+                PlayerMain enemy = collision.gameObject.GetComponent<PlayerMain>();
                 if (enemy != null)
                 {
                     Vector2 finalKnockback = knockbackDirection * knockbackForce;

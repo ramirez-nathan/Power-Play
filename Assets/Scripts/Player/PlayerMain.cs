@@ -19,8 +19,8 @@ public class PlayerMain : MonoBehaviour
     public GameOverScreen gameOverScreen; // The game over screen
     public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
     private bool controllerConnected = false;
+    public LoadoutObject powerLoadout;
     
-
     [SerializeField]
     private int playerIndex = 0; // index to differentiate the 2 players
     public enum PlayerState
@@ -98,6 +98,7 @@ public class PlayerMain : MonoBehaviour
         playerStateMachine = GetComponent<PlayerStateMachine>();
         playerStateMachine.Initialize(this); // Pass the PlayerMain instance
         animator = GetComponent<Animator>();              // Initializing the animator
+        powerLoadout = playerIndex == 0 ? GameManager.Instance.player1Loadout : GameManager.Instance.player2Loadout;  
     }
 
     public void Initialize(PlayerInputHandler pInputHandler)
