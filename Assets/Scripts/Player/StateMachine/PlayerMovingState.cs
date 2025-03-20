@@ -22,7 +22,7 @@ public class PlayerMovingState : PlayerBaseState
         base.Enter(previousState);
         if (_sm.playerMain.playerState == PlayerMain.PlayerState.Grounded)
         {
-            Debug.Log("Entered PlayerMovingState");
+            //Debug.Log("Entered PlayerMovingState");
 
             if (previousState == "Idle")
             {
@@ -37,7 +37,7 @@ public class PlayerMovingState : PlayerBaseState
             else
             {
                 _sm.playerMain.animator.Play("PlayerKatanaRunWithDust");
-                Debug.Log("Playing moving animation upon enter, did not come from idle");
+                //Debug.Log("Playing moving animation upon enter, did not come from idle");
             }
         }
 
@@ -52,7 +52,7 @@ public class PlayerMovingState : PlayerBaseState
         else if (_sm.playerMain.playerRigidBody.velocity.x == 0 && 
                  _sm.playerMain.playerState == PlayerMain.PlayerState.Grounded) // go to idle state
         {
-            Debug.Log("Entering Idle State from Moving");
+            //Debug.Log("Entering Idle State from Moving");
             _sm.ChangeState(_sm.playerIdleState);
         }
         else if (isWaiting)
@@ -64,7 +64,7 @@ public class PlayerMovingState : PlayerBaseState
             {
                 // Timer has elapsed; switch to the run animation
                 _sm.playerMain.animator.Play("PlayerKatanaRunWithDust");
-                Debug.Log("Playing run animation after transition");
+                //Debug.Log("Playing run animation after transition");
                 isWaiting = false;
                 isLockAnimating = false; // Allow new animations
             }
@@ -76,7 +76,7 @@ public class PlayerMovingState : PlayerBaseState
             {
                 counter = 0;
                 _sm.playerMain.animator.Play("PlayerKatanaRunWithDust");
-                Debug.Log("replaying moving animation");
+                //Debug.Log("replaying moving animation");
             }
             else if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
             {
@@ -85,22 +85,22 @@ public class PlayerMovingState : PlayerBaseState
                 if (verticalVelocity > 1)
                 {
                     _sm.playerMain.animator.Play("PlayerKatanaJumpRise");
-                    Debug.Log("Playing jump rise animation");
+                    //Debug.Log("Playing jump rise animation");
                 }
                 else if (verticalVelocity < 4f && verticalVelocity > -4f && verticalVelocity != 0f)
                 {
                     _sm.playerMain.animator.Play("PlayerKatanaJumpPeak");
-                    Debug.Log("Playing jump peak animation");
+                    //Debug.Log("Playing jump peak animation");
                 }
                 else if (verticalVelocity < -1)
                 {
                     _sm.playerMain.animator.Play("PlayerKatanaJumpFall");
-                    Debug.Log("Playing jump fall animation");
+                    //Debug.Log("Playing jump fall animation");
                 }
                 else
                 {
                     _sm.playerMain.animator.Play("PlayerKatanaIdle");
-                    Debug.Log("Playing idle animation");
+                    //Debug.Log("Playing idle animation");
                 }
             }
         }

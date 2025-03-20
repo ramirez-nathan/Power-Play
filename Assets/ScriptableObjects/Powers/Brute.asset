@@ -15,5 +15,5 @@ MonoBehaviour:
   uiDisplay: {fileID: 0}
   type: 1
   powerName: BRT
-  description: "Brute\n+ 20% Dmg Reduction\n-10% Move Speed\nYou are tankier, but
+  description: "Brute\n+ 15% Dmg Reduction\n-10% Move Speed\nYou are tankier, but
     move slower. \n"

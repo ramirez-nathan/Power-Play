@@ -3,39 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackHitbox : MonoBehaviour
-{
-    private float damage;
+{   
     private float knockbackForce;
+    public int finalDmg = 0;
     private Vector2 knockbackDirection;
-    private HashSet<GameObject> hitEnemies = new HashSet<GameObject>(); // Prevents multiple hits
+    public HashSet<GameObject> hitEnemies = new HashSet<GameObject>(); // Prevents multiple hits
 
-    public void Initialize(float attackDamage, float attackKnockback, Vector2 direction)
+    public void Initialize(int damage, float attackKnockback, Vector2 direction)
     {
-        damage = attackDamage;
+        finalDmg = damage;
         knockbackForce = attackKnockback;
         knockbackDirection = direction.normalized;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        //Debug.Log(collision.otherCollider.gameObject.name);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("AttackHitbox"))
         {
-            if (!hitEnemies.Contains(collision.gameObject))
+            
+            if (collision.otherCollider.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
             {
-                hitEnemies.Add(collision.gameObject);
-
-                PlayerMain enemy = collision.gameObject.GetComponent<PlayerMain>();
-                if (enemy != null)
+                Debug.Log("attack read correctly");
+                if (!hitEnemies.Contains(collision.gameObject))
                 {
-                    Vector2 finalKnockback = knockbackDirection * knockbackForce;
-                    enemy.TakeDamage(damage, finalKnockback);
+                    hitEnemies.Add(collision.gameObject);
+
+                    PlayerMain enemy = collision.gameObject.GetComponentInParent<PlayerMain>();
+                    if (enemy != null)
+                    {
+                        Vector2 finalKnockback = knockbackDirection * knockbackForce;
+                        enemy.TakeDamage(finalDmg, finalKnockback);
+                    }
                 }
             }
         }
+        
     }
 
-    private void OnEnable()
-    {
-        hitEnemies.Clear(); // Reset for the next attack
-    }
 }

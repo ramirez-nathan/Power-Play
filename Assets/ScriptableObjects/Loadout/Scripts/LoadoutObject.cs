@@ -8,7 +8,7 @@ public class LoadoutObject : ScriptableObject
 {
     public List<PowerObject> Container = new List<PowerObject>();
     
-    private int maxLoadoutSize = 5;
+    private int maxLoadoutSize = 4;
 
     public bool AddPower(PowerObject power)
     {

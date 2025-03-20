@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a11d85c3de46849aaaa6c5e20cb661, type: 3}
-  m_Name: KatanaForwardHeavy
+  m_Script: {fileID: 11500000, guid: c0526d0a91b12dc4e9fd5b340ab64b91, type: 3}
+  m_Name: Executioner
   m_EditorClassIdentifier: 
-  attackName: KatanaForwardHeavy
-  damage: 15
-  knockbackForce: 6
+  uiDisplay: {fileID: 0}
+  type: 0
+  powerName: EXC
+  description: 'Executioner
+
+    When your opponent drops to 15% health, your attacks
+    deal an extra flat 6 damage.'

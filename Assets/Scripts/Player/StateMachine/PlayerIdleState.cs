@@ -22,12 +22,12 @@ public class PlayerIdleState : PlayerBaseState
         base.Enter(previousState);
         if (_sm.playerMain.playerState == PlayerMain.PlayerState.Grounded)
         {
-            Debug.Log("Entered PlayerIdleState");
+            //Debug.Log("Entered PlayerIdleState");
 
             // Play the "Run to Idle" animation if coming from moving state
             if (previousState == "Moving")
             {
-                Debug.Log("Playing transition animation: Run to Idle");
+                //Debug.Log("Playing transition animation: Run to Idle");
                 _sm.playerMain.animator.Play("PlayerKatanaRunToIdle");
                 
                 // Initialize the timer
@@ -50,7 +50,7 @@ public class PlayerIdleState : PlayerBaseState
         }
         else if (_sm.playerMain.moveInput.x != 0f || _sm.playerMain.playerState == PlayerMain.PlayerState.Airborne) // go to moving state
         {
-            Debug.Log("Changing from Idle to Moving");
+            //Debug.Log("Changing from Idle to Moving");
             _sm.ChangeState(_sm.playerMovingState);
         }
         else if (isWaiting) // this takes care of transition animation INTO the idle state
@@ -62,7 +62,7 @@ public class PlayerIdleState : PlayerBaseState
             {
                 // Timer has elapsed; switch to the idle animation
                 _sm.playerMain.animator.Play("PlayerKatanaIdle");
-                Debug.Log("Playing idle animation after transition");
+                //Debug.Log("Playing idle animation after transition");
                 isWaiting = false;
                 isLockAnimating = false; // Allow new animations
             }
