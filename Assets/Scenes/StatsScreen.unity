@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 20410474}
   - component: {fileID: 20410473}
   m_Layer: 5
-  m_Name: Button
+  m_Name: MainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -680,8 +680,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Player {} Wins
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 621ffdee8ba8b8b42ad598bd9063dc8b, type: 2}
+  m_sharedMaterial: {fileID: -2922719137478588006, guid: 621ffdee8ba8b8b42ad598bd9063dc8b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -889,8 +889,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Damage Dealt:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
+  m_sharedMaterial: {fileID: -6021624743646287608, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1023,8 +1023,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Stocks Left:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
+  m_sharedMaterial: {fileID: -6021624743646287608, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1232,8 +1232,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Player One
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
+  m_sharedMaterial: {fileID: -6021624743646287608, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1500,8 +1500,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Attacks Landed:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
+  m_sharedMaterial: {fileID: -6021624743646287608, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1634,8 +1634,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Damage Dealt:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
+  m_sharedMaterial: {fileID: -6021624743646287608, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1836,8 +1836,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Player Two
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
+  m_sharedMaterial: {fileID: -6021624743646287608, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1970,8 +1970,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back to Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 621ffdee8ba8b8b42ad598bd9063dc8b, type: 2}
+  m_sharedMaterial: {fileID: -2922719137478588006, guid: 621ffdee8ba8b8b42ad598bd9063dc8b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2238,8 +2238,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Attacks Landed:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
+  m_sharedMaterial: {fileID: -6021624743646287608, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2522,8 +2522,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'KD Ratio:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
+  m_sharedMaterial: {fileID: -6021624743646287608, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3135,8 +3135,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Rematch
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 212d8efefffc3e744b4d3fecf8678848, type: 2}
+  m_sharedMaterial: {fileID: 7399012092129364087, guid: 212d8efefffc3e744b4d3fecf8678848, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3269,8 +3269,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'KD Ratio:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
+  m_sharedMaterial: {fileID: -6021624743646287608, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3605,8 +3605,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Stocks Left:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
+  m_sharedMaterial: {fileID: -6021624743646287608, guid: 329aef2ab78049240846cc9ad66367c8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
