@@ -25,7 +25,7 @@ public class StatDisplayerScript : MonoBehaviour
         StocksLeftText.text = "Stocks Left: 3";
         DamageDealtText.text = "Damage Dealt: 150";
         AttacksLandedText.text = "Attacks Landed: 14";
-        MatchDurationText.text = "Match Duration: 56s";
+        //MatchDurationText.text = "Match Duration: 56s";
     }
 
 
