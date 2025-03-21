@@ -673,7 +673,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player {} Wins
+  m_text: Player One Wins
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 621ffdee8ba8b8b42ad598bd9063dc8b, type: 2}
   m_sharedMaterial: {fileID: -2922719137478588006, guid: 621ffdee8ba8b8b42ad598bd9063dc8b, type: 2}
@@ -2201,6 +2201,7 @@ GameObject:
   - component: {fileID: 1654199747}
   - component: {fileID: 1654199749}
   - component: {fileID: 1654199748}
+  - component: {fileID: 1654199750}
   m_Layer: 5
   m_Name: BlueTwo
   m_TagString: Untagged
@@ -2324,6 +2325,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654199746}
   m_CullTransparentMesh: 1
+--- !u!114 &1654199750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654199746}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1811c6f647da5a640bfe64be372aad86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KDRatioText: {fileID: 1654199748}
+  StocksLeftText: {fileID: 0}
+  DamageDealtText: {fileID: 0}
+  AttacksLandedText: {fileID: 0}
+  MatchDurationText: {fileID: 0}
 --- !u!1 &1709045631
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,6 +2583,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1811c6f647da5a640bfe64be372aad86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KDRatioText: {fileID: 1654199748}
+  StocksLeftText: {fileID: 2057461735}
+  DamageDealtText: {fileID: 627227670}
+  AttacksLandedText: {fileID: 928050222}
+  MatchDurationText: {fileID: 0}
 --- !u!4 &1873209153
 Transform:
   m_ObjectHideFlags: 0

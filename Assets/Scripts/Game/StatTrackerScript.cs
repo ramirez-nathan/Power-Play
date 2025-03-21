@@ -16,6 +16,15 @@ public class StatTrackerScript : MonoBehaviour
     private int attacksLanded = 0;
     private float MatchDuration = 0f;
 
+    // Getters
+    public int GetTotalDamage() => totalDamageDealt;
+    public int GetKills() => numKills;
+    public int GetStocksLeft() => stocksLeft;
+    public float GetKDR()
+    {
+        int deaths = Mathf.Max(1, 4 - stocksLeft);      // This is assuming we set 4 to our default stocks
+        return (float)numKills / deaths;
+    }
 
 
     private void Awake()
@@ -54,9 +63,10 @@ public class StatTrackerScript : MonoBehaviour
 
 
 
+
     // Update is called once per frame
     void Update()
     {
-        
+        MatchDuration += Time.deltaTime;
     }
 }
