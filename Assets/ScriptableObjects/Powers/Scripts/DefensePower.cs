@@ -7,7 +7,6 @@ public class DefensePower : PowerObject
     
     void Awake()
     {
-        type = PowerType.Defense;
     }
 
     public override void EquipPower(GameObject player)

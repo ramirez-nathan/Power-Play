@@ -9,12 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0526d0a91b12dc4e9fd5b340ab64b91, type: 3}
+  m_Script: {fileID: 11500000, guid: 37548d85aac14484a8280e7101dfd9d1, type: 3}
   m_Name: Punishing_Blow
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
-  type: 0
   powerName: PNB
+  dmgIncrement: 4
+  dmgMult: 0
+  defMult: 0
+  speedMult: 0
   description: 'Punishing Blow
 
     If you hit your opponent while they''re in recovery,

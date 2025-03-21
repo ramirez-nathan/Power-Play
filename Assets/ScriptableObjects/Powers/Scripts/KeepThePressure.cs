@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+[CreateAssetMenu(fileName = "New Power", menuName = "Power System/Power/KTP")]
 public class KeepThePressure : PowerObject
 {
     

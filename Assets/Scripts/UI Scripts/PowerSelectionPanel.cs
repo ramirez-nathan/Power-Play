@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -7,6 +8,11 @@ public class PowerSelectionPanel : MonoBehaviour
 {
     public LoadoutObject player1Loadout;
     public LoadoutObject player2Loadout;
+
+    public List<Button> player1LoadoutButtons; // List of UI buttons for Player 1
+    public List<Button> player2LoadoutButtons; // List of UI buttons for Player 2
+
+
     public Transform powerButtonContainer; // Panel that holds power buttons
     public GameObject powerButtonPrefab; // Prefab for UI buttons
     [SerializeField] public int playerIndex = 0;
@@ -37,6 +43,7 @@ public class PowerSelectionPanel : MonoBehaviour
             {
                 player1Loadout.RemovePower(power);
             }
+            UpdateLoadoutUI(player1Loadout, player1LoadoutButtons);
         }
         else if (playerIndex == 1)
         {
@@ -48,9 +55,25 @@ public class PowerSelectionPanel : MonoBehaviour
             {
                 player2Loadout.RemovePower(power);
             }
+            UpdateLoadoutUI(player2Loadout, player2LoadoutButtons);
         }
     }
 
+    void UpdateLoadoutUI(LoadoutObject loadout, List<Button> buttons)
+    {
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            TextMeshProUGUI buttonText = buttons[i].GetComponentInChildren<TextMeshProUGUI>();
+            if (i < loadout.Container.Count)
+            {
+                buttonText.text = loadout.Container[i].powerName;
+            }
+            else
+            {
+                buttonText.text = "";
+            }
+        }
+    }
 
     public void ConfirmLoadoutSelection(int playerIndex) // final loadout confirmation
     { 

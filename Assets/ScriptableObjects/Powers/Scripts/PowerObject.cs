@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PowerType
+/*public enum PowerType
 {
     Attack,
     Defense,
     Unique,
-}
+}*/
 public abstract class PowerObject : ScriptableObject
 {
     public Sprite uiDisplay;
-    public PowerType type;
     public string powerName;
     public int dmgIncrement = 4;
     public float dmgMult = 0.0f;

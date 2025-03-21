@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PowerSelectionButton : MonoBehaviour, IPointerClickHandler
+public class PowerSelectionButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public PowerObject power;            // The power this button represents
     public PowerSelectionPanel panel;    // Reference to your selection panel or manager
+    public PowerDescriptionDisplay descriptionDisplay; 
 
     // This is called automatically by Unity when the user clicks on this UI element
     public void OnPointerClick(PointerEventData eventData)
@@ -20,6 +21,15 @@ public class PowerSelectionButton : MonoBehaviour, IPointerClickHandler
             // Equip to Player 2
             panel.SelectPower(power, 1);
         }
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        descriptionDisplay.ShowDescription(power.description);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        descriptionDisplay.ClearDescription();
     }
 }
 

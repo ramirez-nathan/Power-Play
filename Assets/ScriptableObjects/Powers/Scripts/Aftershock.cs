@@ -1,25 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "New Power", menuName = "Power System/Powers/Unique")]
-public class UniquePower : PowerObject
-{
-    
-    void Awake()
-    {
-    }
 
+[CreateAssetMenu(fileName = "New Power", menuName = "Power System/Power/ATS")]
+public class Aftershock : PowerObject
+{
     public override void EquipPower(GameObject player)
     {
-
+        
     }
 
     public override void UnequipPower(GameObject player)
     {
-
+        
     }
     public override void UpdateLogic(GameObject player)
     {
-
+        
     }
 }

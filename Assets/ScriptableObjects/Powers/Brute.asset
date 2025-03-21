@@ -9,15 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fce875850489b8942938e21ca18f9667, type: 3}
+  m_Script: {fileID: 11500000, guid: 35d019ebd7ec9d4418229d4ccf955e50, type: 3}
   m_Name: Brute
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
-  type: 1
   powerName: BRT
   dmgIncrement: 4
   dmgMult: 0
   defMult: 0
   speedMult: 0
-  description: "Brute\n+ 15% Dmg Reduction\n-15% Move Speed\nYou are tankier, but
-    move slower. \n"
+  description: 'Brute
+
+    + 15% Dmg Reduction
+
+    -15% Move Speed
+
+    You are
+    tankier, but move slower. '
