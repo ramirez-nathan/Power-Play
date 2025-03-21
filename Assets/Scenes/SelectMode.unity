@@ -1759,7 +1759,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2198464873123282397, guid: 1f70d58caa02b8c40a7f9516ad3071da, type: 3}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: LoadGameplayScene
+        m_MethodName: LoadStageSelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
