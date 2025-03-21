@@ -8,24 +8,13 @@ public class StatTrackerScript : MonoBehaviour
     public PlayerMain player;                     // Reference to the player for retrieving stats
     public static StatTrackerScript Instance;
 
-    // Win/Loss Record
-    private int totalMatchesPlayed = 0;
-    private int totalWins = 0;
-    private float winrate = 0f;
-
-
-    // Damage Metrics
+    // Stats
+    private int stocksLeft = 0;
     private int totalDamageDealt = 0;
-    private int totalDamageTaken = 0;
-    private int totalKills = 0;
-    private int totalDeaths = 0;
+    private int numKills = 0;
     private float killDeathRatio = 0f;
-
-
-    // Average Match Length
-    private float longestMatchDuration = 0f;
-    private float shortestMatchDuration = 0f;
-    private float averageMatchDuration = 0f;
+    private int attacksLanded = 0;
+    private float MatchDuration = 0f;
 
 
 
@@ -49,20 +38,18 @@ public class StatTrackerScript : MonoBehaviour
         totalDamageDealt += damage;
     }
 
-    public void AddMatch(bool won)
+    public void AddKills(int kills)
     {
-        totalMatchesPlayed++;
-        if (won) totalWins++;
+        numKills += kills;
     }
 
-    public void addKills(int kills)
+    public void ResetStats()
     {
-        totalKills++;
-    }
-
-    public void addDeaths(int deaths)
-    {
-        totalDeaths++;
+        stocksLeft = 0;
+        totalDamageDealt = 0;
+        numKills = 0;
+        attacksLanded = 0;
+        MatchDuration = 0f;
     }
 
 
