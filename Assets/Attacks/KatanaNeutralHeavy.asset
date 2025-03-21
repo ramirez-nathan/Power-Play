@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: KatanaNeutralHeavy
   m_EditorClassIdentifier: 
   attackName: KatanaNeutral
-  damage: 10
+  damage: 15
   knockbackForce: 3
-  knockbackDirection: {x: 1, y: 0}
-  animationName: KatanaNeutralLight

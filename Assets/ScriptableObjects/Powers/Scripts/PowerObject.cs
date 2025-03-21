@@ -13,6 +13,11 @@ public abstract class PowerObject : ScriptableObject
     public Sprite uiDisplay;
     public PowerType type;
     public string powerName;
+    public int dmgIncrement = 4;
+    public float dmgMult = 0.0f;
+    public float defMult = 0.0f;
+    public float speedMult = 0.0f;
+
     [TextArea(15, 20)] public string description;
 
     public abstract void EquipPower(GameObject player);

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class KeepThePressure : PowerObject
 {
-    public int dmgIncrement = 0;
+    
     public int totalHits = 0;
     public override void EquipPower(GameObject player)
     {

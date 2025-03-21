@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f25f61e4a196be41bf93e0ff42b1d07, type: 3}
-  m_Name: New Power
+  m_Name: Aftershock
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
   type: 2
-  powerName: 
-  description: 
+  powerName: ATS
+  description: 'Aftershock
+
+    After getting hit, gain a temporary shield reducing
+    damage by 10-15% for the next 3 seconds.'

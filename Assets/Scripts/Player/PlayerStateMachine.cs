@@ -56,7 +56,7 @@ public class PlayerStateMachine : MonoBehaviour
     public void ChangeState(PlayerBaseState newState)
     {
         currentState.Exit();
-        Debug.Log("Exiting: " + currentState.stateName + "/// Entering: " + newState.stateName);
+        //Debug.Log("Exiting: " + currentState.stateName + "/// Entering: " + newState.stateName);
         newState.Enter(currentState.stateName);
         currentState = newState;
     }

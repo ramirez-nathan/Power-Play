@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: KatanaAirForwardHeavy
   m_EditorClassIdentifier: 
   attackName: KatanaAirForwardHeavy
-  damage: 20
-  knockbackForce: 10
+  damage: 15
+  knockbackForce: 5
