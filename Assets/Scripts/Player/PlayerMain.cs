@@ -83,9 +83,12 @@ public class PlayerMain : MonoBehaviour
     private float outOfBoundsXRight = 61f;
     private float outOfBoundsY = -7f;
 
+    public AudioManager audioManager;
+
     private void Awake()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         attackHitbox = GetComponent<AttackHitbox>();
     }
     // Start is called before the first frame update
@@ -159,6 +162,8 @@ public class PlayerMain : MonoBehaviour
     {
         jumpCount++;
         finishedJump = true;
+        audioManager.PlayJumpSound();
+
         if (isShortHop)
         {
             // Perform a short hop

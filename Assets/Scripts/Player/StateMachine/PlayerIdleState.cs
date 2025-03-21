@@ -10,11 +10,15 @@ public class PlayerIdleState : PlayerBaseState
     private bool isWaiting = false;
     private float waitTime = 0.20f;
     private float timer = 0f;
+    private AudioManager audioManager;
+
 
     public PlayerIdleState(PlayerStateMachine stateMachine) : base("Idle", stateMachine)
     {
         this.stateName = "Idle";
         _sm = stateMachine;
+        audioManager = _sm.playerMain.audioManager;
+
     }
 
     public override void Enter(string previousState)
@@ -29,6 +33,7 @@ public class PlayerIdleState : PlayerBaseState
             {
                 //Debug.Log("Playing transition animation: Run to Idle");
                 _sm.playerMain.animator.Play("PlayerKatanaRunToIdle");
+                audioManager.StopRunningSound();
                 
                 // Initialize the timer
                 isWaiting = true;
@@ -37,6 +42,7 @@ public class PlayerIdleState : PlayerBaseState
             }
             else
             {
+                audioManager.StopRunningSound();
                 _sm.playerMain.animator.Play("PlayerKatanaIdle");
             }
         }

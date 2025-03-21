@@ -8,11 +8,16 @@ public class PlayerAttackingState : PlayerBaseState
     private PlayerStateMachine _sm;
     private string previousState;
     private float counterMax = 0.5f; // in seconds
+    private AudioManager audioManager;
+
+
+    
 
     public PlayerAttackingState(PlayerStateMachine stateMachine) : base("Attacking", stateMachine)
     {
         this.stateName = "Attacking";
         _sm = stateMachine;
+        audioManager = _sm.playerMain.audioManager;
     }
 
     public override void Enter(string previousState)
@@ -34,6 +39,8 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(10);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 3f, xDirection);
                     //Debug.Log("playing neutral light air attack");
+                    audioManager.PlayLightKatanaSound();
+
                 }
                 else // Grounded
                 {
@@ -42,6 +49,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(10);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 3f, xDirection);
                     //Debug.Log("playing neutral light attack");
+                    audioManager.PlayLightKatanaSound();
                 }
                 break;
             case PlayerMain.PlayerAttackType.ForwardLight:
@@ -53,6 +61,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(10);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 3f, xDirection);
                     //Debug.Log("playing forward light air attack");
+                    audioManager.PlayLightKatanaSound();
                 }
                 else // Grounded
                 {
@@ -61,6 +70,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(10);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 3f, xDirection);
                     //Debug.Log("playing forward light attack");
+                    audioManager.PlayLightKatanaSound();
                 }
                 break;
             case PlayerMain.PlayerAttackType.DownLight:
@@ -72,6 +82,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(10);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 3f, Vector2.down);
                     //Debug.Log("playing down light air attack");
+                    audioManager.PlayLightKatanaSound();
                 }
                 else // Grounded
                 {
@@ -88,6 +99,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(15);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 6f, Vector2.up);
                     //Debug.Log("playing neutral up heavy air attack");
+                    audioManager.PlayHeavyKatanaSound();
                 }
                 else // Grounded
                 {
@@ -96,6 +108,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(15);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 3f, new Vector2(0.3f, 1f));
                     //Debug.Log("playing neutral up heavy attack");
+                    audioManager.PlayHeavyKatanaSound();
                 }
                 break;
             case PlayerMain.PlayerAttackType.ForwardHeavy:
@@ -106,6 +119,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(15);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 5f, xDirection);
                     //Debug.Log("playing forward heavy air attack");
+                    audioManager.PlayHeavyKatanaSound();
                 }
                 else // Grounded
                 {
@@ -114,6 +128,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(15);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 4f, xDirection);
                     //Debug.Log("playing forward heavy attack");
+                    audioManager.PlayHeavyKatanaSound();
                 }
                 break;
             case PlayerMain.PlayerAttackType.DownHeavy:
@@ -125,6 +140,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(20);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 8f, Vector2.down);
                     //Debug.Log("playing down heavy air attack");
+                    audioManager.PlayHeavyKatanaSound();
                 }
                 else // Grounded
                 {
@@ -132,6 +148,8 @@ public class PlayerAttackingState : PlayerBaseState
                     counterMax = 0.0f;
                     
                     //Debug.Log("playing down heavy attack");
+                    _sm.playerMain.animator.Play("PlayerKatanaNeutralHeavyDown");
+                    audioManager.PlayHeavyKatanaSound();
                 }
                 break;
             case PlayerMain.PlayerAttackType.ForwardRanged:
@@ -142,6 +160,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(5);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 2f, xDirection);
                     //Debug.Log("playing forward ranged air attack");
+                    audioManager.PlayBlasterSound();
                 }
                 else // Grounded
                 {
@@ -150,6 +169,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(5);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 2f, xDirection);
                     //Debug.Log("playing forward ranged attack");
+                    audioManager.PlayBlasterSound();
                 }
                 break;
             case PlayerMain.PlayerAttackType.NeutralUpRanged:
@@ -161,6 +181,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(10);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 3f, Vector2.up);
                     //Debug.Log("playing neutral up ranged attack");
+                    audioManager.PlayBlasterSound();
                 }
                 else // Grounded
                 {
@@ -169,6 +190,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(10);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 3f, Vector2.up);
                     //Debug.Log("playing neutral up ranged attack");
+                    audioManager.PlayBlasterSound();
                 }
                 break;
             
@@ -181,6 +203,7 @@ public class PlayerAttackingState : PlayerBaseState
                     atkDmg = _sm.playerMain.DamageAfterBuffs(10);
                     _sm.playerMain.attackHitbox.Initialize(atkDmg, 3f, Vector2.down);
                     //Debug.Log("playing down ranged air attack");
+                    audioManager.PlayBlasterSound();
                 }
                 else // Grounded
                 {
