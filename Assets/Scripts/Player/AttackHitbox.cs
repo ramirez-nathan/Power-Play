@@ -16,49 +16,40 @@ public class AttackHitbox : MonoBehaviour
         knockbackDirection = direction.normalized;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log(collision.otherCollider.gameObject.name);
-        if (collision.gameObject.layer == LayerMask.NameToLayer("AttackHitbox"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
         {
-            
-            if (collision.otherCollider.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
+            if (!hitEnemies.Contains(collision.gameObject))
             {
-                
-                if (!hitEnemies.Contains(collision.gameObject))
-                {
-                    Debug.Log("attack read correctly");
-                    hitEnemies.Add(collision.gameObject);
+                Debug.Log("attack read correctly");
+                hitEnemies.Add(collision.gameObject);
 
-                    PlayerMain enemy = collision.gameObject.GetComponentInParent<PlayerMain>();
-                    if (enemy != null)
-                    {
-                        Vector2 finalKnockback = knockbackDirection * knockbackForce;
-                        enemy.TakeDamage(finalDmg, finalKnockback);
-                    }
+                PlayerMain enemy = collision.gameObject.GetComponentInParent<PlayerMain>();
+                if (enemy != null)
+                {
+                    Vector2 finalKnockback = knockbackDirection * knockbackForce;
+                    enemy.TakeDamage(finalDmg, finalKnockback);
                 }
             }
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         //Debug.Log(collision.otherCollider.gameObject.name);
-        if (collision.gameObject.layer == LayerMask.NameToLayer("AttackHitbox"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
         {
-            if (collision.otherCollider.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
+            if (!hitEnemies.Contains(collision.gameObject))
             {
-                
-                if (!hitEnemies.Contains(collision.gameObject))
-                {
-                    Debug.Log("attack read correctly");
-                    hitEnemies.Add(collision.gameObject);
+                Debug.Log("attack read correctly");
+                hitEnemies.Add(collision.gameObject);
 
-                    PlayerMain enemy = collision.gameObject.GetComponentInParent<PlayerMain>();
-                    if (enemy != null)
-                    {
-                        Vector2 finalKnockback = knockbackDirection * knockbackForce;
-                        enemy.TakeDamage(finalDmg, finalKnockback);
-                    }
+                PlayerMain enemy = collision.gameObject.GetComponentInParent<PlayerMain>();
+                if (enemy != null)
+                {
+                    Vector2 finalKnockback = knockbackDirection * knockbackForce;
+                    enemy.TakeDamage(finalDmg, finalKnockback);
                 }
             }
         }
