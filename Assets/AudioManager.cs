@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance { get; private set; }  // Singleton instance
+
     [Header("Audio Sources")]
-    [SerializeField] AudioSource musicSource;
+    public AudioSource musicSource;  // Changed to public
     [SerializeField] AudioSource SFXSource;
     [SerializeField] AudioSource runningSource; // Separate source for looping run sound
 
@@ -54,6 +56,23 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float runSoundInterval = 0.3f;
     private bool isRunning = false;
 
+    [Header("Music")]
+    [SerializeField] private AudioClip MainMenuMusicPinkBloom;
+
+    private void Awake()
+    {
+        // Singleton pattern to maintain one audio manager across scenes
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         // musicSource.clip = backgroundMusic;
@@ -70,6 +89,9 @@ public class AudioManager : MonoBehaviour
         
         // Initialize volumes
         UpdateVolumes();
+
+        // Play menu music automatically
+        PlayBackgroundMusic(MainMenuMusicPinkBloom);
     }
 
     public void UpdateVolumes()
@@ -182,5 +204,23 @@ public class AudioManager : MonoBehaviour
     public void PlayRespawnSound()
     {
         PlaySFXWithPitch(respawn, 1.1f, respawnVolume);
+    }
+
+    public void PlayBackgroundMusic(AudioClip music)
+    {
+        if (musicSource != null && music != null)
+        {
+            musicSource.clip = music;
+            musicSource.loop = true;
+            musicSource.Play();
+        }
+    }
+
+    public void StopBackgroundMusic()
+    {
+        if (musicSource != null)
+        {
+            musicSource.Stop();
+        }
     }
 }

@@ -9,7 +9,7 @@ public class PlayerDeadState : PlayerBaseState
     private PlayerStateMachine _sm;
     [SerializeField] private bool isRespawning = false;
     [SerializeField] private bool preRespawning = false;
-    private float respawnTimer = 3f;
+    private float respawnTimer = 1.5f;
     private float preRespawnTimer = 1.5f;
 
     public PlayerDeadState(PlayerStateMachine stateMachine) : base("Idle", stateMachine)
@@ -41,8 +41,13 @@ public class PlayerDeadState : PlayerBaseState
             // Destroy the player if we have 0 lives left
             if (_sm.playerMain.numStocks == 0)
             {
+                Debug.Log("Lost last stock, game over");
+                preRespawning = true;
+                _sm.playerMain.animator.Play("PlayerDie");
+
                 Debug.Log($"Destroying object, player numstocks is {_sm.playerMain.numStocks}");
                 _sm.playerMain.gameOverScreen.ShowGameOver();
+                preRespawning = false;
                 GameObject.Destroy(_sm.playerMain.gameObject);
                 
             }
@@ -50,7 +55,8 @@ public class PlayerDeadState : PlayerBaseState
             {
                 Debug.Log("Respawning");
                 preRespawning = true;
-                _sm.playerMain.sprite.enabled = false;
+                _sm.playerMain.animator.Play("PlayerDie");
+                // _sm.playerMain.sprite.enabled = false;
                 isRespawning = true;
             }
         }
@@ -78,8 +84,9 @@ public class PlayerDeadState : PlayerBaseState
         else if (isRespawning && !preRespawning)
         {
             _sm.playerMain.transform.position = _sm.playerMain.spawnPoint.position;
-            _sm.playerMain.sprite.enabled = true;
+            // _sm.playerMain.sprite.enabled = true;
             // replay respawn animation here
+            _sm.playerMain.animator.Play("PlayerRespawn");
             respawnTimer -= Time.deltaTime;
             _sm.playerMain.isVulnerable = false; // invulnerable during this 
         }

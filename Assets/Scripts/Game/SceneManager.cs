@@ -7,10 +7,19 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField] private AudioClip MainMenuMusicPinkBloom;
+
     // Start is called before the first frame update
     void Start()
     {
         
+
+        // Only start music if it's not already playing
+        if (AudioManager.Instance.musicSource.isPlaying == false)
+        {
+            AudioManager.Instance.PlayBackgroundMusic(MainMenuMusicPinkBloom);
+            AudioManager.Instance.SetMusicVolume(0.15f);
+        }
     }
 
     // Update is called once per frame
@@ -21,6 +30,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        AudioManager.Instance.PlayBackgroundMusic(MainMenuMusicPinkBloom);
         SceneManager.LoadScene("MainMenu");  
     }
 
@@ -31,6 +41,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadGameplayScene()
     {
+        AudioManager.Instance.StopBackgroundMusic();
         SceneManager.LoadScene("Game");  
     }
 
@@ -52,6 +63,12 @@ public class MenuManager : MonoBehaviour
     public void LoadStatsScreen()
     {
         SceneManager.LoadScene("StatsScreen");
+        // Only start music if it's not already playing
+        if (AudioManager.Instance.musicSource.isPlaying == false)
+        {
+            AudioManager.Instance.PlayBackgroundMusic(MainMenuMusicPinkBloom);
+            AudioManager.Instance.SetMusicVolume(0.15f);
+        }
     }
 
     public void EndGame()
