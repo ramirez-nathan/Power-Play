@@ -14,13 +14,16 @@ public class PlayerMain : MonoBehaviour
     public int currentHealth = 100;
     public float moveSpeed = 9f;
     public int numStocks = 3;
-    public float damage = 5f;
+    public int damage = 0;
+
     public Vector2 currentVelocity = Vector2.zero;
+    public SpriteRenderer sprite;
     public GameOverScreen gameOverScreen; // The game over screen
     public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
     private bool controllerConnected = false;
+    public LoadoutObject powerLoadout;
+    public AttackHitbox attackHitbox;
     
-
     [SerializeField]
     private int playerIndex = 0; // index to differentiate the 2 players
     public enum PlayerState
@@ -81,15 +84,20 @@ public class PlayerMain : MonoBehaviour
     private float outOfBoundsXRight = 61f;
     private float outOfBoundsY = -7f;
 
+    public AudioManager audioManager;
+
     private void Awake()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
-
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        sprite = GetComponent<SpriteRenderer>();
+        attackHitbox = GetComponent<AttackHitbox>();
     }
     // Start is called before the first frame update
     void Start()
     {
         Time.fixedDeltaTime = 1.0f / 60.0f;  // Set FixedUpdate to run at 60 FPS
+        Application.targetFrameRate = 60;
         playerJumpState = PlayerJumpState.JumpReleased;
         playerState = PlayerState.Idle;
 
@@ -98,6 +106,12 @@ public class PlayerMain : MonoBehaviour
         playerStateMachine = GetComponent<PlayerStateMachine>();
         playerStateMachine.Initialize(this); // Pass the PlayerMain instance
         animator = GetComponent<Animator>();              // Initializing the animator
+        if (GameManager.Instance == null)
+        {
+            GameObject gmObject = new GameObject("GameManager");
+            gmObject.AddComponent<GameManager>(); // This will trigger Awake()
+        }
+        powerLoadout = playerIndex == 0 ? GameManager.Instance.player1Loadout : GameManager.Instance.player2Loadout;  
     }
 
     public void Initialize(PlayerInputHandler pInputHandler)
@@ -150,15 +164,17 @@ public class PlayerMain : MonoBehaviour
     {
         jumpCount++;
         finishedJump = true;
+        audioManager.PlayJumpSound();
+
         if (isShortHop)
         {
             // Perform a short hop
-            SetJumpVelocity(8f); // Lower jump force for short hop
+            SetJumpVelocity(10f); // Lower jump force for short hop (originally 8f)
         }
         else
         {
             // Perform a long hop
-            SetJumpVelocity(14f); // Higher jump force for regular hop
+            SetJumpVelocity(17f); // Higher jump force for regular hop (originally 14f)
         }
     }
     // FixedUpdate is called on a fixed time interval for physics updates
@@ -171,6 +187,20 @@ public class PlayerMain : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         
+    }
+
+    public int DamageAfterBuffs(int baseDamage)
+    {
+        int finalDmg = baseDamage;
+        int damageInc = 0;
+        float damageMult = 1.0f;
+        foreach (var power in powerLoadout.Container)
+        {
+            damageInc += power.dmgIncrement;
+            damageMult += power.dmgMult;
+        }
+        finalDmg = (int)((finalDmg + damageInc) * damageMult);
+        return finalDmg;
     }
 
     // ------------------------------------ ATTACK MOVES --------------------------------------- //
@@ -243,7 +273,6 @@ public class PlayerMain : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("Got to subscribed forward ranged function");
             isAttacking = true;
             playerAttackType = PlayerAttackType.ForwardRanged;
             knockbackValue = 2.5f;
@@ -304,26 +333,52 @@ public class PlayerMain : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.otherCollider.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
         {
-            playerRigidBody.velocity *= 0.1f; // Reduce velocity after collision
-        }
-        if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage"))
-        {
-            isOnFloor = true;
-            playerState = PlayerState.Grounded;
-            jumpFrameCounter = 0; // Reset frame counter
-            jumpCount = 0;
+            if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
+            {
+                playerRigidBody.velocity *= 0.1f; // Reduce velocity after collision
+            }
+            if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage"))
+            {
+                isOnFloor = true;
+                playerState = PlayerState.Grounded;
+                jumpFrameCounter = 0; // Reset frame counter
+                jumpCount = 0;
+            }
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage"))
+        if (collision.otherCollider.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
         {
-            playerState = PlayerState.Airborne;
-            isOnFloor = false;
+            if (collision.gameObject.layer == LayerMask.NameToLayer("TopStage"))
+            {
+                playerState = PlayerState.Airborne;
+                isOnFloor = false;
+            }
         }
     }
+
+    // damage hotfix, will probably need refactoring
+    public void TakeDamage(int damage, Vector2 knockback)
+    {
+        currentHealth -= (int)damage;
+        Debug.Log($"{gameObject.name} took {damage} damage! Remaining HP: {currentHealth}");
+
+        if (playerRigidBody != null)
+        {
+            playerRigidBody.velocity = Vector2.zero;
+            playerRigidBody.AddForce(knockback, ForceMode2D.Impulse);
+        }
+
+        //if (currentHealth <= 0)
+        //{
+        //    KillPlayer();
+        //}
+    }
+
+
 
 
 }

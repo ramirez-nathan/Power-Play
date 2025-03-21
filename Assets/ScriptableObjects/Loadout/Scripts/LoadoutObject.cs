@@ -7,8 +7,8 @@ using UnityEngine;
 public class LoadoutObject : ScriptableObject
 {
     public List<PowerObject> Container = new List<PowerObject>();
-
-    private int maxLoadoutSize = 5;
+    
+    private int maxLoadoutSize = 4;
 
     public bool AddPower(PowerObject power)
     {
@@ -24,6 +24,7 @@ public class LoadoutObject : ScriptableObject
         if (Container.Contains(power))
         {
             Container.Remove(power);
+            Debug.Log($"{power.powerName} removed from loadout.");
         }
     }
     void OnApplicationQuit()

@@ -8,154 +8,189 @@ public class PlayerAttackingState : PlayerBaseState
     private PlayerStateMachine _sm;
     private string previousState;
     private float counterMax = 0.5f; // in seconds
+    private AudioManager audioManager;
+
+
+    
 
     public PlayerAttackingState(PlayerStateMachine stateMachine) : base("Attacking", stateMachine)
     {
         this.stateName = "Attacking";
         _sm = stateMachine;
+        audioManager = _sm.playerMain.audioManager;
     }
 
     public override void Enter(string previousState)
     {
         base.Enter(previousState);
         this.previousState = previousState;
-        Debug.Log("Entering Attack state");
-        counterMax = 0.5f;
+        //Debug.Log("Entering Attack state");
+        _sm.playerMain.attackHitbox.hitEnemies.Clear(); // new attack so clear the list
+        var atkDmg = 0;
+        var xDirection = _sm.playerMain.isFacingRight ? Vector2.right : Vector2.left;
         switch (_sm.playerMain.playerAttackType)
         {
             case PlayerMain.PlayerAttackType.NeutralLight:
 
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
-                    
-                    counterMax = 0.25f;
-                    Debug.Log("counter start = " + counter);
                     _sm.playerMain.animator.Play("PlayerKatanaAirAttack");
-                    // set counterMax to animation length
+                    counterMax = 0.43f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(10);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 13f, xDirection);
+                    //Debug.Log("playing neutral light air attack");
+                    audioManager.PlayLightKatanaSound();
 
-                    Debug.Log("playing neutral light air attack");
                 }
                 else // Grounded
                 {
-                    
                     _sm.playerMain.animator.Play("PlayerKatanaNeutralLight");
-                    // set counterMax to animation length
-                    Debug.Log("playing neutral light attack");
+                    counterMax = 0.6f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(10);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 13f, xDirection);
+                    //Debug.Log("playing neutral light attack");
+                    audioManager.PlayLightKatanaSound();
                 }
                 break;
             case PlayerMain.PlayerAttackType.ForwardLight:
 
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
-                {
-                    
+                { 
                     _sm.playerMain.animator.Play("PlayerKatanaAirForward");
-                    // set counterMax to animation length
-                    Debug.Log("playing forward light air attack");
+                    counterMax = 0.62f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(10);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 13f, xDirection);
+                    //Debug.Log("playing forward light air attack");
+                    audioManager.PlayLightKatanaSound();
                 }
                 else // Grounded
                 {
-                    
                     _sm.playerMain.animator.Play("PlayerKatanaForwardLight");
-                    // set counterMax to animation length
-                    Debug.Log("playing forward light attack");
+                    counterMax = 0.52f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(10);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 13f, xDirection);
+                    //Debug.Log("playing forward light attack");
+                    audioManager.PlayLightKatanaSound();
                 }
                 break;
             case PlayerMain.PlayerAttackType.DownLight:
 
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
-                    
                     _sm.playerMain.animator.Play("PlayerKatanaAirAttackDown");
-                    // set counterMax to animation length
-                    Debug.Log("playing down light air attack");
+                    counterMax = 0.6f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(10);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 13f, Vector2.down);
+                    //Debug.Log("playing down light air attack");
+                    audioManager.PlayLightKatanaSound();
                 }
                 else // Grounded
                 {
-                   
-                    // set counterMax to animation length
-                    Debug.Log("playing down light attack");
+                    counterMax = 0.0f;
+                    //Debug.Log("playing down light attack");
                 }
                 break;
             case PlayerMain.PlayerAttackType.NeutralUpHeavy:
 
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
-                    
                     _sm.playerMain.animator.Play("PlayerKatanaAirHeavyUp");
-                    // set counterMax to animation length
-                    Debug.Log("playing neutral up heavy air attack");
+                    counterMax = 0.6f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(15);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 16f, Vector2.up);
+                    //Debug.Log("playing neutral up heavy air attack");
+                    audioManager.PlayHeavyKatanaSound();
                 }
                 else // Grounded
                 {
-                    
                     _sm.playerMain.animator.Play("PlayerKatanaNeutralHeavy");
-                    // set counterMax to animation length
-                    Debug.Log("playing neutral up heavy attack");
+                    counterMax = 0.52f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(15);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 13f, new Vector2(0.3f, 1f));
+                    //Debug.Log("playing neutral up heavy attack");
+                    audioManager.PlayHeavyKatanaSound();
                 }
                 break;
             case PlayerMain.PlayerAttackType.ForwardHeavy:
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
-                    
-                    // set counterMax to animation length
                     _sm.playerMain.animator.Play("PlayerKatanaAirForwardHeavy");
-                    Debug.Log("playing forward heavy air attack");
+                    counterMax = 0.62f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(15);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 15f, xDirection);
+                    //Debug.Log("playing forward heavy air attack");
+                    audioManager.PlayHeavyKatanaSound();
                 }
                 else // Grounded
                 {
-                    // play ForwardHeavy animation
                     _sm.playerMain.animator.Play("PlayerKatanaForwardHeavy");
-                    
-                    // set counterMax to animation length
-                    Debug.Log("playing forward heavy attack");
+                    counterMax = 0.87f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(15);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 14f, xDirection);
+                    //Debug.Log("playing forward heavy attack");
+                    audioManager.PlayHeavyKatanaSound();
                 }
                 break;
             case PlayerMain.PlayerAttackType.DownHeavy:
 
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
-                    counterMax = 1.08f;
-                    // set counterMax to animation length
                     _sm.playerMain.animator.Play("PlayerKatanaAirDownHeavy");
-                    Debug.Log("playing down heavy air attack");
+                    counterMax = 0.83f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(20);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 18f, Vector2.down);
+                    //Debug.Log("playing down heavy air attack");
+                    audioManager.PlayHeavyKatanaSound();
                 }
                 else // Grounded
                 {
-                    // play DownHeavy animation
+                    //_sm.playerMain.animator.Play("PlayerKatanaNeutralHeavyDown");
+                    counterMax = 0.0f;
+                    
+                    //Debug.Log("playing down heavy attack");
                     _sm.playerMain.animator.Play("PlayerKatanaNeutralHeavyDown");
-                    // set counterMax to animation length
-                    Debug.Log("playing down heavy attack");
+                    audioManager.PlayHeavyKatanaSound();
                 }
                 break;
             case PlayerMain.PlayerAttackType.ForwardRanged:
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
                     _sm.playerMain.animator.Play("PlayerBlasterAir");
-                    // set counterMax to animation length
-                    Debug.Log("playing forward ranged air attack");
+                    counterMax = 0.43f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(5);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 12f, xDirection);
+                    //Debug.Log("playing forward ranged air attack");
+                    audioManager.PlayBlasterSound();
                 }
                 else // Grounded
                 {
-                    // set counterMax to animation length
                     _sm.playerMain.animator.Play("PlayerBlasterNeutral");
-                    Debug.Log("playing forward ranged attack");
+                    counterMax = 0.43f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(5);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 12f, xDirection);
+                    //Debug.Log("playing forward ranged attack");
+                    audioManager.PlayBlasterSound();
                 }
                 break;
             case PlayerMain.PlayerAttackType.NeutralUpRanged:
 
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
-                    
                     _sm.playerMain.animator.Play("PlayerBlasterAirUp");
-                    // set counterMax to animation length
-                    Debug.Log("playing neutral up ranged attack");
+                    counterMax = 0.43f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(10);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 13f, Vector2.up);
+                    //Debug.Log("playing neutral up ranged attack");
+                    audioManager.PlayBlasterSound();
                 }
                 else // Grounded
                 {
-                    
-                    // set counterMax to animation length
                     _sm.playerMain.animator.Play("PlayerBlasterUp");
-                    Debug.Log("playing neutral up ranged attack");
+                    counterMax = 0.43f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(10);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 13f, Vector2.up);
+                    //Debug.Log("playing neutral up ranged attack");
+                    audioManager.PlayBlasterSound();
                 }
                 break;
             
@@ -163,16 +198,17 @@ public class PlayerAttackingState : PlayerBaseState
 
                 if (_sm.playerMain.playerState == PlayerMain.PlayerState.Airborne)
                 {
-                    
                     _sm.playerMain.animator.Play("PlayerBlasterAirDown");
-                    // set counterMax to animation length
-                    Debug.Log("playing down ranged air attack");
+                    counterMax = 0.43f;
+                    atkDmg = _sm.playerMain.DamageAfterBuffs(10);
+                    _sm.playerMain.attackHitbox.Initialize(atkDmg, 13f, Vector2.down);
+                    //Debug.Log("playing down ranged air attack");
+                    audioManager.PlayBlasterSound();
                 }
                 else // Grounded
                 {
-                    
-                    // set counterMax to animation length
-                    Debug.Log("playing down ranged attack");
+                    counterMax = 0.0f;
+                    //Debug.Log("playing down ranged attack");
                 }
                 break;
         }

@@ -1,18 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public LoadoutObject player1Loadout;
-    public LoadoutObject player2Loadout;
+    public LoadoutObject player1Loadout; // list of powers
+    public LoadoutObject player2Loadout; // lust of powers 
+    // store in gamemanager during loadout
+    // assign to players in start
 
 
-    void Start()
+    public void ClearLoadouts()
     {
-        //player1Loadout.ClearLoadout();
-        //player2Loadout.ClearLoadout();
+        player1Loadout.Container.Clear();
+        player2Loadout.Container.Clear();
     }
 
     private void Awake()

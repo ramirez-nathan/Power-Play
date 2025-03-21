@@ -9,7 +9,7 @@ public class PlayerDeadState : PlayerBaseState
     private PlayerStateMachine _sm;
     [SerializeField] private bool isRespawning = false;
     [SerializeField] private bool preRespawning = false;
-    private float respawnTimer = 4f;
+    private float respawnTimer = 3f;
     private float preRespawnTimer = 1.5f;
 
     public PlayerDeadState(PlayerStateMachine stateMachine) : base("Idle", stateMachine)
@@ -27,10 +27,11 @@ public class PlayerDeadState : PlayerBaseState
             // Play the sound at the character's position
             if (_sm.playerMain.fellOffMap)
             {
-                AudioSource.PlayClipAtPoint(_sm.playerMain.deathSound.clip, _sm.playerMain.transform.position);
+                _sm.playerMain.audioManager.PlayDeathSound();
             }
             else
             {
+                _sm.playerMain.audioManager.PlayDeathSound();
                 Debug.Log("no death sound");
             }
 
@@ -49,6 +50,7 @@ public class PlayerDeadState : PlayerBaseState
             {
                 Debug.Log("Respawning");
                 preRespawning = true;
+                _sm.playerMain.sprite.enabled = false;
                 isRespawning = true;
             }
         }
@@ -59,13 +61,14 @@ public class PlayerDeadState : PlayerBaseState
     {
         base.UpdateLogic();
         _sm.playerMain.fellOffMap = false;
-        _sm.playerMain.isAlive = true;
+
         _sm.playerMain.playerRigidBody.gravityScale = 0f;
         _sm.playerMain.playerRigidBody.velocity = Vector3.zero;
         if (preRespawning)
         {
             _sm.playerMain.playerRigidBody.velocity = Vector3.zero;
             preRespawnTimer -= Time.deltaTime;
+            
             if (preRespawnTimer <= 0) 
             { 
                 preRespawning = false;
@@ -75,6 +78,7 @@ public class PlayerDeadState : PlayerBaseState
         else if (isRespawning && !preRespawning)
         {
             _sm.playerMain.transform.position = _sm.playerMain.spawnPoint.position;
+            _sm.playerMain.sprite.enabled = true;
             // replay respawn animation here
             respawnTimer -= Time.deltaTime;
             _sm.playerMain.isVulnerable = false; // invulnerable during this 

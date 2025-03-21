@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerCamera
+  - Player1
+  - Player2
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -12,8 +15,8 @@ TagManager:
   - TopStage
   - Water
   - UI
-  - 
-  - 
+  - AttackHitbox
+  - PlayerHitbox
   - 
   - 
   - 
