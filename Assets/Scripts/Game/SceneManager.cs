@@ -15,10 +15,13 @@ public class MenuManager : MonoBehaviour
         
 
         // Only start music if it's not already playing
-        if (AudioManager.Instance.musicSource.isPlaying == false)
+        if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.PlayBackgroundMusic(MainMenuMusicPinkBloom);
-            AudioManager.Instance.SetMusicVolume(0.15f);
+            if (AudioManager.Instance.musicSource.isPlaying == false)
+            {
+                AudioManager.Instance.PlayBackgroundMusic(MainMenuMusicPinkBloom);
+                AudioManager.Instance.SetMusicVolume(0.15f);
+            }
         }
     }
 
@@ -30,7 +33,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        AudioManager.Instance.PlayBackgroundMusic(MainMenuMusicPinkBloom);
+        if (AudioManager.Instance != null) AudioManager.Instance.PlayBackgroundMusic(MainMenuMusicPinkBloom);
         SceneManager.LoadScene("MainMenu");  
     }
 
@@ -80,5 +83,9 @@ public class MenuManager : MonoBehaviour
         Debug.Log("Game has been quit.");
     }
 
-
+    public IEnumerator SwitchToStatsScene()
+    {
+        yield return new WaitForSeconds(5.0f);
+        SceneManager.LoadScene("StatsScreen");
+    }
 }

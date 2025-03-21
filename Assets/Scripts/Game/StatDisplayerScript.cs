@@ -21,10 +21,10 @@ public class StatDisplayerScript : MonoBehaviour
 
     public void ShowEndGameStats()
     {
-        KDRatioText.text = "KD Ratio: 2.5";
-        StocksLeftText.text = "Stocks Left: 3";
-        DamageDealtText.text = "Damage Dealt: 150";
-        AttacksLandedText.text = "Attacks Landed: 14";
+        KDRatioText.text = "KD Ratio: ";
+        StocksLeftText.text = "Stocks Left: ";
+        DamageDealtText.text = "Damage Dealt: ";
+        AttacksLandedText.text = "Attacks Landed: ";
         //MatchDurationText.text = "Match Duration: 56s";
     }
 

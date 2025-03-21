@@ -9,6 +9,7 @@ using static UnityEngine.InputSystem.InputAction;
 public class PlayerMain : MonoBehaviour
 {
     [SerializeField]
+    public MenuManager menuManager;
     public Transform spawnPoint;
     public int maxHealth = 100;
     public int currentHealth = 100;
@@ -24,6 +25,7 @@ public class PlayerMain : MonoBehaviour
     public LoadoutObject powerLoadout;
     public AttackHitbox attackHitbox;
     
+
     [SerializeField]
     private int playerIndex = 0; // index to differentiate the 2 players
     public enum PlayerState
@@ -92,6 +94,7 @@ public class PlayerMain : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         sprite = GetComponent<SpriteRenderer>();
         attackHitbox = GetComponent<AttackHitbox>();
+        menuManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<MenuManager>();
     }
     // Start is called before the first frame update
     void Start()
@@ -111,7 +114,11 @@ public class PlayerMain : MonoBehaviour
             GameObject gmObject = new GameObject("GameManager");
             gmObject.AddComponent<GameManager>(); // This will trigger Awake()
         }
-        powerLoadout = playerIndex == 0 ? GameManager.Instance.player1Loadout : GameManager.Instance.player2Loadout;  
+        powerLoadout = playerIndex == 0 ? GameManager.Instance.player1Loadout : GameManager.Instance.player2Loadout;
+        for (int i = 0; i < powerLoadout.Container.Count; i++)
+        {
+            powerLoadout.Container[i] = Instantiate(powerLoadout.Container[i]);
+        }
     }
 
     public void Initialize(PlayerInputHandler pInputHandler)
@@ -131,6 +138,10 @@ public class PlayerMain : MonoBehaviour
         if (controllerConnected)
         {
             moveInput = playerInputHandler.playerControls.move.ReadValue<Vector2>(); // grab input vector here
+        }
+        foreach (var power in powerLoadout.Container)
+        {
+            power.UpdateLogic(this.gameObject);
         }
         //animator.SetBool("isJumping", !isOnFloor); // animator checks if player is jumping still
         UpdateSpriteDirection();

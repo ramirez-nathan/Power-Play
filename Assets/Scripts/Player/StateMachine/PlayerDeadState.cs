@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerDeadState : PlayerBaseState
@@ -47,6 +48,7 @@ public class PlayerDeadState : PlayerBaseState
 
                 Debug.Log($"Destroying object, player numstocks is {_sm.playerMain.numStocks}");
                 _sm.playerMain.gameOverScreen.ShowGameOver();
+                _sm.playerMain.menuManager.StartCoroutine(_sm.playerMain.menuManager.SwitchToStatsScene());
                 preRespawning = false;
                 GameObject.Destroy(_sm.playerMain.gameObject);
                 
