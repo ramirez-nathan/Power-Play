@@ -573,7 +573,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Joystick"",
+                    ""groups"": "";Joystick;Gamepad"",
                     ""action"": ""ForwardRanged"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
