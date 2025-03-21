@@ -17,6 +17,7 @@ public class PlayerMain : MonoBehaviour
     public int damage = 0;
 
     public Vector2 currentVelocity = Vector2.zero;
+    public SpriteRenderer sprite;
     public GameOverScreen gameOverScreen; // The game over screen
     public AudioSource deathSound;       // A sound that gets played when the character gets destroyed
     private bool controllerConnected = false;
@@ -89,6 +90,7 @@ public class PlayerMain : MonoBehaviour
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        sprite = GetComponent<SpriteRenderer>();
         attackHitbox = GetComponent<AttackHitbox>();
     }
     // Start is called before the first frame update

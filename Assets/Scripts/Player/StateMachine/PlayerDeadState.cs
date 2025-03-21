@@ -9,7 +9,7 @@ public class PlayerDeadState : PlayerBaseState
     private PlayerStateMachine _sm;
     [SerializeField] private bool isRespawning = false;
     [SerializeField] private bool preRespawning = false;
-    private float respawnTimer = 4f;
+    private float respawnTimer = 3f;
     private float preRespawnTimer = 1.5f;
 
     public PlayerDeadState(PlayerStateMachine stateMachine) : base("Idle", stateMachine)
@@ -49,6 +49,7 @@ public class PlayerDeadState : PlayerBaseState
             {
                 Debug.Log("Respawning");
                 preRespawning = true;
+                _sm.playerMain.sprite.enabled = false;
                 isRespawning = true;
             }
         }
@@ -66,6 +67,7 @@ public class PlayerDeadState : PlayerBaseState
         {
             _sm.playerMain.playerRigidBody.velocity = Vector3.zero;
             preRespawnTimer -= Time.deltaTime;
+            
             if (preRespawnTimer <= 0) 
             { 
                 preRespawning = false;
@@ -75,6 +77,7 @@ public class PlayerDeadState : PlayerBaseState
         else if (isRespawning && !preRespawning)
         {
             _sm.playerMain.transform.position = _sm.playerMain.spawnPoint.position;
+            _sm.playerMain.sprite.enabled = true;
             // replay respawn animation here
             respawnTimer -= Time.deltaTime;
             _sm.playerMain.isVulnerable = false; // invulnerable during this 

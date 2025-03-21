@@ -24,9 +24,10 @@ public class AttackHitbox : MonoBehaviour
             
             if (collision.otherCollider.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
             {
-                Debug.Log("attack read correctly");
+                
                 if (!hitEnemies.Contains(collision.gameObject))
                 {
+                    Debug.Log("attack read correctly");
                     hitEnemies.Add(collision.gameObject);
 
                     PlayerMain enemy = collision.gameObject.GetComponentInParent<PlayerMain>();
@@ -38,7 +39,28 @@ public class AttackHitbox : MonoBehaviour
                 }
             }
         }
-        
     }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        //Debug.Log(collision.otherCollider.gameObject.name);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("AttackHitbox"))
+        {
+            if (collision.otherCollider.gameObject.layer == LayerMask.NameToLayer("PlayerHitbox"))
+            {
+                
+                if (!hitEnemies.Contains(collision.gameObject))
+                {
+                    Debug.Log("attack read correctly");
+                    hitEnemies.Add(collision.gameObject);
 
+                    PlayerMain enemy = collision.gameObject.GetComponentInParent<PlayerMain>();
+                    if (enemy != null)
+                    {
+                        Vector2 finalKnockback = knockbackDirection * knockbackForce;
+                        enemy.TakeDamage(finalDmg, finalKnockback);
+                    }
+                }
+            }
+        }
+    }
 }
