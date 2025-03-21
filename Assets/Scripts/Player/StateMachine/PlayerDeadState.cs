@@ -27,10 +27,11 @@ public class PlayerDeadState : PlayerBaseState
             // Play the sound at the character's position
             if (_sm.playerMain.fellOffMap)
             {
-                AudioSource.PlayClipAtPoint(_sm.playerMain.deathSound.clip, _sm.playerMain.transform.position);
+                _sm.playerMain.audioManager.PlayDeathSound();
             }
             else
             {
+                _sm.playerMain.audioManager.PlayDeathSound();
                 Debug.Log("no death sound");
             }
 
@@ -60,7 +61,7 @@ public class PlayerDeadState : PlayerBaseState
     {
         base.UpdateLogic();
         _sm.playerMain.fellOffMap = false;
-        _sm.playerMain.isAlive = true;
+
         _sm.playerMain.playerRigidBody.gravityScale = 0f;
         _sm.playerMain.playerRigidBody.velocity = Vector3.zero;
         if (preRespawning)
