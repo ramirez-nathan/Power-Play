@@ -273,7 +273,6 @@ public class PlayerMain : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("Got to subscribed forward ranged function");
             isAttacking = true;
             playerAttackType = PlayerAttackType.ForwardRanged;
             knockbackValue = 2.5f;
