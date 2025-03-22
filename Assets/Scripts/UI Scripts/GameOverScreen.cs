@@ -21,7 +21,7 @@ public class GameOverScreen : MonoBehaviour
     {
         gameOverUI.SetActive(true);  // Display the Game Over screen
         // Optionally, pause the game or stop player inputs
-        Time.timeScale = 0f;  // Freeze the game by setting time scale to 0
+        //Time.timeScale = 0f;  // Freeze the game by setting time scale to 0
     }
 
 }
