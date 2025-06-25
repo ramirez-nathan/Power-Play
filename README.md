@@ -12,3 +12,4 @@ A 2D fighting-platformer game that combines gameplay elements from Smash Bros an
 The game will feature local multiplayer, allowing players to engage in battles across platform-based arenas.
 The game will also include a stat tracking system to record player performance, wins/losses, and character usage.
 
+[Demo Link](https://drive.google.com/file/d/1bgLFPXXkfcJYM_3qV7aUaQV9wULe55j0/view)
